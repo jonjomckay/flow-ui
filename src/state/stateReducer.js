@@ -1,10 +1,11 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { invokeFlow } from '../actions';
+import { invokeFlow, setTenant } from '../actions';
 
 const initialState = {
     currentMapElementId: null,
     id: null,
     isLoading: false,
+    tenantId: null,
     token: null
 };
 
@@ -22,6 +23,12 @@ export default createReducer(initialState, {
             id: action.payload.stateId,
             isLoading: false, // TODO: This doesn't work with multiple concurrent loading things
             token: action.payload.stateToken
+        }
+    },
+    [setTenant]: (state, action) => {
+        return {
+            ...state,
+            tenantId: action.payload
         }
     }
 });

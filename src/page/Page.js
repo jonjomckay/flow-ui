@@ -8,7 +8,7 @@ import Navigation from '../navigation/Navigation';
 
 const Page = props => {
     const containers = props.containers
-        .sort((a, b) => b.order - a.order)
+        .sort((a, b) => a.order - b.order)
         .map(container => <PageContainer container={ container } key={ container.id } />);
 
     return (

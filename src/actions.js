@@ -1,13 +1,17 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+export const setTenant = createAction('SetTenant');
+
 // Send an initialization request to Flow
 export const initializeFlow = createAsyncThunk('InitializeFlow', async (payload, thunk) => {
     try {
+        thunk.dispatch(setTenant(payload.tenantId));
+
         // Send the actual initialization request to Flow
         const initializeResponse = await axios.post('https://flow.boomi.com/api/run/1', payload, {
             headers: {
-                'ManyWhoTenant': '07f799a4-af7c-449b-ba7c-f1f526f7000a'
+                'ManyWhoTenant': payload.tenantId
             }
         });
 
@@ -27,18 +31,20 @@ export const initializeFlow = createAsyncThunk('InitializeFlow', async (payload,
 
 // Send an invocation request to Flow
 export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) => {
+    const state = thunk.getState();
+
     try {
         // Send the actual invocation request to Flow
         const invokeResponse = await axios.post('https://flow.boomi.com/api/run/1/state/' + payload.stateId, payload, {
             headers: {
-                'ManyWhoTenant': '07f799a4-af7c-449b-ba7c-f1f526f7000a'
+                'ManyWhoTenant': state.state.tenantId
             }
         });
 
         const invokeResponseData = invokeResponse.data;
 
         // Trigger any navigation updates, if relevant
-        if (invokeResponseData.navigationElementReferences) {
+        if (invokeResponseData.navigationElementReferences && invokeResponseData.navigationElementReferences.length) {
             thunk.dispatch(loadNavigation(invokeResponse.data));
         }
 
@@ -102,6 +108,9 @@ export const selectOutcome = createAsyncThunk('SelectOutcome', async (payload, t
         currentMapElementId: state.state.currentMapElementId,
         invokeType: 'FORWARD',
         mapElementInvokeRequest: {
+            pageRequest: {
+
+            },
             selectedOutcomeId: payload.selectedOutcomeId
         },
         stateId: state.state.id,

@@ -9,10 +9,14 @@ const initialState = {
 
 export default createReducer(initialState, {
     [invokeFlow.fulfilled]: (state, action) => {
-        return {
-            ...state,
-            id: action.payload.navigationElementReferences[0].id
+        if (action.payload.navigationElementReferences && action.payload.navigationElementReferences.length) {
+            return {
+                ...state,
+                id: action.payload.navigationElementReferences[0].id
+            }
         }
+
+        return state;
     },
     [loadNavigation.fulfilled]: (state, action) => {
         const items = action.payload.navigationItemResponses.map(item => {
