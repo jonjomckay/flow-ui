@@ -1,0 +1,36 @@
+@import "~antd/lib/style/index";
+@import "~react-progress-bar-plus/dist/react-progress-bar-plus.css";
+
+.ant-alert.ant-alert {
+    margin-top: 16px;
+}
+
+.ant-btn {
+    margin-right: 8px;
+    margin-bottom: 12px;
+}
+
+/* TODO: This doesn't feel right, but it gets rid of the padding at tne end of containers that end with a paragraph */
+.ant-space.ant-space-vertical {
+    display: block;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+.make-container(@minWidth, @breakpoint) {
+    @media (min-width: @minWidth) {
+        .container {
+            max-width: @breakpoint;
+        }
+    }
+}
+
+.make-container(@screen-xs-min, @screen-xs);
+.make-container(@screen-sm-min, @screen-sm);
+.make-container(@screen-md-min, @screen-md);
+.make-container(@screen-lg-min, @screen-lg);
+.make-container(@screen-xl-min, @screen-xl);
+.make-container(@screen-xxl-min, @screen-xxl);

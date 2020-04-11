@@ -19,7 +19,7 @@ const Page = props => {
                 <Navigation />
             </Layout.Header>
 
-            <Layout.Content style={{ padding: '1.5rem 50px' }}>
+            <Layout.Content className="container" style={{ padding: '1.5rem 50px', width: '1280px' }}>
                 { containers }
 
                 <Outcomes />

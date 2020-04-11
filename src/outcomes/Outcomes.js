@@ -10,7 +10,7 @@ class Outcomes extends React.Component {
         });
 
         return (
-            <div>
+            <div style={{ marginTop: '16px'}}>
                 { outcomes }
             </div>
         );

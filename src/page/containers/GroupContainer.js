@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs } from 'antd';
+import { Tabs, Typography } from 'antd';
 
 const GroupContainer = props => {
     // Create a tab per nested container, and use the pre-rendered containers that were passed in for each tab's content

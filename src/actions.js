@@ -58,6 +58,8 @@ export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) 
 
 // TODO: This only handles the first navigation element
 export const loadNavigation = createAsyncThunk('LoadNavigation', async (payload, thunk) => {
+    const state = thunk.getState();
+
     try {
         const request = {
             navigationElementId: payload.navigationElementReferences[0].id,
@@ -68,7 +70,7 @@ export const loadNavigation = createAsyncThunk('LoadNavigation', async (payload,
         // Send the actual navigation request to Flow
         const navigationResponse = await axios.post('https://flow.boomi.com/api/run/1/navigation/' + payload.stateId, request, {
             headers: {
-                'ManyWhoTenant': '07f799a4-af7c-449b-ba7c-f1f526f7000a'
+                'ManyWhoTenant': state.state.tenantId
             }
         });
 
@@ -82,6 +84,9 @@ export const loadNavigation = createAsyncThunk('LoadNavigation', async (payload,
 
 // Pass in an object containing the ID of the component to be refreshed
 export const refreshComponent = createAction('RefreshComponent');
+
+// Used when a page component updates its value
+export const setComponentValue = createAction('SetComponentValue');
 
 // Pass in an object containing the ID of the navigation item that was selected
 export const selectNavigationItem = createAsyncThunk('SelectNavigationItem', async (payload, thunk) => {
@@ -99,9 +104,17 @@ export const selectNavigationItem = createAsyncThunk('SelectNavigationItem', asy
     }));
 });
 
-// Pass in an object containing the ID of the outcome that was selected
+// Pass in an object containing the ID of the outcome that was selected, sending all the current page's input values
 export const selectOutcome = createAsyncThunk('SelectOutcome', async (payload, thunk) => {
     const state = thunk.getState();
+
+    const pageComponentInputResponses = Object.entries(state.page.inputs).map(([id, input]) => {
+        return {
+            contentValue: input.contentValue,
+            objectData: input.objectData,
+            pageComponentId: id,
+        }
+    });
 
     // Invoke the flow, using the given outcome ID
     thunk.dispatch(invokeFlow({
@@ -109,7 +122,7 @@ export const selectOutcome = createAsyncThunk('SelectOutcome', async (payload, t
         invokeType: 'FORWARD',
         mapElementInvokeRequest: {
             pageRequest: {
-
+                pageComponentInputResponses: pageComponentInputResponses
             },
             selectedOutcomeId: payload.selectedOutcomeId
         },

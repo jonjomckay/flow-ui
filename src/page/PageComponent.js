@@ -2,12 +2,23 @@ import React from 'react';
 import { Alert } from 'antd';
 import Presentation from './components/Presentation';
 import Input from './components/Input';
+import { connect } from 'react-redux';
+import { setComponentValue } from '../actions';
+import Textarea from './components/Textarea';
 
-const PageComponent = ({ component }) => {
+const PageComponent = ({ component, setComponentValue }) => {
     const { componentType } = component;
 
+    const onChange = (value) => {
+        setComponentValue({
+            id: component.id,
+            contentValue: value
+        });
+    };
+
     const props = {
-        component: component
+        component: component,
+        onChange: onChange
     };
 
     switch (componentType) {
@@ -15,6 +26,8 @@ const PageComponent = ({ component }) => {
             return <Input { ...props } />;
         case 'PRESENTATION':
             return <Presentation { ...props } />;
+        case 'TEXTAREA':
+            return <Textarea { ...props } />;
         default:
             console.warn('The component type ' + componentType + ' is not supported');
 
@@ -24,4 +37,8 @@ const PageComponent = ({ component }) => {
     }
 };
 
-export default PageComponent;
+const mapDispatchToProps = ({
+    setComponentValue
+});
+
+export default connect(null, mapDispatchToProps)(PageComponent);

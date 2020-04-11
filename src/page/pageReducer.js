@@ -1,7 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { invokeFlow } from '../actions';
+import { invokeFlow, selectOutcome, setComponentValue } from '../actions';
 
 const initialState = {
+    inputs: {},
     pageComponents: [],
     pageContainers: []
 };
@@ -22,11 +23,41 @@ export default createReducer(initialState, {
             }
         });
 
+        // TODO: Clear if the map element ID is different
+        let inputs = { ...state.inputs };
+
+        pageComponents.forEach(component => {
+            inputs[component.id] = {
+                isDirty: false,
+                value: component.data.contentValue
+            }
+        });
+
         // Set the page response from the invoke response into the current state
         return {
             ...state,
+            inputs: inputs,
             pageComponents: pageComponents,
             pageContainers: pageContainers
+        }
+    },
+    [selectOutcome.fulfilled]: (state, action) => {
+        // Clear any input values from the previous page
+        return {
+            ...state,
+            inputs: initialState.inputs
+        }
+    },
+    [setComponentValue]: (state, action) => {
+        return {
+            ...state,
+            inputs: {
+                ...state.inputs,
+                [action.payload.id]: {
+                    isDirty: true,
+                    contentValue: action.payload.contentValue
+                }
+            }
         }
     }
 });

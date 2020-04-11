@@ -1,10 +1,11 @@
 import React from 'react';
-import Container from './containers/Container';
+import VerticalContainer from './containers/VerticalContainer';
 import { Alert, Col } from 'antd';
 import { connect } from 'react-redux';
 import PageComponent from './PageComponent';
 import GroupContainer from './containers/GroupContainer';
 import InlineContainer from './containers/InlineContainer';
+import HorizontalContainer from './containers/HorizontalContainer';
 
 const UnconnectedPageContainer = ({ components, container }) => {
     const { containerType, id } = container;
@@ -31,11 +32,11 @@ const UnconnectedPageContainer = ({ components, container }) => {
         case 'GROUP':
             return <GroupContainer { ...props } />;
         case 'HORIZONTAL_FLOW':
-            return <Container direction="horizontal" { ...props } />;
+            return <HorizontalContainer { ...props } />;
         case 'INLINE_FLOW':
             return <InlineContainer { ...props } />;
         case 'VERTICAL_FLOW':
-            return <Container direction="vertical" { ...props } />;
+            return <VerticalContainer { ...props } />;
         default:
             console.warn('The container type ' + containerType + ' is not supported');
 

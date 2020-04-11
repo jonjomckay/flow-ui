@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Input as AntdInput, InputNumber } from 'antd';
+import { Form, Input } from 'antd';
 
-export default class Input extends React.Component {
+export default class Textarea extends React.Component {
     render() {
         const { component, onChange } = this.props;
 
@@ -19,19 +19,8 @@ export default class Input extends React.Component {
 
         const inputProps = {
             placeholder: component.hintValue,
-            required: component.data.isRequired,
-            maxLength: component.size
+            required: component.data.isRequired
         };
-
-        let input;
-        switch (component.contentType.toLowerCase()) {
-            case 'contentnumber':
-                input = <InputNumber { ...inputProps } onChange={ value => onChange(value) } />;
-                break;
-            default:
-                input = <AntdInput { ...inputProps } onChange={ (e) => onChange(e.currentTarget.value) } />;
-                break;
-        }
 
         return (
             <Form layout="vertical">
@@ -43,7 +32,7 @@ export default class Input extends React.Component {
                     rules={ rules }
                     validateStatus={ validationStatus }
                 >
-                    { input }
+                    <Input.TextArea { ...inputProps } onChange={ value => onChange(value) } />
                 </Form.Item>
             </Form>
         );
