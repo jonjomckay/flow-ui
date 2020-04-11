@@ -20,12 +20,8 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-
-});
-
 const mapDispatchToProps = ({
     initializeFlow
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
