@@ -6,7 +6,7 @@ import { selectOutcome } from '../actions';
 class Outcomes extends React.Component {
     render() {
         const outcomes = this.props.outcomes.map(outcome => {
-            return <Outcome outcome={ outcome } key={ outcome.id } onClick={ () => this.props.selectOutcome({ selectedOutcomeId: outcome.id }) } />
+            return <Outcome outcome={ outcome } key={ outcome.id } isLoading={ this.props.isLoading } onClick={ () => this.props.selectOutcome({ selectedOutcomeId: outcome.id }) } />
         });
 
         return (
@@ -18,6 +18,7 @@ class Outcomes extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    isLoading: state.state.isLoading,
     outcomes: state.outcomes.outcomes
 });
 
