@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { initializeFlow } from './actions';
+import Page from './page/Page';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    componentDidMount() {
+        this.props.initializeFlow({
+            flowId: {
+                id: 'c6b211f0-b342-4f67-b7b1-b8b62868b2a4'
+            }
+        });
+    }
+
+    render() {
+        return (
+            <Page />
+        );
+    }
 }
 
-export default App;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = ({
+    initializeFlow
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
