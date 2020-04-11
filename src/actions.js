@@ -35,7 +35,38 @@ export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) 
             }
         });
 
-        return invokeResponse.data;
+        const invokeResponseData = invokeResponse.data;
+
+        // Trigger any navigation updates, if relevant
+        if (invokeResponseData.navigationElementReferences) {
+            thunk.dispatch(loadNavigation(invokeResponse.data));
+        }
+
+        return invokeResponseData;
+    } catch (e) {
+        // TODO
+
+        console.error(e);
+    }
+});
+
+// TODO: This only handles the first navigation element
+export const loadNavigation = createAsyncThunk('LoadNavigation', async (payload, thunk) => {
+    try {
+        const request = {
+            navigationElementId: payload.navigationElementReferences[0].id,
+            stateId: payload.stateId,
+            stateToken: payload.stateToken
+        };
+
+        // Send the actual navigation request to Flow
+        const navigationResponse = await axios.post('https://flow.boomi.com/api/run/1/navigation/' + payload.stateId, request, {
+            headers: {
+                'ManyWhoTenant': '07f799a4-af7c-449b-ba7c-f1f526f7000a'
+            }
+        });
+
+        return navigationResponse.data;
     } catch (e) {
         // TODO
 
@@ -47,7 +78,20 @@ export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) 
 export const refreshComponent = createAction('RefreshComponent');
 
 // Pass in an object containing the ID of the navigation item that was selected
-export const selectNavigationItem = createAction('SelectNavigationItem');
+export const selectNavigationItem = createAsyncThunk('SelectNavigationItem', async (payload, thunk) => {
+    const state = thunk.getState();
+
+    // Invoke the flow, using the given navigation item
+    thunk.dispatch(invokeFlow({
+        currentMapElementId: state.state.currentMapElementId,
+        invokeType: 'NAVIGATE',
+        mapElementInvokeRequest: {},
+        navigationElementId: payload.navigationId,
+        selectedNavigationItemId: payload.itemId,
+        stateId: state.state.id,
+        stateToken: state.state.token
+    }));
+});
 
 // Pass in an object containing the ID of the outcome that was selected
 export const selectOutcome = createAsyncThunk('SelectOutcome', async (payload, thunk) => {

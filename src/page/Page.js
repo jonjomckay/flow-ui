@@ -4,6 +4,7 @@ import PageContainer from './PageContainer';
 import Outcomes from '../outcomes/Outcomes';
 import ProgressBar from 'react-progress-bar-plus';
 import { Layout } from 'antd';
+import Navigation from '../navigation/Navigation';
 
 const Page = props => {
     const containers = props.containers
@@ -14,7 +15,11 @@ const Page = props => {
         <Layout>
             <ProgressBar autoIncrement percent={ props.isLoading ? 25 : 100 } spinner="right" />
 
-            <Layout.Content style={{ padding: '1.5rem' }}>
+            <Layout.Header>
+                <Navigation />
+            </Layout.Header>
+
+            <Layout.Content style={{ padding: '1.5rem 50px' }}>
                 { containers }
 
                 <Outcomes />
