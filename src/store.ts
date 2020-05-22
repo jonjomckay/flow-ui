@@ -1,5 +1,4 @@
-import { combineReducers } from 'redux';
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import outcomeReducer from './outcomes/outcomeReducer';
 import pageReducer from './page/pageReducer';
 import stateReducer from './state/stateReducer';
@@ -11,6 +10,8 @@ const rootReducer = combineReducers({
     page: pageReducer,
     state: stateReducer
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 export const store = configureStore({
     reducer: rootReducer

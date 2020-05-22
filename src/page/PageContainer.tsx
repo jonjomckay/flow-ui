@@ -6,8 +6,15 @@ import PageComponent from './PageComponent';
 import GroupContainer from './containers/GroupContainer';
 import InlineContainer from './containers/InlineContainer';
 import HorizontalContainer from './containers/HorizontalContainer';
+import { IPageComponent, IPageContainer } from '../types';
+import { RootState } from '../store';
 
-const UnconnectedPageContainer = ({ components, container }) => {
+interface Props {
+    components: IPageComponent[]
+    container: IPageContainer
+}
+
+const UnconnectedPageContainer = ({ components, container }: Props) => {
     const { containerType, id } = container;
 
     const nestedContainers = (container.pageContainerResponses || []).map(nestedContainer => {
@@ -18,6 +25,8 @@ const UnconnectedPageContainer = ({ components, container }) => {
 
     const nestedComponents = (components || []).filter(component => component.pageContainerId === id).sort((a, b) => a.order - b.order).map(component => {
         return (
+            // @ts-ignore
+            // TODO: Figure out how to have props that only come from Redux in the type signature
             <PageComponent component={ component } key={ component.id } />
         )
     });
@@ -46,7 +55,7 @@ const UnconnectedPageContainer = ({ components, container }) => {
     }
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
     components: state.page.pageComponents
 });
 

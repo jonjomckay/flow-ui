@@ -1,14 +1,21 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { invokeFlow, loadObjectData, selectOutcome, setComponentValue } from '../actions';
+import { IPageComponent, IPageContainer, IPageInput } from '../types';
 
-const initialState = {
+interface PageState {
+    inputs: { [key: string]: IPageInput },
+    pageComponents: IPageComponent[],
+    pageContainers: IPageContainer[]
+}
+
+const initialState: PageState = {
     inputs: {},
     pageComponents: [],
     pageContainers: []
 };
 
-export default createReducer(initialState, {
-    [invokeFlow.fulfilled]: (state, action) => {
+export default createReducer(initialState, builder => builder
+    .addCase(invokeFlow.fulfilled, (state, action) => {
         const pageResponse = action.payload.mapElementInvokeResponses[0].pageResponse;
 
         // If we're SYNCing, we're only sent the component data, so match it up with the components we have in the state
@@ -16,10 +23,10 @@ export default createReducer(initialState, {
             ? pageResponse.pageComponentResponses
             : state.pageComponents;
 
-        const pageComponents = currentPageComponents.map(component => {
+        const pageComponents: IPageComponent[] = currentPageComponents.map((component: any) => {
             return {
                 ...component,
-                data: pageResponse.pageComponentDataResponses.find(data => data.pageComponentId === component.id)
+                data: pageResponse.pageComponentDataResponses.find((data: any) => data.pageComponentId === component.id)
             }
         });
 
@@ -28,10 +35,10 @@ export default createReducer(initialState, {
             ? pageResponse.pageContainerResponses
             : state.pageContainers;
 
-        const pageContainers = currentPageContainers.map(container => {
+        const pageContainers: IPageContainer[] = currentPageContainers.map((container: any) => {
             return {
                 ...container,
-                data: pageResponse.pageContainerDataResponses.find(data => data.pageContainerId === container.id)
+                data: pageResponse.pageContainerDataResponses.find((data: any) => data.pageContainerId === container.id)
             }
         });
 
@@ -54,8 +61,8 @@ export default createReducer(initialState, {
             pageComponents: pageComponents,
             pageContainers: pageContainers
         }
-    },
-    [loadObjectData.fulfilled]: (state, action) => {
+    })
+    .addCase(loadObjectData.fulfilled, (state, action) => {
         return {
             ...state,
             inputs: {
@@ -66,8 +73,8 @@ export default createReducer(initialState, {
                 }
             }
         }
-    },
-    [loadObjectData.pending]: (state, action) => {
+    })
+    .addCase(loadObjectData.pending, (state, action) => {
         return {
             ...state,
             inputs: {
@@ -78,15 +85,15 @@ export default createReducer(initialState, {
                 }
             }
         }
-    },
-    [selectOutcome.fulfilled]: (state, action) => {
+    })
+    .addCase(selectOutcome.fulfilled, (state, action) => {
         // Clear any input values from the previous page
         return {
             ...state,
             inputs: initialState.inputs
         }
-    },
-    [setComponentValue.fulfilled]: (state, action) => {
+    })
+    .addCase(setComponentValue.fulfilled, (state, action) => {
         return {
             ...state,
             inputs: {
@@ -99,5 +106,5 @@ export default createReducer(initialState, {
                 }
             }
         }
-    }
-});
+    })
+);

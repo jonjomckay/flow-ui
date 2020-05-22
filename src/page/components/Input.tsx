@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Form, Input as AntdInput, InputNumber } from 'antd';
+import { IPageComponentProps } from '../PageComponent';
 
-export default class Input extends React.Component {
+export default class Input extends React.Component<IPageComponentProps> {
     render() {
         const { component, onChange } = this.props;
 
@@ -14,7 +15,7 @@ export default class Input extends React.Component {
 
         // TODO: isLoading === 'validating'
         const validationStatus = component.data.isValid
-            ? null
+            ? undefined
             : 'error';
 
         const inputProps = {
@@ -26,10 +27,10 @@ export default class Input extends React.Component {
         let input;
         switch (component.contentType.toLowerCase()) {
             case 'contentnumber':
-                input = <InputNumber { ...inputProps } onChange={ value => onChange(value) } />;
+                input = <InputNumber { ...inputProps } onChange={ value => onChange({ contentValue: value?.toString() }) } />;
                 break;
             default:
-                input = <AntdInput { ...inputProps } onChange={ (e) => onChange(e.currentTarget.value) } />;
+                input = <AntdInput { ...inputProps } onChange={ (e) => onChange({ contentValue: e.currentTarget.value }) } />;
                 break;
         }
 

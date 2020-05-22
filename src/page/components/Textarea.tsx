@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Form, Input } from 'antd';
+import { IPageComponentProps } from '../PageComponent';
 
-export default class Textarea extends React.Component {
+export default class Textarea extends React.Component<IPageComponentProps> {
     render() {
         const { component, onChange } = this.props;
 
@@ -14,7 +15,7 @@ export default class Textarea extends React.Component {
 
         // TODO: isLoading === 'validating'
         const validationStatus = component.data.isValid
-            ? null
+            ? undefined
             : 'error';
 
         const inputProps = {
@@ -32,7 +33,7 @@ export default class Textarea extends React.Component {
                     rules={ rules }
                     validateStatus={ validationStatus }
                 >
-                    <Input.TextArea { ...inputProps } onChange={ value => onChange(value) } />
+                    <Input.TextArea { ...inputProps } onChange={ value => onChange({ contentValue: value.currentTarget.value }) } />
                 </Form.Item>
             </Form>
         );

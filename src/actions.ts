@@ -1,26 +1,34 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { IObjectData } from './types';
+import { RootState } from './store';
 
-export const setTenant = createAction('SetTenant');
+export const setTenant = createAction<string>('SetTenant');
 
 // Send an initialization request to Flow
-export const initializeFlow = createAsyncThunk('InitializeFlow', async (payload, thunk) => {
+export interface InitializeFlowProps {
+    tenantId: string
+}
+
+export const initializeFlow = createAsyncThunk('InitializeFlow', async (payload: InitializeFlowProps, thunk) => {
     try {
         thunk.dispatch(setTenant(payload.tenantId));
 
         // Send the actual initialization request to Flow
-        const initializeResponse = await axios.post('https://flow.boomi.com/api/run/1', payload, {
+        const initializeResponse: AxiosResponse = await axios.post('https://flow.boomi.com/api/run/1', payload, {
             headers: {
                 'ManyWhoTenant': payload.tenantId
             }
         });
 
+        const initializeResponseData = initializeResponse.data;
+
         thunk.dispatch(invokeFlow({
-            currentMapElementId: initializeResponse.data.currentMapElementId,
+            currentMapElementId: initializeResponseData.currentMapElementId,
             invokeType: 'FORWARD',
             mapElementInvokeRequest: {},
-            stateId: initializeResponse.data.stateId,
-            stateToken: initializeResponse.data.stateToken
+            stateId: initializeResponseData.stateId,
+            stateToken: initializeResponseData.stateToken
         }));
     } catch (e) {
         // TODO
@@ -30,8 +38,16 @@ export const initializeFlow = createAsyncThunk('InitializeFlow', async (payload,
 });
 
 // Send an invocation request to Flow
-export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) => {
-    const state = thunk.getState();
+export interface InvokeFlowProps {
+    currentMapElementId: string,
+    invokeType: 'FORWARD' | 'SYNC',
+    mapElementInvokeRequest: any
+    stateId: string
+    stateToken: string
+}
+
+export const invokeFlow: any = createAsyncThunk<any, InvokeFlowProps, { state: RootState }>('InvokeFlow', async (payload, thunk) => {
+    const state: RootState = thunk.getState();
 
     try {
         // Send the actual invocation request to Flow
@@ -41,7 +57,7 @@ export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) 
             }
         });
 
-        const invokeResponseData = invokeResponse.data;
+        const invokeResponseData: any = invokeResponse.data;
 
         // Trigger any navigation updates, if relevant
         if (invokeResponseData.navigationElementReferences && invokeResponseData.navigationElementReferences.length) {
@@ -53,8 +69,8 @@ export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) 
 
         if (pageResponse.pageComponentDataResponses) {
             pageResponse.pageComponentDataResponses
-                .filter(data => data.objectDataRequest)
-                .forEach(data => {
+                .filter((data: any) => data.objectDataRequest)
+                .forEach((data: any) => {
                     thunk.dispatch(loadObjectData({
                         objectDataRequest: data.objectDataRequest,
                         pageComponentId: data.pageComponentId
@@ -71,8 +87,14 @@ export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) 
 });
 
 // TODO: This only handles the first navigation element
-export const loadNavigation = createAsyncThunk('LoadNavigation', async (payload, thunk) => {
-    const state = thunk.getState();
+export interface LoadNavigationProps {
+    navigationElementReferences: any[],
+    stateId: string,
+    stateToken: string
+}
+
+export const loadNavigation: any = createAsyncThunk<any, LoadNavigationProps, { state: RootState }>('LoadNavigation', async (payload, thunk) => {
+    const state: RootState = thunk.getState();
 
     try {
         const request = {
@@ -82,7 +104,7 @@ export const loadNavigation = createAsyncThunk('LoadNavigation', async (payload,
         };
 
         // Send the actual navigation request to Flow
-        const navigationResponse = await axios.post('https://flow.boomi.com/api/run/1/navigation/' + payload.stateId, request, {
+        const navigationResponse: AxiosResponse = await axios.post('https://flow.boomi.com/api/run/1/navigation/' + payload.stateId, request, {
             headers: {
                 'ManyWhoTenant': state.state.tenantId
             }
@@ -96,7 +118,12 @@ export const loadNavigation = createAsyncThunk('LoadNavigation', async (payload,
     }
 });
 
-export const loadObjectData = createAsyncThunk('LoadObjectData', async (payload, thunk) => {
+export interface LoadObjectDataProps {
+    objectDataRequest: any // TODO
+    pageComponentId: string
+}
+
+export const loadObjectData = createAsyncThunk('LoadObjectData', async (payload: LoadObjectDataProps, thunk) => {
     const { objectDataRequest, pageComponentId } = payload;
 
     try {
@@ -121,32 +148,26 @@ export const loadObjectData = createAsyncThunk('LoadObjectData', async (payload,
 export const refreshComponent = createAction('RefreshComponent');
 
 // Used when a page component updates its value
-export const setComponentValue = createAsyncThunk('SetComponentValue', async (payload, thunk) => {
+export interface SetComponentValueProps {
+    contentValue?: string,
+    objectData?: IObjectData[]
+    pageComponentId: string,
+    selectedOutcomeId?: string
+}
+
+export const setComponentValue: any = createAsyncThunk<any, SetComponentValueProps, { state: RootState }>('SetComponentValue', async (payload, thunk) => {
     const state = thunk.getState();
 
-    // Always set the content value/object data in our local state, ready for the next invoke/sync
-    // TODO: This is mostly the same as SelectOutcome
-    // const pageComponentInputResponses = Object.entries(state.page.inputs).map(([id, input]) => {
-    //     return {
-    //         contentValue: input.contentValue,
-    //         objectData: input.objectData,
-    //         pageComponentId: id,
-    //     }
-    // });
-
-    // TODO: This seems hacky
+    // Always return the content value/object data for our local state, ready for the next invoke/sync
     const pageComponentInputResponse = {
         contentValue: payload.contentValue,
         objectData: payload.objectData,
         pageComponentId: payload.pageComponentId,
     };
 
-    // pageComponentInputResponses.push(pageComponentInputResponse);
-
     // We only want to perform a SYNC invocation if the changed component has events linked to it
-    const component = state.page.pageComponents.find(c => c.id === payload.pageComponentId);
-
-    if (component.hasEvents === false) {
+    let component = state.page.pageComponents.find(c => c.id === payload.pageComponentId);
+    if (component && !component.hasEvents) {
         return pageComponentInputResponse;
     }
 
@@ -168,7 +189,12 @@ export const setComponentValue = createAsyncThunk('SetComponentValue', async (pa
 });
 
 // Pass in an object containing the ID of the navigation item that was selected
-export const selectNavigationItem = createAsyncThunk('SelectNavigationItem', async (payload, thunk) => {
+export interface SelectNavigationItemProps {
+    itemId: string
+    navigationId: string
+}
+
+export const selectNavigationItem = createAsyncThunk<any, SelectNavigationItemProps, { state: RootState }>('SelectNavigationItem', async (payload, thunk) => {
     const state = thunk.getState();
 
     // Invoke the flow, using the given navigation item
@@ -184,8 +210,12 @@ export const selectNavigationItem = createAsyncThunk('SelectNavigationItem', asy
 });
 
 // Pass in an object containing the ID of the outcome that was selected, sending all the current page's input values
-export const selectOutcome = createAsyncThunk('SelectOutcome', async (payload, thunk) => {
-    const state = thunk.getState();
+export interface SelectOutcomeProps {
+    selectedOutcomeId: string
+}
+
+export const selectOutcome: any = createAsyncThunk<any, SelectOutcomeProps, { state: RootState }>('SelectOutcome', async (payload, thunk) => {
+    const state: RootState = thunk.getState();
 
     const pageComponentInputResponses = Object.entries(state.page.inputs).map(([id, input]) => {
         return {
