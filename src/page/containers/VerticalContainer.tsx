@@ -1,7 +1,8 @@
 import React from 'react';
 import { Col, Space, Typography } from 'antd';
+import PageContainerProps from '../PageContainerProps';
 
-const VerticalContainer = props => {
+const VerticalContainer = (props: PageContainerProps) => {
     return (
         <Col flex="auto">
             <Space direction="vertical" size={ 0 }>
