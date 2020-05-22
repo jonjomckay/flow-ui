@@ -48,6 +48,20 @@ export const invokeFlow = createAsyncThunk('InvokeFlow', async (payload, thunk) 
             thunk.dispatch(loadNavigation(invokeResponse.data));
         }
 
+        // Trigger any object data requests, if there are any components with them
+        const pageResponse = invokeResponseData.mapElementInvokeResponses[0].pageResponse;
+
+        if (pageResponse.pageComponentDataResponses) {
+            pageResponse.pageComponentDataResponses
+                .filter(data => data.objectDataRequest)
+                .forEach(data => {
+                    thunk.dispatch(loadObjectData({
+                        objectDataRequest: data.objectDataRequest,
+                        pageComponentId: data.pageComponentId
+                    }));
+                });
+        }
+
         return invokeResponseData;
     } catch (e) {
         // TODO
@@ -82,11 +96,76 @@ export const loadNavigation = createAsyncThunk('LoadNavigation', async (payload,
     }
 });
 
+export const loadObjectData = createAsyncThunk('LoadObjectData', async (payload, thunk) => {
+    const { objectDataRequest, pageComponentId } = payload;
+
+    try {
+        const response = await axios.post('https://flow.boomi.com/api/run/1/service/data', objectDataRequest, {
+            headers: {
+                'ManyWhoTenant': '1e6ba809-b1f7-4118-91c1-a5a6e7092ced'
+            }
+        });
+
+        thunk.dispatch(setComponentValue({
+            objectData: response.data.objectData,
+            pageComponentId: pageComponentId
+        }));
+    } catch (e) {
+        // TODO
+
+        console.error(e);
+    }
+});
+
 // Pass in an object containing the ID of the component to be refreshed
 export const refreshComponent = createAction('RefreshComponent');
 
 // Used when a page component updates its value
-export const setComponentValue = createAction('SetComponentValue');
+export const setComponentValue = createAsyncThunk('SetComponentValue', async (payload, thunk) => {
+    const state = thunk.getState();
+
+    // Always set the content value/object data in our local state, ready for the next invoke/sync
+    // TODO: This is mostly the same as SelectOutcome
+    // const pageComponentInputResponses = Object.entries(state.page.inputs).map(([id, input]) => {
+    //     return {
+    //         contentValue: input.contentValue,
+    //         objectData: input.objectData,
+    //         pageComponentId: id,
+    //     }
+    // });
+
+    // TODO: This seems hacky
+    const pageComponentInputResponse = {
+        contentValue: payload.contentValue,
+        objectData: payload.objectData,
+        pageComponentId: payload.pageComponentId,
+    };
+
+    // pageComponentInputResponses.push(pageComponentInputResponse);
+
+    // We only want to perform a SYNC invocation if the changed component has events linked to it
+    const component = state.page.pageComponents.find(c => c.id === payload.pageComponentId);
+
+    if (component.hasEvents === false) {
+        return pageComponentInputResponse;
+    }
+
+    // Invoke the flow, using the given outcome ID
+    thunk.dispatch(invokeFlow({
+        currentMapElementId: state.state.currentMapElementId,
+        invokeType: 'SYNC',
+        mapElementInvokeRequest: {
+            pageRequest: {
+                pageComponentInputResponses: [pageComponentInputResponse]
+            },
+            selectedOutcomeId: payload.selectedOutcomeId
+        },
+        stateId: state.state.id,
+        stateToken: state.state.token
+    }));
+
+    return pageComponentInputResponse;
+});
 
 // Pass in an object containing the ID of the navigation item that was selected
 export const selectNavigationItem = createAsyncThunk('SelectNavigationItem', async (payload, thunk) => {

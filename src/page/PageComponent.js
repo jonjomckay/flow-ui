@@ -5,18 +5,21 @@ import Input from './components/Input';
 import { connect } from 'react-redux';
 import { setComponentValue } from '../actions';
 import Textarea from './components/Textarea';
+import SelectComponent from './components/SelectComponent';
 
-const PageComponent = ({ component, setComponentValue }) => {
+const PageComponent = ({ component, input, setComponentValue }) => {
     const { componentType } = component;
 
     const onChange = (value) => {
         setComponentValue({
-            id: component.id,
-            contentValue: value
+            contentValue: value.contentValue,
+            objectData: value.objectData,
+            pageComponentId: component.id
         });
     };
 
     const props = {
+        ...input,
         component: component,
         onChange: onChange
     };
@@ -26,6 +29,8 @@ const PageComponent = ({ component, setComponentValue }) => {
             return <Input { ...props } />;
         case 'PRESENTATION':
             return <Presentation { ...props } />;
+        case 'SELECT':
+            return <SelectComponent { ...props } />;
         case 'TEXTAREA':
             return <Textarea { ...props } />;
         default:
@@ -37,8 +42,12 @@ const PageComponent = ({ component, setComponentValue }) => {
     }
 };
 
+const mapStateToProps = (state, ownProps) => ({
+    input: state.page.inputs[ownProps.component.id]
+});
+
 const mapDispatchToProps = ({
     setComponentValue
 });
 
-export default connect(null, mapDispatchToProps)(PageComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(PageComponent);

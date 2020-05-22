@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Space, Typography } from 'antd';
+import { Col, Row, Typography } from 'antd';
 
 const HorizontalContainer = props => {
     return (

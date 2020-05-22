@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { invokeFlow, selectOutcome, setComponentValue } from '../actions';
+import { invokeFlow, loadObjectData, selectOutcome, setComponentValue } from '../actions';
 
 const initialState = {
     inputs: {},
@@ -9,17 +9,29 @@ const initialState = {
 
 export default createReducer(initialState, {
     [invokeFlow.fulfilled]: (state, action) => {
-        const pageComponents = action.payload.mapElementInvokeResponses[0].pageResponse.pageComponentResponses.map(component => {
+        const pageResponse = action.payload.mapElementInvokeResponses[0].pageResponse;
+
+        // If we're SYNCing, we're only sent the component data, so match it up with the components we have in the state
+        let currentPageComponents = pageResponse.pageComponentResponses
+            ? pageResponse.pageComponentResponses
+            : state.pageComponents;
+
+        const pageComponents = currentPageComponents.map(component => {
             return {
                 ...component,
-                data: action.payload.mapElementInvokeResponses[0].pageResponse.pageComponentDataResponses.find(data => data.pageComponentId === component.id)
+                data: pageResponse.pageComponentDataResponses.find(data => data.pageComponentId === component.id)
             }
         });
 
-        const pageContainers = action.payload.mapElementInvokeResponses[0].pageResponse.pageContainerResponses.map(container => {
+        // If we're SYNCing, we're only sent the container data, so match it up with the containers we have in the state
+        let currentPageContainers = pageResponse.pageContainerResponses
+            ? pageResponse.pageContainerResponses
+            : state.pageContainers;
+
+        const pageContainers = currentPageContainers.map(container => {
             return {
                 ...container,
-                data: action.payload.mapElementInvokeResponses[0].pageResponse.pageContainerDataResponses.find(data => data.pageContainerId === container.id)
+                data: pageResponse.pageContainerDataResponses.find(data => data.pageContainerId === container.id)
             }
         });
 
@@ -28,8 +40,10 @@ export default createReducer(initialState, {
 
         pageComponents.forEach(component => {
             inputs[component.id] = {
+                ...inputs[component.id],
                 isDirty: false,
-                value: component.data.contentValue
+                contentValue: component.data.contentValue,
+                objectData: component.data.objectData
             }
         });
 
@@ -41,6 +55,30 @@ export default createReducer(initialState, {
             pageContainers: pageContainers
         }
     },
+    [loadObjectData.fulfilled]: (state, action) => {
+        return {
+            ...state,
+            inputs: {
+                ...state.inputs,
+                [action.meta.arg.pageComponentId]: {
+                    ...state.inputs[action.meta.arg.pageComponentId],
+                    isLoading: false
+                }
+            }
+        }
+    },
+    [loadObjectData.pending]: (state, action) => {
+        return {
+            ...state,
+            inputs: {
+                ...state.inputs,
+                [action.meta.arg.pageComponentId]: {
+                    ...state.inputs[action.meta.arg.pageComponentId],
+                    isLoading: true
+                }
+            }
+        }
+    },
     [selectOutcome.fulfilled]: (state, action) => {
         // Clear any input values from the previous page
         return {
@@ -48,14 +86,16 @@ export default createReducer(initialState, {
             inputs: initialState.inputs
         }
     },
-    [setComponentValue]: (state, action) => {
+    [setComponentValue.fulfilled]: (state, action) => {
         return {
             ...state,
             inputs: {
                 ...state.inputs,
-                [action.payload.id]: {
+                [action.payload.pageComponentId]: {
+                    ...[action.payload.pageComponentId],
                     isDirty: true,
-                    contentValue: action.payload.contentValue
+                    contentValue: action.payload.contentValue,
+                    objectData: action.payload.objectData
                 }
             }
         }

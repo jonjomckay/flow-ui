@@ -1,6 +1,6 @@
 import React from 'react';
 import VerticalContainer from './containers/VerticalContainer';
-import { Alert, Col } from 'antd';
+import { Alert } from 'antd';
 import { connect } from 'react-redux';
 import PageComponent from './PageComponent';
 import GroupContainer from './containers/GroupContainer';

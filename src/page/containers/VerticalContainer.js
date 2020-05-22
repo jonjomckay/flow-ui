@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Space, Typography } from 'antd';
+import { Col, Space, Typography } from 'antd';
 
 const VerticalContainer = props => {
     return (
