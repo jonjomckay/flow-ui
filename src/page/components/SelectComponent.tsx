@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { Form, Select } from 'antd';
-import { OptionType } from 'antd/es/select';
-import { IPageComponentProps } from '../PageComponent';
 import { IPageComponentColumn } from '../../types';
+import PageComponentProps from '../PageComponentProps';
 
-export default function SelectComponent(props: IPageComponentProps) {
-    const { component, isLoading, objectData, onChange } = props;
-
-    // TODO: ObjectDataRequests
+export default function SelectComponent({ component, isLoading, objectData, onChange }: PageComponentProps) {
     // TODO: Multiselect
     // TODO: Page conditions (hasEvents: true)
 
@@ -40,7 +36,7 @@ export default function SelectComponent(props: IPageComponentProps) {
 
     let options: JSX.Element[] = [];
 
-    let labelProperty = props.component.columns.find((column: IPageComponentColumn) => column.isDisplayValue);
+    let labelProperty = component.columns.find((column: IPageComponentColumn) => column.isDisplayValue);
     if (labelProperty && objectData) {
         options = objectData.map(object => {
             const label = object.properties.find(property => property.typeElementPropertyId === labelProperty?.typeElementPropertyId);

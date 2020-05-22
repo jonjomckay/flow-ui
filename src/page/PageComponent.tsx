@@ -8,14 +8,7 @@ import SelectComponent from './components/SelectComponent';
 import { setComponentValue, SetComponentValueProps } from '../actions';
 import { IObjectData, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
-
-export interface IPageComponentProps {
-    component: IPageComponent
-    isLoading: boolean
-    objectData?: IObjectData[]
-
-    onChange(value: IPageComponentOnChangeProps): void
-}
+import PageComponentProps from './PageComponentProps';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -40,7 +33,7 @@ const PageComponent = ({ component, input, setComponentValue }: Props) => {
         });
     };
 
-    const props: IPageComponentProps = {
+    const props: PageComponentProps = {
         ...input,
         component: component,
         onChange: onChange
