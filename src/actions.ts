@@ -1,7 +1,27 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
-import { IObjectData } from './types';
+import { INotification, IObjectData } from './types';
 import { RootState } from './store';
+
+export type AddNotificationProps = INotification;
+
+export const addNotification = createAsyncThunk('AddNotification', async (payload: AddNotificationProps, thunk): Promise<INotification> => {
+    const key = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+
+    // Remove the notification after 2500ms
+    setTimeout(() => {
+        thunk.dispatch(removeNotification(key))
+    }, 2500);
+
+    return {
+        key: key,
+        message: payload.message,
+        title: payload.title,
+        type: payload.type
+    }
+});
+
+export const removeNotification = createAction<string>('RemoveNotification');
 
 export const setTenant = createAction<string>('SetTenant');
 

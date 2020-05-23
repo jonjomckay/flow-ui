@@ -18,6 +18,13 @@ export interface INavigationItem {
     order: number
 }
 
+export interface INotification {
+    key: string
+    message: string
+    title: string
+    type: 'success' | 'info' | 'error' | 'warning'
+}
+
 export interface IObjectDataProperty {
     contentFormat: string
     contentType: string

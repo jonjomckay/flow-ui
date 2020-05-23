@@ -3,6 +3,7 @@ import './App.less';
 import { connect } from 'react-redux';
 import { initializeFlow, InitializeFlowProps } from './actions';
 import Page from './page/Page';
+import Notifications from './notification/Notifications';
 
 interface Props {
     id: string
@@ -25,7 +26,11 @@ class App extends React.Component<Props> {
 
     render() {
         return (
-            <Page />
+            <>
+                <Notifications />
+
+                <Page />
+            </>
         );
     }
 }
