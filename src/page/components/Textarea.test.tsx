@@ -19,6 +19,86 @@ Object.defineProperty(window, 'matchMedia', {
     })),
 });
 
+it('displays the given label message when one is supplied', () => {
+    const label = 'Some label';
+
+    const component: IPageComponent = {
+        data: {
+            isVisible: true
+        },
+        id: 'id-1234',
+        label: label
+    };
+
+    const { getByText } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
+    expect(getByText(label)).toBeInTheDocument();
+});
+
+it('has a maximum number of characters when one is given', () => {
+    const component: IPageComponent = {
+        data: {
+            isVisible: true
+        },
+        id: 'id-1234',
+        maxSize: 1234
+    };
+
+    const { container } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
+    expect(container.querySelector('#id-1234')).toHaveAttribute('maxlength', '1234');
+});
+
+it('has a height set when one is given', () => {
+    const component: IPageComponent = {
+        data: {
+            isVisible: true
+        },
+        height: 1234,
+        id: 'id-1234',
+    };
+
+    const { container } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
+    expect(container.querySelector('#id-1234')).toHaveAttribute('rows', '1234');
+});
+
+it('has a width set when one is given', () => {
+    const component: IPageComponent = {
+        data: {
+            isVisible: true
+        },
+        id: 'id-1234',
+        width: 1234,
+    };
+
+    const { container } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
+    expect(container.querySelector('#id-1234')).toHaveAttribute('cols', '1234');
+});
+
+it('displays a hint value when one is given', () => {
+    const component: IPageComponent = {
+        data: {
+            isVisible: true
+        },
+        hintValue: 'Some hint value',
+        id: 'id-1234'
+    };
+
+    const { container } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
+    expect(container.querySelector('#id-1234')).toHaveAttribute('placeholder', component.hintValue);
+});
+
+it('displays help info when some is given', () => {
+    const component: IPageComponent = {
+        data: {
+            isVisible: true
+        },
+        helpInfo: 'Some help info',
+        id: 'id-1234'
+    };
+
+    const { getByText } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
+    expect(getByText(component.helpInfo)).toBeInTheDocument();
+});
+
 it('has a default value when content value is set', () => {
     const component: IPageComponent = {
         data: {
@@ -28,8 +108,8 @@ it('has a default value when content value is set', () => {
         id: 'id-1234'
     };
 
-    const { container } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
-    expect(container.querySelector('#id-1234')).toHaveDisplayValue('Default value');
+    const { getByText } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
+    expect(getByText('Default value')).toBeInTheDocument();
 });
 
 it('is disabled when marked as not enabled', () => {
@@ -56,7 +136,7 @@ it('is enabled when marked as enabled', () => {
     expect(container.querySelector('#id-1234')).not.toHaveAttribute('disabled');
 });
 
-it('is disabled when marked as not editable', () => {
+it('is read only when marked as not editable', () => {
     const component: IPageComponent = {
         data: {
             isEditable: false
@@ -65,10 +145,10 @@ it('is disabled when marked as not editable', () => {
     };
 
     const { container } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
-    expect(container.querySelector('#id-1234')).toHaveAttribute('disabled');
+    expect(container.querySelector('#id-1234')).toHaveAttribute('readonly');
 });
 
-it('is enabled when marked as editable', () => {
+it('is not read only when marked as editable', () => {
     const component: IPageComponent = {
         data: {
             isEditable: true
@@ -77,7 +157,7 @@ it('is enabled when marked as editable', () => {
     };
 
     const { container } = render(<Textarea component={ component } isLoading={ false } onChange={ jest.fn } />);
-    expect(container.querySelector('#id-1234')).not.toHaveAttribute('disabled');
+    expect(container.querySelector('#id-1234')).not.toHaveAttribute('readonly');
 });
 
 it('is not rendered when marked as not visible', () => {

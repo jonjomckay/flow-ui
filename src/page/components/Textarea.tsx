@@ -26,14 +26,19 @@ export default function Textarea({ component, onChange }: PageComponentProps) {
     };
 
     const inputProps = {
-        disabled: component.data.isEnabled === false || component.data.isEditable == false,
+        cols: component.width,
+        disabled: component.data.isEnabled === false,
+        maxLength: component.maxSize,
         placeholder: component.hintValue,
+        readOnly: component.data.isEditable === false,
         required: component.data.isRequired,
+        rows: component.height,
     };
 
     return (
         <Form { ...formProps } layout="vertical">
             <Form.Item
+                extra={ component.helpInfo }
                 hasFeedback={ !!validationStatus }
                 help={ component.data.validationMessage }
                 label={ component.label }
