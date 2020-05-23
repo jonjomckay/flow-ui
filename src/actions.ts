@@ -7,6 +7,10 @@ export const setTenant = createAction<string>('SetTenant');
 
 // Send an initialization request to Flow
 export interface InitializeFlowProps {
+    flowId: {
+        id: string
+        versionId?: string
+    }
     tenantId: string
 }
 
