@@ -15,7 +15,7 @@ export default createReducer(initialState, builder => builder
         // Set the outcomes from the invoke response into the current state
         return {
             ...state,
-            outcomes: action.payload.mapElementInvokeResponses[0].outcomeResponses
+            outcomes: action.payload.mapElementInvokeResponses[0].outcomeResponses || []
         }
     })
 );
