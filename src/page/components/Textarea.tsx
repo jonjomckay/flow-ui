@@ -3,6 +3,10 @@ import { Form, Input } from 'antd';
 import PageComponentProps from '../PageComponentProps';
 
 export default function Textarea({ component, onChange }: PageComponentProps) {
+    if (component.data.isVisible === false) {
+        return null;
+    }
+
     const rules = [
         {
             required: component.data.isRequired,
@@ -22,6 +26,7 @@ export default function Textarea({ component, onChange }: PageComponentProps) {
     };
 
     const inputProps = {
+        disabled: component.data.isEnabled === false || component.data.isEditable == false,
         placeholder: component.hintValue,
         required: component.data.isRequired,
     };
