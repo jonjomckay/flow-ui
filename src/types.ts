@@ -1,3 +1,23 @@
+interface INavigationItemData {
+    isActive: boolean
+    isCurrent: boolean
+    isEnabled: boolean
+    isVisible: boolean
+    locationMapElementId: string
+    navigationItemDeveloperName: string
+    navigationItemId: string
+}
+
+export interface INavigationItem {
+    data: INavigationItemData
+    developerName: string
+    developerSummary: string
+    id: string
+    label: string
+    navigationItems: INavigationItem[]
+    order: number
+}
+
 export interface IObjectDataProperty {
     contentFormat: string
     contentType: string
