@@ -1,7 +1,8 @@
 import React from 'react';
 import { Tabs } from 'antd';
+import PageContainerProps from '../PageContainerProps';
 
-const GroupContainer = props => {
+const GroupContainer = (props: PageContainerProps) => {
     // Create a tab per nested container, and use the pre-rendered containers that were passed in for each tab's content
     const tabs = (props.container.pageContainerResponses || []).map((tab, i) => {
         return (

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Col, Row, Typography } from 'antd';
+import PageContainerProps from '../PageContainerProps';
 
-const HorizontalContainer = props => {
+const HorizontalContainer = (props: PageContainerProps) => {
     return (
         <div>
             <Typography.Title> { props.container.label }</Typography.Title>

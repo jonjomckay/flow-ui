@@ -1,7 +1,15 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { invokeFlow, setTenant } from '../actions';
 
-const initialState = {
+interface StateState {
+    currentMapElementId: string | null,
+    id: string | null
+    isLoading: boolean
+    tenantId: string | null
+    token: string | null
+}
+
+const initialState: StateState = {
     currentMapElementId: null,
     id: null,
     isLoading: false,
@@ -9,14 +17,14 @@ const initialState = {
     token: null
 };
 
-export default createReducer(initialState, {
-    [invokeFlow.pending]: (state, action) => {
+export default createReducer(initialState, builder => builder
+    .addCase(invokeFlow.pending, (state, action) => {
         return {
             ...state,
             isLoading: true
         }
-    },
-    [invokeFlow.fulfilled]: (state, action) => {
+    })
+    .addCase(invokeFlow.fulfilled, (state, action) => {
         return {
             ...state,
             currentMapElementId: action.payload.currentMapElementId,
@@ -24,11 +32,11 @@ export default createReducer(initialState, {
             isLoading: false, // TODO: This doesn't work with multiple concurrent loading things
             token: action.payload.stateToken
         }
-    },
-    [setTenant]: (state, action) => {
+    })
+    .addCase(setTenant, (state, action) => {
         return {
             ...state,
             tenantId: action.payload
         }
-    }
-});
+    })
+);

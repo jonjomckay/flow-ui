@@ -1,16 +1,31 @@
-import React from 'react';
+import * as React from 'react';
+import { connect } from 'react-redux';
 import { Alert } from 'antd';
 import Presentation from './components/Presentation';
 import Input from './components/Input';
-import { connect } from 'react-redux';
-import { setComponentValue } from '../actions';
 import Textarea from './components/Textarea';
 import SelectComponent from './components/SelectComponent';
+import { setComponentValue, SetComponentValueProps } from '../actions';
+import { IObjectData, IPageComponent, IPageInput } from '../types';
+import { RootState } from '../store';
+import PageComponentProps from './PageComponentProps';
 
-const PageComponent = ({ component, input, setComponentValue }) => {
+export interface IPageComponentOnChangeProps {
+    objectData?: IObjectData[],
+    contentValue?: string
+}
+
+interface Props {
+    component: IPageComponent,
+    input: IPageInput
+
+    setComponentValue: (value: SetComponentValueProps) => {}
+}
+
+const PageComponent = ({ component, input, setComponentValue }: Props) => {
     const { componentType } = component;
 
-    const onChange = (value) => {
+    const onChange = (value: IPageComponentOnChangeProps) => {
         setComponentValue({
             contentValue: value.contentValue,
             objectData: value.objectData,
@@ -18,7 +33,7 @@ const PageComponent = ({ component, input, setComponentValue }) => {
         });
     };
 
-    const props = {
+    const props: PageComponentProps = {
         ...input,
         component: component,
         onChange: onChange
@@ -42,7 +57,7 @@ const PageComponent = ({ component, input, setComponentValue }) => {
     }
 };
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state: RootState, ownProps: Props) => ({
     input: state.page.inputs[ownProps.component.id]
 });
 

@@ -5,8 +5,15 @@ import Outcomes from '../outcomes/Outcomes';
 import ProgressBar from 'react-progress-bar-plus';
 import { Layout } from 'antd';
 import Navigation from '../navigation/Navigation';
+import { RootState } from '../store';
+import { IPageContainer } from '../types';
 
-const Page = props => {
+interface PageProps {
+    containers: IPageContainer[]
+    isLoading: boolean
+}
+
+const Page = (props: PageProps) => {
     const containers = props.containers
         .sort((a, b) => a.order - b.order)
         .map(container => <PageContainer container={ container } key={ container.id } />);
@@ -28,7 +35,7 @@ const Page = props => {
     );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: RootState) => ({
     containers: state.page.pageContainers,
     isLoading: state.state.isLoading
 });
