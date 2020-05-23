@@ -19,6 +19,12 @@ export default function SelectComponent({ component, isLoading, objectData, onCh
         ? undefined
         : 'error';
 
+    const formProps = {
+        initialValues: {
+            [component.id]: objectData?.filter(o => o.isSelected).map(o => o.internalId)
+        }
+    };
+
     const inputProps = {
         disabled: isLoading,
         loading: isLoading,
@@ -50,7 +56,7 @@ export default function SelectComponent({ component, isLoading, objectData, onCh
     }
 
     return (
-        <Form layout="vertical">
+        <Form {...formProps} layout="vertical">
             <Form.Item
                 hasFeedback={ !!validationStatus }
                 help={ component.data.validationMessage }

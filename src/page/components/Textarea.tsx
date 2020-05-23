@@ -15,13 +15,19 @@ export default function Textarea({ component, onChange }: PageComponentProps) {
         ? undefined
         : 'error';
 
+    const formProps = {
+        initialValues: {
+            [component.id]: component.data.contentValue
+        }
+    };
+
     const inputProps = {
         placeholder: component.hintValue,
-        required: component.data.isRequired
+        required: component.data.isRequired,
     };
 
     return (
-        <Form layout="vertical">
+        <Form { ...formProps } layout="vertical">
             <Form.Item
                 hasFeedback={ !!validationStatus }
                 help={ component.data.validationMessage }
