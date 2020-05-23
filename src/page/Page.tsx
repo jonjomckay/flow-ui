@@ -10,7 +10,8 @@ import ProgressBar from '../common/ProgressBar';
 
 interface PageProps {
     containers: IPageContainer[]
-    isLoading: boolean
+    isLoading: boolean,
+    navigation: any
 }
 
 const Page = (props: PageProps) => {
@@ -18,13 +19,19 @@ const Page = (props: PageProps) => {
         .sort((a, b) => a.order - b.order)
         .map(container => <PageContainer container={ container } key={ container.id } />);
 
+    const navigation = props.navigation
+        ? (
+            <Layout.Header>
+                <Navigation />
+            </Layout.Header>
+        )
+        : null;
+
     return (
         <Layout>
             <ProgressBar percent={ props.isLoading ? 25 : 100 } />
 
-            <Layout.Header>
-                <Navigation />
-            </Layout.Header>
+            { navigation }
 
             <Layout.Content className="container" style={{ padding: '1.5rem 50px', width: '1280px' }}>
                 { containers }
@@ -37,6 +44,7 @@ const Page = (props: PageProps) => {
 
 const mapStateToProps = (state: RootState) => ({
     containers: state.page.pageContainers,
+    navigation: state.navigation.navigation,
     isLoading: state.state.isLoading
 });
 

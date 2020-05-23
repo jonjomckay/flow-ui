@@ -15,7 +15,7 @@ interface Props {
 
 function Navigation(props: Props) {
     // TODO: Why is this here? For flows with no navigation?
-    if (!props.navigation) {
+    if (props.navigation === null) {
         return null;
     }
 
