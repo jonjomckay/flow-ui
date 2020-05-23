@@ -1,26 +1,9 @@
 import * as React from 'react';
-import { Form, Input as AntdInput, InputNumber } from 'antd';
+import { Input as AntdInput, InputNumber } from 'antd';
 import PageComponentProps from '../PageComponentProps';
+import BaseFormItem from './BaseFormItem';
 
 export default function Input({ component, onChange }: PageComponentProps) {
-    const rules = [
-        {
-            required: component.data.isRequired,
-            message: 'This field is required'
-        }
-    ];
-
-    // TODO: isLoading === 'validating'
-    const validationStatus = component.data.isValid
-        ? undefined
-        : 'error';
-
-    const formProps = {
-        initialValues: {
-            [component.id]: component.data.contentValue
-        }
-    };
-
     const inputProps = {
         placeholder: component.hintValue,
         required: component.data.isRequired,
@@ -40,17 +23,8 @@ export default function Input({ component, onChange }: PageComponentProps) {
     }
 
     return (
-        <Form {...formProps} layout="vertical">
-            <Form.Item
-                hasFeedback={ !!validationStatus }
-                help={ component.data.validationMessage }
-                label={ component.label }
-                name={ component.id }
-                rules={ rules }
-                validateStatus={ validationStatus }
-            >
-                { input }
-            </Form.Item>
-        </Form>
+        <BaseFormItem component={ component }>
+            { input }
+        </BaseFormItem>
     );
 }

@@ -1,40 +1,25 @@
 import * as React from 'react';
-import { Form, Select } from 'antd';
+import { Select } from 'antd';
 import { IPageComponentColumn } from '../../types';
 import PageComponentProps from '../PageComponentProps';
+import BaseFormItem from './BaseFormItem';
 
 export default function SelectComponent({ component, isLoading, objectData, onChange }: PageComponentProps) {
     // TODO: Multiselect
     // TODO: Page conditions (hasEvents: true)
 
-    const rules = [
-        {
-            required: component.data.isRequired,
-            message: 'This field is required'
-        }
-    ];
+    const onChangeOption = (value: string) => {
+        const found = objectData?.find(object => object.internalId === value);
 
-    // TODO: isLoading === 'validating'
-    const validationStatus = component.data.isValid
-        ? undefined
-        : 'error';
-
-    const formProps = {
-        initialValues: {
-            [component.id]: objectData?.filter(o => o.isSelected).map(o => o.internalId)
-        }
+        return onChange({
+            objectData: found ? [found] : []
+        });
     };
 
     const inputProps = {
         disabled: isLoading,
         loading: isLoading,
-        onChange: (value: string) => {
-            const found = objectData?.find(object => object.internalId === value);
-
-            return onChange({
-                objectData: found ? [found] : []
-            });
-        },
+        onChange: onChangeOption,
         placeholder: component.hintValue,
         required: component.data.isRequired,
         maxLength: component.size
@@ -56,19 +41,10 @@ export default function SelectComponent({ component, isLoading, objectData, onCh
     }
 
     return (
-        <Form {...formProps} layout="vertical">
-            <Form.Item
-                hasFeedback={ !!validationStatus }
-                help={ component.data.validationMessage }
-                label={ component.label }
-                name={ component.id }
-                rules={ rules }
-                validateStatus={ validationStatus }
-            >
-                <Select { ...inputProps } style={ { width: 180 } }>
-                    { options }
-                </Select>
-            </Form.Item>
-        </Form>
+        <BaseFormItem component={ component }>
+            <Select { ...inputProps } style={ { width: 180 } }>
+                { options }
+            </Select>
+        </BaseFormItem>
     )
 }
