@@ -9,6 +9,7 @@ import { setComponentValue, SetComponentValueProps } from '../actions';
 import { IObjectData, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
+import Table from './components/Table';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -39,7 +40,7 @@ const PageComponent = ({ component, input, setComponentValue }: Props) => {
         onChange: onChange
     };
 
-    switch (componentType) {
+    switch (componentType.toUpperCase()) {
         case 'INPUT':
             return <Input { ...props } />;
         case 'PRESENTATION':
@@ -48,6 +49,8 @@ const PageComponent = ({ component, input, setComponentValue }: Props) => {
             return <SelectComponent { ...props } />;
         case 'TEXTAREA':
             return <Textarea { ...props } />;
+        case 'TABLE':
+            return <Table { ...props } />;
         default:
             console.warn('The component type ' + componentType + ' is not supported');
 
