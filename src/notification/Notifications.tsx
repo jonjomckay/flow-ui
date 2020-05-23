@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { RootState } from '../store';
 import { connect } from 'react-redux';
 import { notification } from 'antd';

@@ -33,7 +33,7 @@ export default function SelectComponent({ component, isLoading, objectData, onCh
             const label = object.properties.find(property => property.typeElementPropertyId === labelProperty?.typeElementPropertyId);
 
             return (
-                <Select.Option value={ object.internalId }>
+                <Select.Option key={ object.internalId } value={ object.internalId }>
                     { label?.contentValue }
                 </Select.Option>
             )
