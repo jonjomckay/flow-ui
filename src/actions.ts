@@ -6,6 +6,7 @@ import { RootState } from './store';
 export type AddNotificationProps = INotification;
 
 export const addNotification = createAsyncThunk('AddNotification', async (payload: AddNotificationProps, thunk): Promise<INotification> => {
+    // Generate a random key
     const key = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
 
     // Remove the notification after 2500ms
