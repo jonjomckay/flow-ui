@@ -9,7 +9,7 @@ export const setTenant = createAction<string>('SetTenant');
 export interface InitializeFlowProps {
     flowId: {
         id: string
-        versionId?: string
+        versionId: string | null
     }
     tenantId: string
 }
