@@ -20,7 +20,7 @@ const Page = (props: PageProps) => {
 
     return (
         <Layout>
-            <ProgressBar autoIncrement percent={ props.isLoading ? 25 : 100 } spinner="right" />
+            <ProgressBar autoIncrement percent={ props.isLoading ? 25 : 100 } spinner={ false } />
 
             <Layout.Header>
                 <Navigation />
