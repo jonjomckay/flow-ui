@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PageContainer from './PageContainer';
 import Outcomes from '../outcomes/Outcomes';
-import ProgressBar from 'react-progress-bar-plus';
 import { Layout } from 'antd';
 import Navigation from '../navigation/Navigation';
 import { RootState } from '../store';
 import { IPageContainer } from '../types';
+import ProgressBar from '../common/ProgressBar';
 
 interface PageProps {
     containers: IPageContainer[]
@@ -20,7 +20,7 @@ const Page = (props: PageProps) => {
 
     return (
         <Layout>
-            <ProgressBar autoIncrement percent={ props.isLoading ? 25 : 100 } spinner={ false } />
+            <ProgressBar percent={ props.isLoading ? 25 : 100 } />
 
             <Layout.Header>
                 <Navigation />

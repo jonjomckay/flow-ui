@@ -1,0 +1,23 @@
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  visibility: visible;
+  opacity: 1;
+  transition: all .4s;
+  z-index: 9999
+}
+
+.progress-bar.progress-bar-hide {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -10
+}
+
+.progress-bar-percent {
+  height: 2px;
+  background: #29d;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  transition: all .2s ease
+}
