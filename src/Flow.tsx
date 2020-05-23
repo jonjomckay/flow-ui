@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
 import { rootReducer } from './store';
 import App from './App';
-import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
 
 interface Props {
     id: string

@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.less';
 import { connect } from 'react-redux';
 import { initializeFlow, InitializeFlowProps } from './actions';
+import './App.less';
 import Page from './page/Page';
 import Notifications from './notification/Notifications';
 
