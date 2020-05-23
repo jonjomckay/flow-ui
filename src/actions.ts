@@ -221,7 +221,7 @@ export interface SelectOutcomeProps {
 export const selectOutcome: any = createAsyncThunk<any, SelectOutcomeProps, { state: RootState }>('SelectOutcome', async (payload, thunk) => {
     const state: RootState = thunk.getState();
 
-    const pageComponentInputResponses = Object.entries(state.page.inputs).map(([id, input]) => {
+    const pageComponentInputResponses = Object.entries(state.page.inputs).filter(([id, input]) => input.isDirty).map(([id, input]) => {
         return {
             contentValue: input.contentValue,
             objectData: input.objectData,
