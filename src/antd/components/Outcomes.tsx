@@ -1,17 +1,9 @@
 import * as React from 'react';
 import PageComponentProps from '../../page/PageComponentProps';
 import Outcome from './Outcome';
-import { IOutcome } from '../../types';
-import { selectOutcome } from '../../actions';
 import { Button, Row, Space } from 'antd';
 import './Outcomes.less';
-
-interface OutcomesListProps {
-    isLoading: boolean
-    outcomes: IOutcome[]
-
-    selectOutcome: typeof selectOutcome
-}
+import OutcomesListProps from '../../outcomes/OutcomesListProps';
 
 export function OutcomesList(props: OutcomesListProps) {
     const outcomes = props.outcomes.map(outcome => {

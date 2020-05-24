@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import PageContainer from './PageContainer';
 import Outcomes from '../outcomes/Outcomes';
@@ -9,11 +9,11 @@ import ProgressBar from '../common/ProgressBar';
 import ITheme from '../ITheme';
 
 interface PageProps {
-    containers: IPageContainer[]
-    isLoading: boolean,
-    navigation: any,
+    containers: IPageContainer[];
+    isLoading: boolean;
+    navigation: any;
 
-    theme: ITheme
+    theme: ITheme;
 }
 
 const Page = (props: PageProps) => {
@@ -28,7 +28,7 @@ const Page = (props: PageProps) => {
     // Create the root container from the given theme
     const rootContainer = React.createElement(props.theme.rootContainer, {}, [
         containers,
-        <Outcomes />
+        <Outcomes key="outcomes" theme={ props.theme } />
     ]);
 
     return (
