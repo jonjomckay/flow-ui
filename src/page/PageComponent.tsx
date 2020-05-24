@@ -9,6 +9,7 @@ import { setComponentValue, SetComponentValueProps } from '../actions';
 import { IObjectData, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
+import Image from './components/Image';
 import Table from './components/Table';
 import List from './components/List';
 
@@ -42,6 +43,8 @@ const PageComponent = ({ component, input, setComponentValue }: Props) => {
     };
 
     switch (componentType.toUpperCase()) {
+        case 'IMAGE':
+            return <Image { ...props } />;
         case 'INPUT':
             return <Input { ...props } />;
         case 'LIST':
