@@ -6,18 +6,7 @@ import { IObjectData, IOutcome, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
 import PageComponentError from './PageComponentError';
-
-const Content = React.lazy(() => import('./components/Content'));
-const Image = React.lazy(() => import('./components/Image'));
-const Input = React.lazy(() => import('./components/Input'));
-const List = React.lazy(() => import('./components/List'));
-const Outcomes = React.lazy(() => import('./components/Outcomes'));
-const Presentation = React.lazy(() => import('./components/Presentation'));
-const Radio = React.lazy(() => import('./components/Radio'));
-const SelectComponent = React.lazy(() => import('./components/SelectComponent'));
-const Table = React.lazy(() => import('./components/Table'));
-const Textarea = React.lazy(() => import('./components/Textarea'));
-const Toggle = React.lazy(() => import('./components/Toggle'));
+import ITheme from '../ITheme';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -28,12 +17,13 @@ interface Props {
     component: IPageComponent,
     input: IPageInput
     outcomes: IOutcome[]
+    theme: ITheme
 
     selectOutcome: typeof selectOutcome
     setComponentValue: typeof setComponentValue
 }
 
-const PageComponent = ({ component, input, outcomes, selectOutcome, setComponentValue }: Props) => {
+const PageComponent = ({ component, input, outcomes, selectOutcome, setComponentValue, theme }: Props) => {
     const { componentType } = component;
 
     const onChange = (value: IPageComponentOnChangeProps) => {
@@ -54,47 +44,17 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
 
     let content;
 
-    switch (componentType.toUpperCase()) {
-        case 'CONTENT':
-            content = <Content { ...props } />;
-            break;
-        case 'IMAGE':
-            content = <Image { ...props } />;
-            break;
-        case 'INPUT':
-            content = <Input { ...props } />;
-            break;
-        case 'LIST':
-            content = <List { ...props } />;
-            break;
-        case 'OUTCOMES':
-            content = <Outcomes { ...props } />;
-            break;
-        case 'PRESENTATION':
-            content = <Presentation { ...props } />;
-            break;
-        case 'RADIO':
-            content = <Radio { ...props } />;
-            break;
-        case 'SELECT':
-            content = <SelectComponent { ...props } />;
-            break;
-        case 'TEXTAREA':
-            content = <Textarea { ...props } />;
-            break;
-        case 'TABLE':
-            content = <Table { ...props } />;
-            break;
-        case 'TOGGLE':
-            content = <Toggle { ...props } />;
-            break;
-        default:
-            console.warn('The component type ' + componentType + ' is not supported');
+    // If our theme can render the given component type, do so
+    let componentComponent = theme.components[componentType.toUpperCase()];
+    if (componentComponent) {
+        content = React.createElement(componentComponent, props);
+    } else {
+        // We can't map the container type to a container in the theme
+        console.warn('The component type ' + componentType + ' is not supported');
 
-            const message = <span>Unknown component type <strong>{ componentType }</strong></span>;
+        const message = <span>Unknown component type <strong>{ componentType }</strong></span>;
 
-            content = <Alert message={ message } type="warning" showIcon />;
-            break;
+        content = <Alert message={ message } type="warning" showIcon />;
     }
 
     return (

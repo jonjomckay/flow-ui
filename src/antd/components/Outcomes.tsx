@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 import Outcome from '../../outcomes/Outcome';
 import { IOutcome } from '../../types';
 import { selectOutcome } from '../../actions';

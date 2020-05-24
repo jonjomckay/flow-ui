@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 
 export default function Image(props: PageComponentProps) {
     return <img alt={ props.component.label }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row, Typography } from 'antd';
-import PageContainerProps from '../PageContainerProps';
+import PageContainerProps from '../../page/PageContainerProps';
 
 const HorizontalContainer = (props: PageContainerProps) => {
     return (

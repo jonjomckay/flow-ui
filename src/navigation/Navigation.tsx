@@ -1,11 +1,11 @@
 import React from 'react';
-import { Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 import { connect } from 'react-redux';
 import { selectNavigationItem, SelectNavigationItemProps } from '../actions';
 import { RootState } from '../store';
 import { INavigationItem } from '../types';
 
-interface Props {
+export interface NavigationProps {
     id: string
     items: INavigationItem[]
     navigation: any
@@ -13,8 +13,7 @@ interface Props {
     selectNavigationItem(payload: SelectNavigationItemProps): void
 }
 
-function Navigation(props: Props) {
-    // TODO: Why is this here? For flows with no navigation?
+function Navigation(props: NavigationProps) {
     if (props.navigation === null) {
         return null;
     }
@@ -35,9 +34,11 @@ function Navigation(props: Props) {
         .map(item => item.id);
 
     return (
-        <Menu theme="dark" mode="horizontal" selectedKeys={ selectedItemKeys }>
-            { items }
-        </Menu>
+        <Layout.Header>
+            <Menu theme="dark" mode="horizontal" selectedKeys={ selectedItemKeys }>
+                { items }
+            </Menu>
+        </Layout.Header>
     )
 }
 

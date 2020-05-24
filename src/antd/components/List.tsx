@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Typography } from 'antd';
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 
 export default function List(props: PageComponentProps) {
     const titleColumn = props.component.columns.find(c => c.order === 0);

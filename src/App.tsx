@@ -5,6 +5,8 @@ import './App.less';
 import Page from './page/Page';
 import Notifications from './notification/Notifications';
 
+import theme from './antd/Antd';
+
 interface Props {
     id: string
     tenant: string
@@ -25,11 +27,13 @@ class App extends React.Component<Props> {
     }
 
     render() {
+
+
         return (
             <>
                 <Notifications />
 
-                <Page />
+                <Page theme={ theme } />
             </>
         );
     }

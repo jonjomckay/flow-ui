@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { OutcomesList } from '../page/components/Outcomes';
+import { OutcomesList } from '../antd/components/Outcomes';
 import { selectOutcome, SelectOutcomeProps } from '../actions';
 import { IOutcome } from '../types';
 import { RootState } from '../store';

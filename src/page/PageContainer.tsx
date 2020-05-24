@@ -1,25 +1,25 @@
 import React from 'react';
-import VerticalContainer from './containers/VerticalContainer';
-import { Alert } from 'antd';
 import { connect } from 'react-redux';
+import { Alert } from 'antd';
 import PageComponent from './PageComponent';
-import GroupContainer from './containers/GroupContainer';
-import InlineContainer from './containers/InlineContainer';
-import HorizontalContainer from './containers/HorizontalContainer';
 import { IPageComponent, IPageContainer } from '../types';
 import { RootState } from '../store';
+import ITheme from '../ITheme';
+import PageContainerProps from './PageContainerProps';
 
 interface Props {
     components: IPageComponent[]
     container: IPageContainer
+
+    theme: ITheme
 }
 
-const UnconnectedPageContainer = ({ components, container }: Props) => {
+const UnconnectedPageContainer = ({ components, container, theme }: Props) => {
     const { containerType, id } = container;
 
     const nestedContainers = (container.pageContainerResponses || []).map(nestedContainer => {
         return (
-            <PageContainer container={ nestedContainer } key={ nestedContainer.id } />
+            <PageContainer container={ nestedContainer } key={ nestedContainer.id } theme={ theme } />
         )
     });
 
@@ -27,32 +27,28 @@ const UnconnectedPageContainer = ({ components, container }: Props) => {
         return (
             // @ts-ignore
             // TODO: Figure out how to have props that only come from Redux in the type signature
-            <PageComponent component={ component } key={ component.id } />
+            <PageComponent component={ component } key={ component.id } theme={ theme } />
         )
     });
 
-    const props = {
+    const props: PageContainerProps = {
         containers: nestedContainers,
         components: nestedComponents,
         container: container,
     };
 
-    switch (containerType) {
-        case 'GROUP':
-            return <GroupContainer { ...props } />;
-        case 'HORIZONTAL_FLOW':
-            return <HorizontalContainer { ...props } />;
-        case 'INLINE_FLOW':
-            return <InlineContainer { ...props } />;
-        case 'VERTICAL_FLOW':
-            return <VerticalContainer { ...props } />;
-        default:
-            console.warn('The container type ' + containerType + ' is not supported');
-
-            const message = <span>Unknown container type <strong>{ containerType }</strong></span>;
-
-            return <Alert message={ message } type="warning" showIcon />;
+    // If our theme can render the given container type, do so
+    let containerComponent = theme.containers[containerType.toUpperCase()];
+    if (containerComponent) {
+        return React.createElement(containerComponent, props);
     }
+
+    // We can't map the container type to a container in the theme
+    console.warn('The container type ' + containerType + ' is not supported');
+
+    const message = <span>Unknown container type <strong>{ containerType }</strong></span>;
+
+    return <Alert message={ message } type="warning" showIcon />;
 };
 
 const mapStateToProps = (state: RootState) => ({
