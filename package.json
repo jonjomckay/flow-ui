@@ -16,6 +16,7 @@
     "antd": "^4.2.4",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "jodit": "git+https://github.com/xdan/jodit.git#26556c0517f6453c2a6822afc33f8aa8a08a84a1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

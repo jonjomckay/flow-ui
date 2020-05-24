@@ -5,7 +5,7 @@ import Presentation from './components/Presentation';
 import Input from './components/Input';
 import Textarea from './components/Textarea';
 import SelectComponent from './components/SelectComponent';
-import { selectOutcome, setComponentValue, SetComponentValueProps } from '../actions';
+import { selectOutcome, setComponentValue } from '../actions';
 import { IObjectData, IOutcome, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
@@ -15,6 +15,7 @@ import List from './components/List';
 import Toggle from './components/Toggle';
 import Radio from './components/Radio';
 import Outcomes from './components/Outcomes';
+import Content from './components/Content';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -50,6 +51,8 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
     };
 
     switch (componentType.toUpperCase()) {
+        case 'CONTENT':
+            return <Content { ...props } />;
         case 'IMAGE':
             return <Image { ...props } />;
         case 'INPUT':
