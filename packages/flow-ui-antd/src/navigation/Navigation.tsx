@@ -1,9 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { connect } from 'react-redux';
-import { selectNavigationItem, SelectNavigationItemProps } from '../../actions';
-import { RootState } from '../../store';
-import NavigationProps from '../../navigation/NavigationProps';
+import { selectNavigationItem, NavigationProps, RootState, SelectNavigationItemProps } from '@project/flow-ui';
 
 function Navigation(props: NavigationProps) {
     if (props.navigation === null) {

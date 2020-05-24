@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { initializeFlow, InitializeFlowProps } from './actions';
 import './App.less';
 import Page from './page/Page';
-import Notifications from './antd/notification/Notifications';
 
-import theme from './antd/Antd';
+import theme from '@project/flow-ui-antd';
 
 interface Props {
     id: string;
@@ -27,9 +26,11 @@ class App extends React.Component<Props> {
     }
 
     render() {
+        const notifications = React.createElement(theme.notificationsComponent);
+
         return (
             <>
-                <Notifications />
+              {  notifications }
 
                 <Page theme={ theme } />
             </>

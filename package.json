@@ -9,6 +9,7 @@
   },
   "workspaces": {
     "packages": [
+      "packages/flow-ui",
       "packages/flow-ui-antd",
       "packages/flow-ui-example"
     ],

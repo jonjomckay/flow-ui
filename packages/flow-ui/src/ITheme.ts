@@ -4,6 +4,7 @@ import PageContainerProps from './page/PageContainerProps';
 import PageComponentProps from './page/PageComponentProps';
 import AlertProps from './common/AlertProps';
 import NotificationsProps from './notification/NotificationsProps';
+import OutcomesListProps from './outcomes/OutcomesListProps';
 
 type Component<P> = FunctionComponent<P> | ComponentClass<P> | string;
 
@@ -14,5 +15,6 @@ export default interface ITheme {
     loaderComponent: Component<any>,
     navigation: Component<NavigationProps>
     notificationsComponent: Component<NotificationsProps>
+    outcomesComponent: Component<OutcomesListProps>
     rootContainer: Component<any>
 }
