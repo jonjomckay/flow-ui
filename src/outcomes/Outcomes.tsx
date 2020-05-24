@@ -4,6 +4,7 @@ import { OutcomesList } from '../page/components/Outcomes';
 import { selectOutcome, SelectOutcomeProps } from '../actions';
 import { IOutcome } from '../types';
 import { RootState } from '../store';
+import { Row } from 'antd';
 
 interface Props {
     isLoading: boolean
@@ -15,11 +16,13 @@ interface Props {
 function Outcomes(props: Props) {
     // Create outcomes from all the outcome responses that aren't bound to a page object
     return (
-        <OutcomesList
-            isLoading={ props.isLoading }
-            outcomes={ props.outcomes.filter(outcome => outcome.pageObjectBindingId === null) }
-            selectOutcome={ props.selectOutcome }
-        />
+        <Row className="outcomes">
+            <OutcomesList
+                isLoading={ props.isLoading }
+                outcomes={ props.outcomes.filter(outcome => outcome.pageObjectBindingId === null) }
+                selectOutcome={ props.selectOutcome }
+            />
+        </Row>
     );
 }
 

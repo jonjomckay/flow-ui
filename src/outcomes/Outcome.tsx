@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { IOutcome } from '../types';
+import { ButtonType } from 'antd/es/button';
 
 interface Props {
     isLoading: boolean
@@ -12,8 +13,28 @@ interface Props {
 export default function Outcome(props: Props) {
     const { isLoading, onClick, outcome } = props;
 
+    let danger = ['cancel', 'delete', 'reject', 'remove'].includes(outcome.pageActionType?.toLowerCase());
+
+    let type: ButtonType;
+    switch (outcome.pageActionType?.toLowerCase()) {
+        case 'add':
+        case 'cancel':
+        case 'delete':
+        case 'import':
+        case 'reject':
+        case 'remove':
+        case 'update':
+        case 'upsert':
+        case 'back':
+            type = 'default';
+            break;
+        default:
+            type = 'primary';
+            break;
+    }
+
     return (
-        <Button disabled={ isLoading } onClick={ onClick } type="primary">
+        <Button danger={ danger } disabled={ isLoading } onClick={ onClick } type={ type }>
             { outcome.label }
         </Button>
     );
