@@ -19,7 +19,7 @@ export default createReducer(initialState, builder => builder
         const pageResponse = action.payload.mapElementInvokeResponses[0].pageResponse;
 
         // If we're SYNCing, we're only sent the component data, so match it up with the components we have in the state
-        let currentPageComponents = pageResponse.pageComponentResponses
+        const currentPageComponents = pageResponse.pageComponentResponses
             ? pageResponse.pageComponentResponses
             : state.pageComponents;
 
@@ -31,7 +31,7 @@ export default createReducer(initialState, builder => builder
         });
 
         // If we're SYNCing, we're only sent the container data, so match it up with the containers we have in the state
-        let currentPageContainers = pageResponse.pageContainerResponses
+        const currentPageContainers = pageResponse.pageContainerResponses
             ? pageResponse.pageContainerResponses
             : state.pageContainers;
 
@@ -43,7 +43,7 @@ export default createReducer(initialState, builder => builder
         });
 
         // TODO: Clear if the map element ID is different
-        let inputs = { ...state.inputs };
+        const inputs = { ...state.inputs };
 
         pageComponents.forEach(component => {
             inputs[component.id] = {

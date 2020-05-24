@@ -8,8 +8,8 @@ const HorizontalContainer = (props: PageContainerProps) => {
             <Typography.Title> { props.container.label }</Typography.Title>
 
             <Row>
-                { props.components.map(component => (
-                    <Col>
+                { props.components.map((component, i) => (
+                    <Col key={ i }>
                         { component }
                     </Col>
                 )) }

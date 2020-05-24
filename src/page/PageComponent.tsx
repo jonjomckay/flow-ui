@@ -7,25 +7,25 @@ import PageComponentProps from './PageComponentProps';
 import PageComponentError from './PageComponentError';
 import ITheme from '../ITheme';
 
-export interface IPageComponentOnChangeProps {
-    objectData?: IObjectData[],
-    contentValue?: string
+export interface PageComponentOnChangeProps {
+    objectData?: IObjectData[];
+    contentValue?: string;
 }
 
 interface Props {
-    component: IPageComponent,
-    input: IPageInput
-    outcomes: IOutcome[]
-    theme: ITheme
+    component: IPageComponent;
+    input: IPageInput;
+    outcomes: IOutcome[];
+    theme: ITheme;
 
-    selectOutcome: typeof selectOutcome
-    setComponentValue: typeof setComponentValue
+    selectOutcome: typeof selectOutcome;
+    setComponentValue: typeof setComponentValue;
 }
 
 const PageComponent = ({ component, input, outcomes, selectOutcome, setComponentValue, theme }: Props) => {
     const { componentType } = component;
 
-    const onChange = (value: IPageComponentOnChangeProps) => {
+    const onChange = (value: PageComponentOnChangeProps) => {
         setComponentValue({
             contentValue: value.contentValue,
             objectData: value.objectData,
@@ -44,7 +44,7 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
     let content;
 
     // If our theme can render the given component type, do so
-    let componentComponent = theme.components[componentType.toUpperCase()];
+    const componentComponent = theme.components[componentType.toUpperCase()];
     if (componentComponent) {
         content = React.createElement(componentComponent, props);
     } else {

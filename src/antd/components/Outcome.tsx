@@ -13,7 +13,7 @@ interface Props {
 export default function Outcome(props: Props) {
     const { isLoading, onClick, outcome } = props;
 
-    let danger = ['cancel', 'delete', 'reject', 'remove'].includes(outcome.pageActionType?.toLowerCase());
+    const danger = ['cancel', 'delete', 'reject', 'remove'].includes(outcome.pageActionType?.toLowerCase());
 
     let type: ButtonType;
     switch (outcome.pageActionType?.toLowerCase()) {

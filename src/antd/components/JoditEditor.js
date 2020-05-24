@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
 import Jodit from 'jodit';
 import 'jodit/build/jodit.min.css';

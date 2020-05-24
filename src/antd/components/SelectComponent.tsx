@@ -27,7 +27,7 @@ export default function SelectComponent({ component, isLoading, objectData, onCh
 
     let options: JSX.Element[] = [];
 
-    let labelProperty = component.columns.find((column: IPageComponentColumn) => column.isDisplayValue);
+    const labelProperty = component.columns.find((column: IPageComponentColumn) => column.isDisplayValue);
     if (labelProperty && objectData) {
         options = objectData.map(object => {
             const label = object.properties.find(property => property.typeElementPropertyId === labelProperty?.typeElementPropertyId);

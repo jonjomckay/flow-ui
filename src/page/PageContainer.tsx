@@ -7,10 +7,10 @@ import ITheme from '../ITheme';
 import PageContainerProps from './PageContainerProps';
 
 interface Props {
-    components: IPageComponent[]
-    container: IPageContainer
+    components: IPageComponent[];
+    container: IPageContainer;
 
-    theme: ITheme
+    theme: ITheme;
 }
 
 const UnconnectedPageContainer = ({ components, container, theme }: Props) => {
@@ -37,7 +37,7 @@ const UnconnectedPageContainer = ({ components, container, theme }: Props) => {
     };
 
     // If our theme can render the given container type, do so
-    let containerComponent = theme.containers[containerType.toUpperCase()];
+    const containerComponent = theme.containers[containerType.toUpperCase()];
     if (containerComponent) {
         return React.createElement(containerComponent, props);
     }

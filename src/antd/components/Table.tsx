@@ -11,7 +11,7 @@ export default function Table(props: PageComponentProps) {
             render: (text: string, record: IObjectData) => {
                 const propertyId = column.typeElementPropertyToDisplayId || column.typeElementPropertyId;
 
-                let property = record.properties.find(p => p.typeElementPropertyId === propertyId);
+                const property = record.properties.find(p => p.typeElementPropertyId === propertyId);
                 if (property) {
                     return (
                         <div key={ record.internalId }>

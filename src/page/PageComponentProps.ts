@@ -1,5 +1,5 @@
 import { IObjectData, IOutcome, IPageComponent } from '../types';
-import { IPageComponentOnChangeProps } from './PageComponent';
+import { PageComponentOnChangeProps } from './PageComponent';
 import { SelectOutcomeProps } from '../actions';
 
 export default interface PageComponentProps {
@@ -8,6 +8,6 @@ export default interface PageComponentProps {
     objectData?: IObjectData[]
     outcomes: IOutcome[]
 
-    onChange(value: IPageComponentOnChangeProps): void
+    onChange(value: PageComponentOnChangeProps): void
     selectOutcome(value: SelectOutcomeProps): void
 }

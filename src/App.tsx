@@ -7,11 +7,11 @@ import Page from './page/Page';
 import theme from './antd/Antd';
 
 interface Props {
-    id: string
-    tenant: string
-    version: string | null
+    id: string;
+    tenant: string;
+    version: string | null;
 
-    initializeFlow(value: InitializeFlowProps): void
+    initializeFlow(value: InitializeFlowProps): void;
 }
 
 class App extends React.Component<Props> {

@@ -9,7 +9,7 @@ let existingNotifications: string[] = [];
 function Notifications({ notifications }: NotificationsProps) {
     // Close any notifications that we think are open, but we aren't given anymore
     existingNotifications.forEach(key => {
-        let shouldWeKeepNotification = notifications.some(n => n.key === key);
+        const shouldWeKeepNotification = notifications.some(n => n.key === key);
         if (!shouldWeKeepNotification) {
             notification.close(key);
         }

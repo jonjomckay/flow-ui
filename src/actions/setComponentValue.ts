@@ -22,7 +22,7 @@ const setComponentValue: any = createAsyncThunk<any, SetComponentValueProps, { s
     };
 
     // We only want to perform a SYNC invocation if the changed component has events linked to it
-    let component = state.page.pageComponents.find(c => c.id === payload.pageComponentId);
+    const component = state.page.pageComponents.find(c => c.id === payload.pageComponentId);
     if (component && !component.hasEvents) {
         return pageComponentInputResponse;
     }
