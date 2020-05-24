@@ -1,11 +1,13 @@
+import * as React from 'react';
 import RootContainer from './containers/RootContainer';
 import ITheme from '../ITheme';
-import Navigation from '../navigation/Navigation';
+import Navigation from './navigation/Navigation';
 import GroupContainer from './containers/GroupContainer';
 import HorizontalContainer from './containers/HorizontalContainer';
 import InlineContainer from './containers/InlineContainer';
 import VerticalContainer from './containers/VerticalContainer';
-import * as React from 'react';
+
+import './Antd.less';
 
 const Antd: ITheme = {
     components: {

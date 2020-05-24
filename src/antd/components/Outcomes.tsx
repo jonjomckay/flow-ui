@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PageComponentProps from '../../page/PageComponentProps';
-import Outcome from '../../outcomes/Outcome';
+import Outcome from './Outcome';
 import { IOutcome } from '../../types';
 import { selectOutcome } from '../../actions';
 import { Button, Row, Space } from 'antd';
@@ -25,9 +25,9 @@ export function OutcomesList(props: OutcomesListProps) {
     });
 
     return (
-        <>
+        <Row className="outcomes">
             { outcomes }
-        </>
+        </Row>
     );
 }
 
@@ -45,23 +45,23 @@ export default function Outcomes(props: PageComponentProps) {
     switch (props.component.attributes && props.component.attributes['group']) {
         case 'horizontal':
             return (
-                <Row className="outcomes" justify={ justify }>
-                    <Button.Group style={ { marginTop: '16px' } }>
+                <Row justify={ justify }>
+                    <Button.Group>
                         <OutcomesList { ...props } />
                     </Button.Group>
                 </Row>
             );
         case 'vertical':
             return (
-                <Row className="outcomes" justify={ justify }>
-                    <Space direction="vertical" size={0}>
+                <Row justify={ justify }>
+                    <Space direction="vertical" size={ 0 }>
                         { OutcomesList(props) }
                     </Space>
                 </Row>
             )
         default:
             return (
-                <Row className="outcomes" justify={ justify }>
+                <Row justify={ justify }>
                     <OutcomesList { ...props } />
                 </Row>
             )

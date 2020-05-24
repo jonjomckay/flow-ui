@@ -1,17 +1,9 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { connect } from 'react-redux';
-import { selectNavigationItem, SelectNavigationItemProps } from '../actions';
-import { RootState } from '../store';
-import { INavigationItem } from '../types';
-
-export interface NavigationProps {
-    id: string
-    items: INavigationItem[]
-    navigation: any
-
-    selectNavigationItem(payload: SelectNavigationItemProps): void
-}
+import { selectNavigationItem, SelectNavigationItemProps } from '../../actions';
+import { RootState } from '../../store';
+import NavigationProps from '../../notification/NavigationProps';
 
 function Navigation(props: NavigationProps) {
     if (props.navigation === null) {
