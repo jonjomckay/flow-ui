@@ -1,5 +1,5 @@
 import { ComponentClass, FunctionComponent } from 'react';
-import NavigationProps from './notification/NavigationProps';
+import NavigationProps from './navigation/NavigationProps';
 import PageContainerProps from './page/PageContainerProps';
 import PageComponentProps from './page/PageComponentProps';
 
