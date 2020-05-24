@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { initializeFlow, InitializeFlowProps } from './actions';
 import './App.less';
@@ -30,7 +30,7 @@ class App extends React.Component<Props> {
 
         return (
             <>
-              {  notifications }
+                { notifications }
 
                 <Page theme={ theme } />
             </>
