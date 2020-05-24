@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Alert } from 'antd';
 import PageComponent from './PageComponent';
 import { IPageComponent, IPageContainer } from '../types';
 import { RootState } from '../store';
