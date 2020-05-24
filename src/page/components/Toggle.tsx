@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PageComponentProps from '../PageComponentProps';
-import { Switch, Typography } from 'antd';
+import { Switch } from 'antd';
 import BaseFormItem from './BaseFormItem';
 
 export default function Toggle(props: PageComponentProps) {

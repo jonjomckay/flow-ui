@@ -13,6 +13,7 @@ import Image from './components/Image';
 import Table from './components/Table';
 import List from './components/List';
 import Toggle from './components/Toggle';
+import Radio from './components/Radio';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -52,6 +53,8 @@ const PageComponent = ({ component, input, setComponentValue }: Props) => {
             return <List { ...props } />;
         case 'PRESENTATION':
             return <Presentation { ...props } />;
+        case 'RADIO':
+            return <Radio { ...props } />;
         case 'SELECT':
             return <SelectComponent { ...props } />;
         case 'TEXTAREA':
