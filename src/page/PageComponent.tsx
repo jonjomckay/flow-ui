@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Spin } from 'antd';
 import { selectOutcome, setComponentValue } from '../actions';
 import { IObjectData, IOutcome, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
 import PageComponentError from './PageComponentError';
 import ITheme from '../ITheme';
+import Loader from '../antd/common/Loader';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -62,7 +62,7 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
 
     return (
         <PageComponentError component={ component } theme={ theme }>
-            <React.Suspense fallback={ <Spin delay={ 200 } /> }>
+            <React.Suspense fallback={ <Loader /> }>
                 { content }
             </React.Suspense>
         </PageComponentError>

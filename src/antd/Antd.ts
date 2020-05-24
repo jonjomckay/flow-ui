@@ -2,6 +2,7 @@ import * as React from 'react';
 import RootContainer from './containers/RootContainer';
 import ITheme from '../ITheme';
 import Alert from './common/Alert';
+import Loader from './common/Loader';
 import Navigation from './navigation/Navigation';
 import GroupContainer from './containers/GroupContainer';
 import HorizontalContainer from './containers/HorizontalContainer';
@@ -31,6 +32,7 @@ const Antd: ITheme = {
         'INLINE_FLOW': InlineContainer,
         'VERTICAL_FLOW': VerticalContainer
     },
+    loaderComponent: Loader,
     navigation: Navigation,
     rootContainer: RootContainer
 }

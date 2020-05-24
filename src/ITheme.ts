@@ -10,6 +10,7 @@ export default interface ITheme {
     alertComponent: Component<AlertProps>,
     components: { [type: string]: Component<PageComponentProps> }
     containers: { [type: string]: Component<PageContainerProps> }
+    loaderComponent: Component<any>,
     navigation: Component<NavigationProps>
     rootContainer: Component<any>
 }
