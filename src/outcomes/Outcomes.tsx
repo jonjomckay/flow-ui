@@ -13,10 +13,13 @@ interface Props {
 }
 
 function Outcomes(props: Props) {
-    const outcomes = props.outcomes.map(outcome => {
-        return <Outcome outcome={ outcome } key={ outcome.id } isLoading={ props.isLoading }
-                        onClick={ () => props.selectOutcome({ selectedOutcomeId: outcome.id }) } />
-    });
+    // Create outcomes from all the outcome responses that aren't bound to a page object
+    const outcomes = props.outcomes
+        .filter(outcome => outcome.pageObjectBindingId === null)
+        .map(outcome => {
+            return <Outcome outcome={ outcome } key={ outcome.id } isLoading={ props.isLoading }
+                            onClick={ () => props.selectOutcome({ selectedOutcomeId: outcome.id }) } />
+        });
 
     return (
         <div style={ { marginTop: '16px' } }>
