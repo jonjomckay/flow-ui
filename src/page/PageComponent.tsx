@@ -1,21 +1,23 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Alert } from 'antd';
-import Presentation from './components/Presentation';
-import Input from './components/Input';
-import Textarea from './components/Textarea';
-import SelectComponent from './components/SelectComponent';
+import { Alert, Spin } from 'antd';
 import { selectOutcome, setComponentValue } from '../actions';
 import { IObjectData, IOutcome, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
-import Image from './components/Image';
-import Table from './components/Table';
-import List from './components/List';
-import Toggle from './components/Toggle';
-import Radio from './components/Radio';
-import Outcomes from './components/Outcomes';
-import Content from './components/Content';
+import PageComponentError from './PageComponentError';
+
+const Content = React.lazy(() => import('./components/Content'));
+const Image = React.lazy(() => import('./components/Image'));
+const Input = React.lazy(() => import('./components/Input'));
+const List = React.lazy(() => import('./components/List'));
+const Outcomes = React.lazy(() => import('./components/Outcomes'));
+const Presentation = React.lazy(() => import('./components/Presentation'));
+const Radio = React.lazy(() => import('./components/Radio'));
+const SelectComponent = React.lazy(() => import('./components/SelectComponent'));
+const Table = React.lazy(() => import('./components/Table'));
+const Textarea = React.lazy(() => import('./components/Textarea'));
+const Toggle = React.lazy(() => import('./components/Toggle'));
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -50,36 +52,58 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
         selectOutcome: selectOutcome
     };
 
+    let content;
+
     switch (componentType.toUpperCase()) {
         case 'CONTENT':
-            return <Content { ...props } />;
+            content = <Content { ...props } />;
+            break;
         case 'IMAGE':
-            return <Image { ...props } />;
+            content = <Image { ...props } />;
+            break;
         case 'INPUT':
-            return <Input { ...props } />;
+            content = <Input { ...props } />;
+            break;
         case 'LIST':
-            return <List { ...props } />;
+            content = <List { ...props } />;
+            break;
         case 'OUTCOMES':
-            return <Outcomes { ...props } />;
+            content = <Outcomes { ...props } />;
+            break;
         case 'PRESENTATION':
-            return <Presentation { ...props } />;
+            content = <Presentation { ...props } />;
+            break;
         case 'RADIO':
-            return <Radio { ...props } />;
+            content = <Radio { ...props } />;
+            break;
         case 'SELECT':
-            return <SelectComponent { ...props } />;
+            content = <SelectComponent { ...props } />;
+            break;
         case 'TEXTAREA':
-            return <Textarea { ...props } />;
+            content = <Textarea { ...props } />;
+            break;
         case 'TABLE':
-            return <Table { ...props } />;
+            content = <Table { ...props } />;
+            break;
         case 'TOGGLE':
-            return <Toggle { ...props } />;
+            content = <Toggle { ...props } />;
+            break;
         default:
             console.warn('The component type ' + componentType + ' is not supported');
 
             const message = <span>Unknown component type <strong>{ componentType }</strong></span>;
 
-            return <Alert message={ message } type="warning" showIcon />;
+            content = <Alert message={ message } type="warning" showIcon />;
+            break;
     }
+
+    return (
+        <PageComponentError component={ component }>
+            <React.Suspense fallback={ <Spin delay={ 200 } /> }>
+                { content }
+            </React.Suspense>
+        </PageComponentError>
+    )
 };
 
 const mapStateToProps = (state: RootState, ownProps: Props) => ({
