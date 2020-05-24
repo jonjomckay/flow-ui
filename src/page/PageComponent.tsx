@@ -10,6 +10,7 @@ import { IObjectData, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
 import Table from './components/Table';
+import List from './components/List';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -43,6 +44,8 @@ const PageComponent = ({ component, input, setComponentValue }: Props) => {
     switch (componentType.toUpperCase()) {
         case 'INPUT':
             return <Input { ...props } />;
+        case 'LIST':
+            return <List { ...props } />;
         case 'PRESENTATION':
             return <Presentation { ...props } />;
         case 'SELECT':

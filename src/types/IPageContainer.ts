@@ -1,5 +1,5 @@
 export default interface IPageContainer {
-    attributes: Map<string, string>
+    attributes: { [name: string]: string };
     containerType: string
     developerName: string
     id: string

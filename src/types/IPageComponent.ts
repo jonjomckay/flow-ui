@@ -2,7 +2,7 @@ import IPageComponentColumn from './IPageComponentColumn';
 import IPageComponentData from './IPageComponentData';
 
 export default interface IPageComponent {
-    attributes: Map<string, string>
+    attributes: { [name: string]: string };
     columns: IPageComponentColumn[]
     componentType: string
     contentType: string

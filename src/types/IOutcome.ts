@@ -1,5 +1,5 @@
 export default interface IOutcome {
-    attributes: Map<string, string>
+    attributes: { [name: string]: string };
     developerName: string
     id: string
     isBulkAction: string
