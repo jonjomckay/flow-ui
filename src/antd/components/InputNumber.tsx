@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Input } from 'antd';
-import PageComponentProps from '../PageComponentProps';
+import { InputNumber as AntdInputNumber } from 'antd';
+import PageComponentProps from '../../page/PageComponentProps';
 import BaseFormItem from './BaseFormItem';
 
-export default function InputString({ component, onChange }: PageComponentProps) {
+export default function InputNumber({ component, onChange }: PageComponentProps) {
     const inputProps = {
         disabled: component.data.isEnabled === false,
         id: component.id,
@@ -16,7 +16,7 @@ export default function InputString({ component, onChange }: PageComponentProps)
 
     return (
         <BaseFormItem component={ component }>
-            <Input { ...inputProps } onChange={ (e) => onChange({ contentValue: e.currentTarget.value }) } />
+            <AntdInputNumber { ...inputProps } onChange={ value => onChange({ contentValue: value?.toString() }) } />
         </BaseFormItem>
     );
 }

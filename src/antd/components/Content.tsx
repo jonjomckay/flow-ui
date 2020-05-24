@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import JoditEditor from './JoditEditor'
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 import BaseFormItem from './BaseFormItem';
 
 export default function Content(props: PageComponentProps) {

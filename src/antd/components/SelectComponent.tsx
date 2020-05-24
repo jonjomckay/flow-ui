@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Select } from 'antd';
 import { IPageComponentColumn } from '../../types';
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 import BaseFormItem from './BaseFormItem';
 
 export default function SelectComponent({ component, isLoading, objectData, onChange }: PageComponentProps) {

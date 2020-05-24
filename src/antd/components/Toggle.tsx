@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 import { Switch } from 'antd';
 import BaseFormItem from './BaseFormItem';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Input } from 'antd';
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 import BaseFormItem from './BaseFormItem';
 
 export default function Textarea({ component, onChange }: PageComponentProps) {

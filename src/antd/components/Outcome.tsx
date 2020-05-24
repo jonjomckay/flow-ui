@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { IOutcome } from '../types';
+import { IOutcome } from '../../types';
 import { ButtonType } from 'antd/es/button';
 
 interface Props {

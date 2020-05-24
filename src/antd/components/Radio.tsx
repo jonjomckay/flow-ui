@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 import { Radio as AntdRadio } from 'antd';
 import BaseFormItem from './BaseFormItem';
 import { RadioChangeEvent } from 'antd/es/radio';

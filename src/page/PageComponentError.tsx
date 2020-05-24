@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { ErrorInfo } from 'react';
-import { Alert } from 'antd';
 import { IPageComponent } from '../types';
+import ITheme from '../ITheme';
 
 interface Props {
     component: IPageComponent
+    theme: ITheme
 }
 
 interface State {
@@ -31,7 +32,7 @@ export default class PageComponentError extends React.Component<Props, State> {
     }
 
     render() {
-        const { component } = this.props;
+        const { component, theme } = this.props;
 
         if (this.state.hasError) {
             const message = <span>Something went wrong loading the <strong>{ component.componentType }</strong> component</span>;
@@ -40,9 +41,11 @@ export default class PageComponentError extends React.Component<Props, State> {
                 ? this.state.error.message
                 : null;
 
-            return (
-                <Alert description={ description } message={  message }  type="error" showIcon />
-            )
+            return React.createElement(theme.alertComponent, {
+                message: description,
+                title: message,
+                type: 'error'
+            });
         }
 
         return this.props.children;

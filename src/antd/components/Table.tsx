@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Table as AntdTable, Typography } from 'antd';
-import PageComponentProps from '../PageComponentProps';
+import PageComponentProps from '../../page/PageComponentProps';
 import { IObjectData } from '../../types';
 import { RowSelectionType } from 'antd/es/table/interface';
 
