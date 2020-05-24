@@ -12,6 +12,7 @@ import PageComponentProps from './PageComponentProps';
 import Image from './components/Image';
 import Table from './components/Table';
 import List from './components/List';
+import Toggle from './components/Toggle';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -57,6 +58,8 @@ const PageComponent = ({ component, input, setComponentValue }: Props) => {
             return <Textarea { ...props } />;
         case 'TABLE':
             return <Table { ...props } />;
+        case 'TOGGLE':
+            return <Toggle { ...props } />;
         default:
             console.warn('The component type ' + componentType + ' is not supported');
 
