@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Table as AntdTable } from 'antd';
+import { Table as AntdTable, Typography } from 'antd';
 import PageComponentProps from '../PageComponentProps';
 import { IObjectData } from '../../types';
 import { RowSelectionType } from 'antd/es/table/interface';
@@ -49,14 +49,17 @@ export default function Table(props: PageComponentProps) {
         type: rowSelectionType
     };
 
-    const title = () => props.component.label
-
     return (
-        <AntdTable columns={ columns }
-                   dataSource={ props.objectData }
-                   rowKey="internalId"
-                   rowSelection={{ ...rowSelection }}
-                   title={ title }
-        />
+        <div className="table">
+            <Typography.Title level={ 4 }>
+                { props.component.label }
+            </Typography.Title>
+
+            <AntdTable columns={ columns }
+                       dataSource={ props.objectData }
+                       rowKey="internalId"
+                       rowSelection={ { ...rowSelection } }
+            />
+        </div>
     );
 }
