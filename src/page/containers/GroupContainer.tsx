@@ -14,8 +14,8 @@ const GroupContainer = (props: PageContainerProps) => {
 
     return (
         <Tabs>
-            { tabs }
             { props.components }
+            { tabs }
         </Tabs>
     );
 };

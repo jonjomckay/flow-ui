@@ -7,8 +7,8 @@ const VerticalContainer = (props: PageContainerProps) => {
         <Col flex="auto">
             <Space direction="vertical" size={ 0 }>
                 <Typography.Title> { props.container.label }</Typography.Title>
-                { props.containers }
                 { props.components }
+                { props.containers }
             </Space>
         </Col>
     );
