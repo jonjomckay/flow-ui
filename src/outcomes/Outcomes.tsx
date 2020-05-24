@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Outcome from './Outcome';
+import { OutcomesList } from '../page/components/Outcomes';
 import { selectOutcome, SelectOutcomeProps } from '../actions';
 import { IOutcome } from '../types';
 import { RootState } from '../store';
@@ -14,17 +14,12 @@ interface Props {
 
 function Outcomes(props: Props) {
     // Create outcomes from all the outcome responses that aren't bound to a page object
-    const outcomes = props.outcomes
-        .filter(outcome => outcome.pageObjectBindingId === null)
-        .map(outcome => {
-            return <Outcome outcome={ outcome } key={ outcome.id } isLoading={ props.isLoading }
-                            onClick={ () => props.selectOutcome({ selectedOutcomeId: outcome.id }) } />
-        });
-
     return (
-        <div style={ { marginTop: '16px' } }>
-            { outcomes }
-        </div>
+        <OutcomesList
+            isLoading={ props.isLoading }
+            outcomes={ props.outcomes.filter(outcome => outcome.pageObjectBindingId === null) }
+            selectOutcome={ props.selectOutcome }
+        />
     );
 }
 

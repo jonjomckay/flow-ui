@@ -3,11 +3,11 @@ import PageComponentProps from '../PageComponentProps';
 import InputNumber from './InputNumber';
 import InputString from './InputString';
 
-export default function Input({ component, isLoading, onChange }: PageComponentProps) {
-    switch (component.contentType.toLowerCase()) {
+export default function Input(props: PageComponentProps) {
+    switch (props.component.contentType.toLowerCase()) {
         case 'contentnumber':
-            return <InputNumber component={ component } isLoading={ isLoading } onChange={ onChange } />;
+            return <InputNumber { ...props } />;
         default:
-            return <InputString component={ component } isLoading={ isLoading } onChange={ onChange } />;
+            return <InputString { ...props } />;
     }
 }
