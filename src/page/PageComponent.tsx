@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Alert, Spin } from 'antd';
+import { Spin } from 'antd';
 import { selectOutcome, setComponentValue } from '../actions';
 import { IObjectData, IOutcome, IPageComponent, IPageInput } from '../types';
 import { RootState } from '../store';
@@ -54,11 +54,14 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
 
         const message = <span>Unknown component type <strong>{ componentType }</strong></span>;
 
-        content = <Alert message={ message } type="warning" showIcon />;
+        content = React.createElement(theme.alertComponent, {
+            title: message,
+            type: 'warning'
+        });
     }
 
     return (
-        <PageComponentError component={ component }>
+        <PageComponentError component={ component } theme={ theme }>
             <React.Suspense fallback={ <Spin delay={ 200 } /> }>
                 { content }
             </React.Suspense>

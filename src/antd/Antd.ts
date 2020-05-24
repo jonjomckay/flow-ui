@@ -1,6 +1,7 @@
 import * as React from 'react';
 import RootContainer from './containers/RootContainer';
 import ITheme from '../ITheme';
+import Alert from './common/Alert';
 import Navigation from './navigation/Navigation';
 import GroupContainer from './containers/GroupContainer';
 import HorizontalContainer from './containers/HorizontalContainer';
@@ -10,6 +11,7 @@ import VerticalContainer from './containers/VerticalContainer';
 import './Antd.less';
 
 const Antd: ITheme = {
+    alertComponent: Alert,
     components: {
         'CONTENT': React.lazy(() => import('./components/Content')),
         'IMAGE': React.lazy(() => import('../antd/components/Image')),

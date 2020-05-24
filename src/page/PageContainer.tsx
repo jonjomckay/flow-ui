@@ -48,7 +48,10 @@ const UnconnectedPageContainer = ({ components, container, theme }: Props) => {
 
     const message = <span>Unknown container type <strong>{ containerType }</strong></span>;
 
-    return <Alert message={ message } type="warning" showIcon />;
+    return React.createElement(theme.alertComponent, {
+        title: message,
+        type: 'warning'
+    });
 };
 
 const mapStateToProps = (state: RootState) => ({
