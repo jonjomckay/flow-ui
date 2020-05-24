@@ -1,16 +1,12 @@
-import { RootState } from '../store';
+import { RootState } from '../../store';
 import { connect } from 'react-redux';
 import { notification } from 'antd';
-import { INotification } from '../types';
-
-interface Props {
-    notifications: INotification[]
-}
+import NotificationsProps from '../../notification/NotificationsProps';
 
 // This holds notifications that we've opened. It does not hold the notifications themselves (that's hidden in antd)
 let existingNotifications: string[] = [];
 
-function Notifications({ notifications }: Props) {
+function Notifications({ notifications }: NotificationsProps) {
     // Close any notifications that we think are open, but we aren't given anymore
     existingNotifications.forEach(key => {
         let shouldWeKeepNotification = notifications.some(n => n.key === key);

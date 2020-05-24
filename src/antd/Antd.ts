@@ -4,6 +4,7 @@ import ITheme from '../ITheme';
 import Alert from './common/Alert';
 import Loader from './common/Loader';
 import Navigation from './navigation/Navigation';
+import Notifications from './notification/Notifications';
 import GroupContainer from './containers/GroupContainer';
 import HorizontalContainer from './containers/HorizontalContainer';
 import InlineContainer from './containers/InlineContainer';
@@ -34,6 +35,7 @@ const Antd: ITheme = {
     },
     loaderComponent: Loader,
     navigation: Navigation,
+    notificationsComponent: Notifications,
     rootContainer: RootContainer
 }
 
