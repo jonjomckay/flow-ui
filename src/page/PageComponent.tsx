@@ -6,7 +6,6 @@ import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
 import PageComponentError from './PageComponentError';
 import ITheme from '../ITheme';
-import Loader from '../antd/common/Loader';
 
 export interface IPageComponentOnChangeProps {
     objectData?: IObjectData[],
@@ -60,9 +59,11 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
         });
     }
 
+    const loader = React.createElement(theme.loaderComponent);
+
     return (
         <PageComponentError component={ component } theme={ theme }>
-            <React.Suspense fallback={ <Loader /> }>
+            <React.Suspense fallback={ loader }>
                 { content }
             </React.Suspense>
         </PageComponentError>

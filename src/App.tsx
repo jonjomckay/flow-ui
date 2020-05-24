@@ -1,9 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { initializeFlow, InitializeFlowProps } from './actions';
 import './App.less';
 import Page from './page/Page';
-import Notifications from './antd/notification/Notifications';
 
 import theme from './antd/Antd';
 
@@ -27,11 +26,11 @@ class App extends React.Component<Props> {
     }
 
     render() {
-
+        const notifications = React.createElement(theme.notificationsComponent);
 
         return (
             <>
-                <Notifications />
+                { notifications }
 
                 <Page theme={ theme } />
             </>
