@@ -3,11 +3,11 @@ import classnames from 'classnames';
 import './ProgressBar.less';
 
 interface Props {
-    percent: number,
+    percent: number;
 }
 
 interface State {
-    percent: number
+    percent: number;
 }
 
 // This is heavily based on https://github.com/minhtranite/react-progress-bar-plus
@@ -23,7 +23,7 @@ class ProgressBar extends React.Component<Props, State> {
         percent: this.props.percent
     };
 
-    componentDidUpdate(prevProps: Readonly<Props>) {
+    componentDidUpdate(prevProps: Readonly<Props>): void {
         const { percent } = this.props;
 
         if (this.props.percent !== prevProps.percent) {
@@ -58,7 +58,7 @@ class ProgressBar extends React.Component<Props, State> {
         }
     }
 
-    componentWillUnmount = () => {
+    componentWillUnmount = (): void => {
         if (this.interval) {
             clearInterval(this.interval);
         }
@@ -67,7 +67,7 @@ class ProgressBar extends React.Component<Props, State> {
         }
     };
 
-    increment = () => {
+    increment = (): void => {
         const nextPercent = this.state.percent + ((Math.random() + 1) - Math.random());
 
         this.setState({
@@ -75,7 +75,7 @@ class ProgressBar extends React.Component<Props, State> {
         });
     };
 
-    render() {
+    render(): React.ReactNode {
         const { percent } = this.state;
 
         const className = classnames('progress-bar', {

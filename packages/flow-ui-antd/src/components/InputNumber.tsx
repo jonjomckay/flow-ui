@@ -3,7 +3,7 @@ import { InputNumber as AntdInputNumber } from 'antd';
 import PageComponentProps from '../../page/PageComponentProps';
 import BaseFormItem from './BaseFormItem';
 
-export default function InputNumber({ component, onChange }: PageComponentProps) {
+export default function InputNumber({ component, onChange }: PageComponentProps): React.ReactNode {
     const inputProps = {
         disabled: component.data.isEnabled === false,
         id: component.id,

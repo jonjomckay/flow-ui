@@ -3,7 +3,7 @@ import JoditEditor from './JoditEditor'
 import PageComponentProps from '../../page/PageComponentProps';
 import BaseFormItem from './BaseFormItem';
 
-export default function Content(props: PageComponentProps) {
+export default function Content(props: PageComponentProps): React.ReactNode {
     const editor = useRef();
     const config = {
         readonly: false

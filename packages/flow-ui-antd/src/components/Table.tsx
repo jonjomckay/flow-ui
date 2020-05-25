@@ -4,7 +4,7 @@ import PageComponentProps from '../../page/PageComponentProps';
 import { IObjectData } from '../../types';
 import { RowSelectionType } from 'antd/es/table/interface';
 
-export default function Table(props: PageComponentProps) {
+export default function Table(props: PageComponentProps): React.ReactNode {
     const columns = props.component.columns.map(column => {
         return {
             title: column.label,

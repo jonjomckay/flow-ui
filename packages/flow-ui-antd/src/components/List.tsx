@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Typography } from 'antd';
 import PageComponentProps from '../../page/PageComponentProps';
 
-export default function List(props: PageComponentProps) {
+export default function List(props: PageComponentProps): React.ReactNode {
     const titleColumn = props.component.columns.find(c => c.order === 0);
     if (!titleColumn) {
         console.warn('No title column was provided for the List component ' + props.component.id);

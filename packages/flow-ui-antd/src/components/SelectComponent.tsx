@@ -4,7 +4,7 @@ import { IPageComponentColumn } from '../../types';
 import PageComponentProps from '../../page/PageComponentProps';
 import BaseFormItem from './BaseFormItem';
 
-export default function SelectComponent({ component, isLoading, objectData, onChange }: PageComponentProps) {
+export default function SelectComponent({ component, isLoading, objectData, onChange }: PageComponentProps): React.ReactNode {
     // TODO: Multiselect
     // TODO: Page conditions (hasEvents: true)
 

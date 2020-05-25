@@ -13,7 +13,7 @@ interface Props {
     selectOutcome(value: SelectOutcomeProps): void
 }
 
-function Outcomes(props: Props) {
+function Outcomes(props: Props): React.ReactNode {
     // Create outcomes from all the outcome responses that aren't bound to a page object
     return React.createElement(props.theme.outcomesComponent, {
         isLoading: props.isLoading,

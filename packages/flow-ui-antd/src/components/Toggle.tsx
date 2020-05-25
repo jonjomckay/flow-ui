@@ -3,7 +3,7 @@ import PageComponentProps from '../../page/PageComponentProps';
 import { Switch } from 'antd';
 import BaseFormItem from './BaseFormItem';
 
-export default function Toggle(props: PageComponentProps) {
+export default function Toggle(props: PageComponentProps): React.ReactNode {
     const toggled = String(props.component.data.contentValue.toLowerCase()) === 'true';
 
     const onChange = (checked: boolean) => {

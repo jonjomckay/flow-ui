@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import PageComponentProps from '../../page/PageComponentProps';
 import BaseFormItem from './BaseFormItem';
 
-export default function InputString({ component, onChange }: PageComponentProps) {
+export default function InputString({ component, onChange }: PageComponentProps): React.ReactNode {
     const inputProps = {
         disabled: component.data.isEnabled === false,
         id: component.id,

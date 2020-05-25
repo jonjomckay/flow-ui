@@ -1,6 +1,7 @@
 export type { default as ITheme } from './ITheme';
 export { default as Flow } from './Flow';
 
+export type { default as AlertProps } from './common/AlertProps';
 export type { default as NavigationProps } from './navigation/NavigationProps';
 export type { default as OutcomesListProps } from './outcomes/OutcomesListProps';
 export type { default as PageComponentProps } from './page/PageComponentProps';

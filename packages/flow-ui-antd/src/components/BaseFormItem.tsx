@@ -7,7 +7,7 @@ interface Props {
     component: IPageComponent
 }
 
-export default function BaseFormItem({ children, component }: Props) {
+export default function BaseFormItem({ children, component }: Props): React.ReactNode {
     if (component.data.isVisible === false) {
         return null;
     }
