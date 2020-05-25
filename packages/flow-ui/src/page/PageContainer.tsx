@@ -24,8 +24,10 @@ const UnconnectedPageContainer = ({ components, container, theme }: Props) => {
 
     const nestedComponents = (components || []).filter(component => component.pageContainerId === id).sort((a, b) => a.order - b.order).map(component => {
         return (
-            // @ts-ignore
             // TODO: Figure out how to have props that only come from Redux in the type signature
+
+          // eslint-disable-next-line
+          // @ts-ignore
             <PageComponent component={ component } key={ component.id } theme={ theme } />
         )
     });

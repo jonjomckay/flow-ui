@@ -1,9 +1,8 @@
 import * as React from 'react';
-import PageComponentProps from '../../page/PageComponentProps';
 import Outcome from './Outcome';
 import { Button, Row, Space } from 'antd';
 import './Outcomes.less';
-import OutcomesListProps from '../../outcomes/OutcomesListProps';
+import { OutcomesListProps, PageComponentProps } from '@project/flow-ui';
 
 export function OutcomesList(props: OutcomesListProps) {
     const outcomes = props.outcomes.map(outcome => {

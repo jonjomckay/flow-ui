@@ -8,6 +8,7 @@ export default function Table(props: PageComponentProps) {
     const columns = props.component.columns.map(column => {
         return {
             title: column.label,
+          // eslint-disable-next-line react/display-name
             render: (text: string, record: IObjectData) => {
                 const propertyId = column.typeElementPropertyToDisplayId || column.typeElementPropertyId;
 

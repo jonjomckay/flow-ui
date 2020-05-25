@@ -1,54 +1,48 @@
 {
-  "name": "flow-ui-antd",
-  "version": "0.1.0",
+  "name": "root",
   "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.3.6",
-    "@testing-library/jest-dom": "^5.8.0",
-    "@testing-library/react": "^10.0.4",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/classnames": "^2.2.10",
-    "@types/jest": "^25.2.3",
-    "@types/node": "^14.0.5",
-    "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-redux": "^7.1.9",
-    "antd": "^4.2.4",
-    "axios": "^0.19.2",
-    "classnames": "^2.2.6",
-    "jodit": "git+https://github.com/xdan/jodit.git#26556c0517f6453c2a6822afc33f8aa8a08a84a1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-scripts": "3.4.1",
-    "typescript": "^3.9.3"
-  },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "start:app": "yarn workspace @project/flow-ui-example start",
+    "start:storybook": "yarn workspace @project/storybook-typescript storybook",
+    "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
+    "deploy": "FORCE_COLOR=true lerna run deploy"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+  "workspaces": {
+    "packages": [
+      "packages/flow-ui",
+      "packages/flow-ui-antd",
+      "packages/flow-ui-example"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+    "nohoist": [
+      "packages/app-*/webpack-dev-server",
+      "**/babel-loader",
+      "**/babel-jest"
     ]
   },
   "devDependencies": {
-    "babel-plugin-import": "^1.13.0",
-    "customize-cra": "^0.9.1",
-    "less": "^3.11.1",
-    "less-loader": "^5.0.0",
-    "react-app-rewired": "^2.1.6"
+    "@typescript-eslint/eslint-plugin": "^3.0.0",
+    "@typescript-eslint/parser": "^3.0.0",
+    "babel-eslint": "10.0.3",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-config-react-app": "^5.1.0",
+    "eslint-plugin-flowtype": "^4.5.3",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "jest-prop-type-error": "^1.1.0",
+    "lerna": "^3.20.2",
+    "prettier": "^1.19.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/setupTests.{js,jsx,ts,tsx}",
+      "!src/index.{js,jsx,ts,tsx}",
+      "!src/serviceWorker.{js,jsx,ts,tsx}",
+      "!src/**/*.(spec|test|stories).{js,jsx,ts,tsx}"
+    ]
   }
 }
