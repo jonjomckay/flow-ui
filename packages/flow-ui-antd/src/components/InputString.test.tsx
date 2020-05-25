@@ -5,6 +5,20 @@ import { render } from '@testing-library/react';
 import InputString from './InputString';
 import { IPageComponent } from '../../types';
 
+Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(), // deprecated
+        removeListener: jest.fn(), // deprecated
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+    })),
+});
+
 it('displays the given label message when one is supplied', () => {
     const label = 'Some label';
 
