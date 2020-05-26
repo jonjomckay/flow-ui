@@ -33,6 +33,12 @@ export default createReducer(initialState, builder => builder
             token: action.payload.stateToken
         }
     })
+    .addCase(invokeFlow.rejected, (state, action) => {
+        return {
+            ...state,
+            isLoading: false
+        }
+    })
     .addCase(setTenant, (state, action) => {
         return {
             ...state,
