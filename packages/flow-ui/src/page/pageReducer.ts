@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { invokeFlow, loadObjectData, selectOutcome, setComponentValue } from '../actions';
+import { invokeFlow, loadObjectData, setComponentValue } from '../actions';
 import { IPageComponent, IPageContainer, IPageInput } from '../types';
 
 interface PageState {
@@ -42,8 +42,8 @@ export default createReducer(initialState, builder => builder
             }
         });
 
-        // TODO: Clear if the map element ID is different
-        const inputs = { ...state.inputs };
+        // TODO: Always clear the inputs, even on a SYNC?
+        const inputs: { [key: string]: IPageInput } = {};
 
         pageComponents.forEach(component => {
             inputs[component.id] = {
@@ -84,13 +84,6 @@ export default createReducer(initialState, builder => builder
                     isLoading: true
                 }
             }
-        }
-    })
-    .addCase(selectOutcome.fulfilled, (state, action) => {
-        // Clear any input values from the previous page
-        return {
-            ...state,
-            inputs: initialState.inputs
         }
     })
     .addCase(setComponentValue.fulfilled, (state, action) => {
