@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import axios from 'axios';
-import { loadNavigation, loadObjectData } from './index';
+import { addNotification, loadNavigation, loadObjectData } from './index';
 
 export interface InvokeFlowProps {
-    currentMapElementId: string,
-    invokeType: 'FORWARD' | 'SYNC',
-    mapElementInvokeRequest: any
-    stateId: string
-    stateToken: string
+    currentMapElementId: string;
+    invokeType: 'FORWARD' | 'SYNC';
+    mapElementInvokeRequest: any;
+    stateId: string;
+    stateToken: string;
 }
 
 // Send an invocation request to Flow
@@ -46,9 +46,21 @@ const invokeFlow: any = createAsyncThunk<any, InvokeFlowProps, { state: RootStat
 
         return invokeResponseData;
     } catch (e) {
-        // TODO
+        if (e.response) {
+            thunk.dispatch(addNotification({
+                message: e.response.data,
+                title: 'Oops',
+                type: 'error'
+            }))
+        } else {
+            thunk.dispatch(addNotification({
+                message: e.message,
+                title: 'Oops',
+                type: 'error'
+            }))
+        }
 
-        console.error(e);
+        throw e;
     }
 });
 
