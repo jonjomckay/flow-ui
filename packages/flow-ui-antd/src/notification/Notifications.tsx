@@ -19,9 +19,9 @@ function Notifications({ notifications }: NotificationsProps) {
     existingNotifications = notifications.map(n => {
         notification.open({
             duration: null,
-            description: n.title,
+            description: n.message,
             key: n.key,
-            message: n.message,
+            message: n.title,
             type: n.type
         })
 

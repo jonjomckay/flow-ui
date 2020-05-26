@@ -2,7 +2,11 @@ import { INotification } from '../types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { removeNotification } from './index';
 
-export type AddNotificationProps = INotification;
+export interface AddNotificationProps {
+    message: string;
+    title: string;
+    type: 'success' | 'info' | 'error' | 'warning';
+}
 
 const addNotification = createAsyncThunk('AddNotification', async (payload: AddNotificationProps, thunk): Promise<INotification> => {
     // Generate a random key
