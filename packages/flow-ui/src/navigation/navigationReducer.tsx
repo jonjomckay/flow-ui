@@ -1,11 +1,13 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { invokeFlow, loadNavigation } from '../actions';
 import { INavigationItem } from '../types';
+import { FlowNavigationResponse } from '../types/FlowNavigationResponse';
+import INavigationItemData from '../types/INavigationItemData';
 
 interface NavigationState {
-    id: string,
-    items: INavigationItem[],
-    navigation: any
+    id: string;
+    items: INavigationItem[];
+    navigation: FlowNavigationResponse | null;
 }
 
 const initialState: NavigationState = {
@@ -26,10 +28,10 @@ export default createReducer(initialState, builder => builder
         return state;
     })
     .addCase(loadNavigation.fulfilled, (state, action) => {
-        const items = action.payload.navigationItemResponses.map((item: any) => {
+        const items = action.payload.navigationItemResponses.map((item: INavigationItem) => {
             return {
                 ...item,
-                data: action.payload.navigationItemDataResponses.find((data: any) => data.navigationItemId === item.id)
+                data: action.payload.navigationItemDataResponses.find((data: INavigationItemData) => data.navigationItemId === item.id)
             }
         });
 

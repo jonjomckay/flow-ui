@@ -4,16 +4,17 @@ import { selectOutcome, SelectOutcomeProps } from '../actions';
 import { IOutcome } from '../types';
 import { RootState } from '../store';
 import ITheme from '../ITheme';
+import OutcomesListProps from './OutcomesListProps';
 
 interface Props {
     isLoading: boolean;
     outcomes: IOutcome[];
     theme: ITheme;
 
-    selectOutcome(value: SelectOutcomeProps): void
+    selectOutcome(value: SelectOutcomeProps): void;
 }
 
-function Outcomes(props: Props): React.ReactNode {
+function Outcomes(props: Props): React.ReactElement<OutcomesListProps> {
     // Create outcomes from all the outcome responses that aren't bound to a page object
     return React.createElement(props.theme.outcomesComponent, {
         isLoading: props.isLoading,

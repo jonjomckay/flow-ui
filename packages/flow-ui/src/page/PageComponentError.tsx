@@ -4,13 +4,13 @@ import { IPageComponent } from '../types';
 import ITheme from '../ITheme';
 
 interface Props {
-    component: IPageComponent
-    theme: ITheme
+    component: IPageComponent;
+    theme: ITheme;
 }
 
 interface State {
-    error: any,
-    hasError: boolean
+    error: Error | null;
+    hasError: boolean;
 }
 
 export default class PageComponentError extends React.Component<Props, State> {
@@ -19,7 +19,7 @@ export default class PageComponentError extends React.Component<Props, State> {
         hasError: false
     }
 
-    static getDerivedStateFromError(error: any) {
+    static getDerivedStateFromError(error: Error): State {
         // Update state so the next render will show the fallback UI
         return {
             error: error,
@@ -27,11 +27,11 @@ export default class PageComponentError extends React.Component<Props, State> {
         };
     }
 
-    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         // TODO: You can also log the error to an error reporting service
     }
 
-    render() {
+    render(): React.ReactNode {
         const { component, theme } = this.props;
 
         if (this.state.hasError) {

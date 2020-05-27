@@ -7,11 +7,12 @@ import { IPageContainer } from '../types';
 import ProgressBar from '../common/ProgressBar';
 
 import ITheme from '../ITheme';
+import { FlowNavigationResponse } from '../types/FlowNavigationResponse';
 
 interface PageProps {
     containers: IPageContainer[];
     isLoading: boolean;
-    navigation: any;
+    navigation: FlowNavigationResponse | null;
 
     theme: ITheme;
 }
