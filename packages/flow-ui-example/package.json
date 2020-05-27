@@ -1,9 +1,9 @@
 {
-    "name": "@project/flow-ui-example",
+    "name": "@jonjomckay/flow-ui-example",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@project/flow-ui-antd": "1.0.0",
+        "@jonjomckay/flow-ui-antd": "1.0.0",
         "@types/node": "^14.0.5",
         "@types/react": "^16.9.35",
         "@types/react-dom": "^16.9.8",

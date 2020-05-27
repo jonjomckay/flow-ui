@@ -1,6 +1,6 @@
 import * as React from 'react';
 import RootContainer from './containers/RootContainer';
-import { ITheme } from '@project/flow-ui';
+import { ITheme } from '@jonjomckay/flow-ui';
 import Alert from './common/Alert';
 import Loader from './common/Loader';
 import Navigation from './navigation/Navigation';

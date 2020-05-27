@@ -1,5 +1,5 @@
 {
-    "name": "@project/flow-ui",
+    "name": "@jonjomckay/flow-ui",
     "version": "1.0.0",
     "main": "src/index.tsx",
     "main:src": "src/index.ts",

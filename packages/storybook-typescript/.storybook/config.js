@@ -7,7 +7,7 @@ addParameters({
   },
 });
 
-const comps = require.context('@project/flow-ui-antd/src', true, /.stories.tsx$/);
+const comps = require.context('@jonjomckay/flow-ui-antd/src', true, /.stories.tsx$/);
 
 configure(() => {
   comps.keys().forEach(filename => comps(filename));

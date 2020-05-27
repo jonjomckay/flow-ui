@@ -2,8 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "start:app": "yarn workspace @project/flow-ui-example start",
-    "start:storybook": "yarn workspace @project/storybook-typescript storybook",
+    "start:app": "yarn workspace @jonjomckay/flow-ui-example start",
+    "start:storybook": "yarn workspace @jonjomckay/storybook-typescript storybook",
     "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
     "deploy": "FORCE_COLOR=true lerna run deploy"
   },

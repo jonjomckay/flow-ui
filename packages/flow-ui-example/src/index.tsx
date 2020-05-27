@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Flow } from '@project/flow-ui';
+import { Flow } from '@jonjomckay/flow-ui';
 
 Array.from(document.getElementsByClassName('flow')).forEach(element => {
     const id = element.getAttribute('data-flow-id');

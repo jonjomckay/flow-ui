@@ -4,7 +4,7 @@ import { initializeFlow, InitializeFlowProps } from './actions';
 import './App.less';
 import Page from './page/Page';
 
-import theme from '@project/flow-ui-antd';
+import theme from '@jonjomckay/flow-ui-antd';
 
 interface Props {
     id: string;

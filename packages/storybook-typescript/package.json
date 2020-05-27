@@ -1,5 +1,5 @@
 {
-  "name": "@project/storybook-typescript",
+  "name": "@jonjomckay/storybook-typescript",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@project/flow-ui-antd": "1.0.0",
+    "@jonjomckay/flow-ui-antd": "1.0.0",
     "@react-workspaces/react-scripts": "^3.4.0-alpha-01",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"

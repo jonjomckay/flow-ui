@@ -2,7 +2,7 @@ import * as React from 'react';
 import Outcome from './Outcome';
 import { Button, Row, Space } from 'antd';
 import './Outcomes.less';
-import { OutcomesListProps, PageComponentProps } from '@project/flow-ui';
+import { OutcomesListProps, PageComponentProps } from '@jonjomckay/flow-ui';
 
 export function OutcomesList(props: OutcomesListProps): React.ReactNode {
     const outcomes = props.outcomes.map(outcome => {
