@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Flow } from '@jonjomckay/flow-ui';
+import antdTheme from '@jonjomckay/flow-ui-antd';
+
 
 Array.from(document.getElementsByClassName('flow')).forEach(element => {
     const id = element.getAttribute('data-flow-id');
@@ -18,7 +20,7 @@ Array.from(document.getElementsByClassName('flow')).forEach(element => {
     const version = element.getAttribute('data-flow-version');
 
     ReactDOM.render(
-        <Flow id={ id } tenant={ tenant } version={ version } />,
+        <Flow id={ id } tenant={ tenant } theme={ antdTheme } version={ version } />,
         element
     );
 });

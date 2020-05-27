@@ -3,17 +3,19 @@ import { Provider } from 'react-redux';
 import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
 import { rootReducer } from './store';
 import App from './App';
+import { ITheme } from './index';
 
 interface Props {
     id: string
     tenant: string
+    theme: ITheme;
     version: string | null
 }
 
 export default class Flow extends React.Component<Props> {
     store: EnhancedStore;
 
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props);
 
         this.store = configureStore({

@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { initializeFlow, InitializeFlowProps } from './actions';
 import './App.less';
 import Page from './page/Page';
-
-import theme from '@jonjomckay/flow-ui-antd';
+import { ITheme } from './index';
 
 interface Props {
     id: string;
     tenant: string;
+    theme: ITheme;
     version: string | null;
 
     initializeFlow(value: InitializeFlowProps): void;
@@ -26,13 +26,13 @@ class App extends React.Component<Props> {
     }
 
     render() {
-        const notifications = React.createElement(theme.notificationsComponent);
+        const notifications = React.createElement(this.props.theme.notificationsComponent);
 
         return (
             <>
                 { notifications }
 
-                <Page theme={ theme } />
+                <Page theme={ this.props.theme } />
             </>
         );
     }
