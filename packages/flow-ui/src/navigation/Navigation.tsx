@@ -11,7 +11,7 @@ type Props = NavigationProps & {
 
 function Navigation(props: Props): React.ReactElement<NavigationProps> {
     // Create the navigation using the component in the theme
-    return React.createElement(props.theme.navigation, props);
+    return React.createElement(props.theme.navigationComponent, props);
 }
 
 const mapStateToProps = (state: RootState) => ({

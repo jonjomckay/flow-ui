@@ -10,7 +10,7 @@ interface Props {
     onClick(): void
 }
 
-export default function Outcome(props: Props): React.ReactNode {
+export default function Outcome(props: Props): React.ReactElement<PageComponentProps> {
     const { isLoading, onClick, outcome } = props;
 
     const danger = ['cancel', 'delete', 'reject', 'remove'].includes(outcome.pageActionType?.toLowerCase());

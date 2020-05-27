@@ -1,10 +1,10 @@
 import * as React from 'react';
-import PageComponentProps from '../../page/PageComponentProps';
+import { PageComponentProps } from '@jonjomckay/flow-ui';
 import { Radio as AntdRadio } from 'antd';
 import BaseFormItem from './BaseFormItem';
 import { RadioChangeEvent } from 'antd/es/radio';
 
-export default function Radio(props: PageComponentProps): React.ReactNode {
+export default function Radio(props: PageComponentProps): React.ReactElement<PageComponentProps> | null {
     const labelColumn = props.component.columns.find(c => c.order === 0);
     if (!labelColumn) {
         console.warn('No label column was provided for the Radio component ' + props.component.id);

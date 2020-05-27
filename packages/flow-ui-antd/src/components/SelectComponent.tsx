@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Select } from 'antd';
 import { IPageComponentColumn } from '../../types';
-import PageComponentProps from '../../page/PageComponentProps';
+import { PageComponentProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 
-export default function SelectComponent({ component, isLoading, objectData, onChange }: PageComponentProps): React.ReactNode {
+export default function SelectComponent({ component, isLoading, objectData, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
     // TODO: Multiselect
     // TODO: Page conditions (hasEvents: true)
 

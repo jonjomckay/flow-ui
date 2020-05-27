@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Space, Typography } from 'antd';
-import PageContainerProps from '../../page/PageContainerProps';
+import { PageContainerProps } from '@jonjomckay/flow-ui';
 
-const VerticalContainer = (props: PageContainerProps): React.ReactNode => {
+const VerticalContainer = (props: PageContainerProps): React.ReactElement<PageContainerProps> => {
     return (
         <Col flex="auto">
             <Space direction="vertical" size={ 0 }>

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Input } from 'antd';
-import PageComponentProps from '../../page/PageComponentProps';
+import { PageComponentProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 
-export default function InputString({ component, onChange }: PageComponentProps): React.ReactNode {
+export default function InputString({ component, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
     const inputProps = {
         disabled: component.data.isEnabled === false,
         id: component.id,

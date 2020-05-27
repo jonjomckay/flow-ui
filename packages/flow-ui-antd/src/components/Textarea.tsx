@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Input } from 'antd';
-import PageComponentProps from '../../page/PageComponentProps';
+import { PageComponentProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 
-export default function Textarea({ component, onChange }: PageComponentProps): React.ReactNode {
+export default function Textarea({ component, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
     const inputProps = {
         cols: component.width,
         disabled: component.data.isEnabled === false,

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Form } from 'antd';
-import { IPageComponent } from '../../types';
+import { IPageComponent, PageComponentProps } from '@jonjomckay/flow-ui';
 
 interface Props {
-    children: React.ReactNode
+    children: React.ReactElement<PageComponentProps>
     component: IPageComponent
 }
 
-export default function BaseFormItem({ children, component }: Props): React.ReactNode {
+export default function BaseFormItem({ children, component }: Props): React.ReactElement<PageComponentProps> | null {
     if (component.data.isVisible === false) {
         return null;
     }

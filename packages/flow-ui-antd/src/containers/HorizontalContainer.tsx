@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Row, Typography } from 'antd';
-import PageContainerProps from '../../page/PageContainerProps';
+import { PageContainerProps } from '@jonjomckay/flow-ui';
 
-const HorizontalContainer = (props: PageContainerProps): React.ReactNode => {
+const HorizontalContainer = (props: PageContainerProps): React.ReactElement<PageContainerProps> => {
     return (
         <div>
             <Typography.Title> { props.container.label }</Typography.Title>

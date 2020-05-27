@@ -1,7 +1,6 @@
-import { RootState } from '../../store';
 import { connect } from 'react-redux';
 import { notification } from 'antd';
-import NotificationsProps from '../../notification/NotificationsProps';
+import { NotificationsProps, RootState } from '@jonjomckay/flow-ui';
 
 // This holds notifications that we've opened. It does not hold the notifications themselves (that's hidden in antd)
 let existingNotifications: string[] = [];

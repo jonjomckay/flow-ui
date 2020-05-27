@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Typography } from 'antd';
-import PageComponentProps from '../../page/PageComponentProps';
-
-export default function List(props: PageComponentProps): React.ReactNode {
+import { PageComponentProps } from '@jonjomckay/flow-ui';
+export default function List(props: PageComponentProps): React.ReactElement<PageComponentProps> {
     const titleColumn = props.component.columns.find(c => c.order === 0);
     if (!titleColumn) {
         console.warn('No title column was provided for the List component ' + props.component.id);

@@ -4,7 +4,7 @@ import { Button, Row, Space } from 'antd';
 import './Outcomes.less';
 import { OutcomesListProps, PageComponentProps } from '@jonjomckay/flow-ui';
 
-export function OutcomesList(props: OutcomesListProps): React.ReactNode {
+export function OutcomesList(props: OutcomesListProps): React.ReactElement<PageComponentProps> {
     const outcomes = props.outcomes.map(outcome => {
         return (
             <Outcome outcome={ outcome }
@@ -22,7 +22,7 @@ export function OutcomesList(props: OutcomesListProps): React.ReactNode {
     );
 }
 
-export default function Outcomes(props: PageComponentProps): React.ReactNode {
+export default function Outcomes(props: PageComponentProps): React.ReactElement<PageComponentProps> {
     let justify: 'end' | 'start';
     switch (props.component.attributes && props.component.attributes['justify']) {
         case 'right':

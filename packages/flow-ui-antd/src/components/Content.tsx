@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import JoditEditor from './JoditEditor'
-import PageComponentProps from '../../page/PageComponentProps';
+import { PageComponentProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 
-export default function Content(props: PageComponentProps): React.ReactNode {
+export default function Content(props: PageComponentProps): React.ReactElement<PageComponentProps> {
     const editor = useRef();
     const config = {
         readonly: false

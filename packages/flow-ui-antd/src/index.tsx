@@ -2,7 +2,7 @@ import * as React from 'react';
 import RootContainer from './containers/RootContainer';
 import { ITheme } from '@jonjomckay/flow-ui';
 import Alert from './common/Alert';
-import Loader from './common/Loader';
+import Loader from './loader/Loader';
 import Navigation from './navigation/Navigation';
 import Notifications from './notification/Notifications';
 import GroupContainer from './containers/GroupContainer';
@@ -35,7 +35,7 @@ const Antd: ITheme = {
     'VERTICAL_FLOW': VerticalContainer
   },
   loaderComponent: Loader,
-  navigation: Navigation,
+  navigationComponent: Navigation,
   notificationsComponent: Notifications,
   outcomesComponent: OutcomesList,
   rootContainer: RootContainer

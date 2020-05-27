@@ -1,8 +1,8 @@
 import React from 'react';
 import { Space } from 'antd';
-import PageContainerProps from '../../page/PageContainerProps';
+import { PageContainerProps } from '@jonjomckay/flow-ui';
 
-const InlineContainer = (props: PageContainerProps): React.ReactNode => {
+const InlineContainer = (props: PageContainerProps): React.ReactElement<PageContainerProps> => {
     return (
         <Space direction="horizontal">
             { props.components }
