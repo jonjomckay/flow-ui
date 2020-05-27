@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Table as AntdTable, Typography } from 'antd';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
-import { IObjectData } from '../../types';
+import { IObjectData, PageComponentProps } from '@jonjomckay/flow-ui';
 import { RowSelectionType } from 'antd/es/table/interface';
 
 export default function Table(props: PageComponentProps): React.ReactElement<PageComponentProps> {

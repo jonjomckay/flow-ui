@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Select } from 'antd';
-import { IPageComponentColumn } from '../../types';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { IPageComponentColumn, PageComponentProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 
 export default function SelectComponent({ component, isLoading, objectData, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
