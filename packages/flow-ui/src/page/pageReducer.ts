@@ -1,15 +1,17 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { invokeFlow, loadObjectData, setComponentValue } from '../actions';
+import { invokeFlow, setComponentLoading, setComponentValue } from '../actions';
 import { IPageComponent, IPageContainer, IPageInput } from '../types';
 
 interface PageState {
     inputs: { [key: string]: IPageInput },
+    loadingComponents: string[];
     pageComponents: IPageComponent[],
     pageContainers: IPageContainer[]
 }
 
 const initialState: PageState = {
     inputs: {},
+    loadingComponents: [],
     pageComponents: [],
     pageContainers: []
 };
@@ -62,28 +64,17 @@ export default createReducer(initialState, builder => builder
             pageContainers: pageContainers
         }
     })
-    .addCase(loadObjectData.fulfilled, (state, action) => {
-        return {
-            ...state,
-            inputs: {
-                ...state.inputs,
-                [action.meta.arg.pageComponentId]: {
-                    ...state.inputs[action.meta.arg.pageComponentId],
-                    isLoading: false
-                }
-            }
-        }
-    })
-    .addCase(loadObjectData.pending, (state, action) => {
-        return {
-            ...state,
-            inputs: {
-                ...state.inputs,
-                [action.meta.arg.pageComponentId]: {
-                    ...state.inputs[action.meta.arg.pageComponentId],
-                    isLoading: true
-                }
-            }
+    .addCase(setComponentLoading, (state, action) => {
+        if (action.payload.isLoading) {
+            return {
+                ...state,
+                loadingComponents: state.loadingComponents.concat([action.payload.pageComponentId])
+            };
+        } else {
+            return {
+                ...state,
+                loadingComponents: state.loadingComponents.filter(id => id !== action.payload.pageComponentId)
+            };
         }
     })
     .addCase(setComponentValue.fulfilled, (state, action) => {

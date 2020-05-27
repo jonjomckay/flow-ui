@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { setComponentValue } from './index';
+import { setComponentLoading, setComponentValue } from './index';
 
 export interface LoadObjectDataProps {
     objectDataRequest: any // TODO
@@ -9,6 +9,11 @@ export interface LoadObjectDataProps {
 
 const loadObjectData = createAsyncThunk('LoadObjectData', async (payload: LoadObjectDataProps, thunk) => {
     const { objectDataRequest, pageComponentId } = payload;
+
+    thunk.dispatch(setComponentLoading({
+        isLoading: true,
+        pageComponentId: pageComponentId
+    }));
 
     try {
         const response = await axios.post('https://flow.boomi.com/api/run/1/service/data', objectDataRequest, {
@@ -25,6 +30,11 @@ const loadObjectData = createAsyncThunk('LoadObjectData', async (payload: LoadOb
         // TODO
 
         console.error(e);
+    } finally {
+        thunk.dispatch(setComponentLoading({
+            isLoading: false,
+            pageComponentId: pageComponentId
+        }));
     }
 });
 

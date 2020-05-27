@@ -9,7 +9,6 @@ import PageContainerProps from './PageContainerProps';
 interface Props {
     components: IPageComponent[];
     container: IPageContainer;
-
     theme: ITheme;
 }
 
@@ -23,13 +22,7 @@ const UnconnectedPageContainer = ({ components, container, theme }: Props) => {
     });
 
     const nestedComponents = (components || []).filter(component => component.pageContainerId === id).sort((a, b) => a.order - b.order).map(component => {
-        return (
-            // TODO: Figure out how to have props that only come from Redux in the type signature
-
-          // eslint-disable-next-line
-          // @ts-ignore
-            <PageComponent component={ component } key={ component.id } theme={ theme } />
-        )
+        return <PageComponent component={ component } key={ component.id } theme={ theme } />
     });
 
     const props: PageContainerProps = {
@@ -56,7 +49,7 @@ const UnconnectedPageContainer = ({ components, container, theme }: Props) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-    components: state.page.pageComponents
+    components: state.page.pageComponents,
 });
 
 const PageContainer = connect(mapStateToProps)(UnconnectedPageContainer);

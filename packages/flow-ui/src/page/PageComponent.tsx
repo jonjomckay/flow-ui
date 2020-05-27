@@ -2,27 +2,32 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { selectOutcome, setComponentValue } from '../actions';
 import { IObjectData, IOutcome, IPageComponent, IPageInput } from '../types';
-import { RootState } from '../store';
 import PageComponentProps from './PageComponentProps';
 import PageComponentError from './PageComponentError';
 import ITheme from '../ITheme';
+import { RootState } from '../store';
 
 export interface PageComponentOnChangeProps {
     objectData?: IObjectData[];
     contentValue?: string;
 }
 
-interface Props {
+// These props are the ones passed in from PageContainer - seems there's a bug in the Redux types that fails the type
+// check if you use a mix of manually-passed-in props and Redux props unless two different interfaces are used...
+interface OwnProps {
     component: IPageComponent;
-    input: IPageInput;
-    outcomes: IOutcome[];
     theme: ITheme;
+}
 
+type Props = & OwnProps & {
+    input: IPageInput;
+    isLoading: boolean,
+    outcomes: IOutcome[];
     selectOutcome: typeof selectOutcome;
     setComponentValue: typeof setComponentValue;
 }
 
-const PageComponent = ({ component, input, outcomes, selectOutcome, setComponentValue, theme }: Props) => {
+const PageComponent = ({ component, input, isLoading, outcomes, selectOutcome, setComponentValue, theme }: Props) => {
     const { componentType } = component;
 
     const onChange = (value: PageComponentOnChangeProps) => {
@@ -36,6 +41,7 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
     const props: PageComponentProps = {
         ...input,
         component: component,
+        isLoading: isLoading,
         onChange: onChange,
         outcomes: outcomes,
         selectOutcome: selectOutcome
@@ -70,9 +76,10 @@ const PageComponent = ({ component, input, outcomes, selectOutcome, setComponent
     )
 };
 
-const mapStateToProps = (state: RootState, ownProps: Props) => ({
+const mapStateToProps = (state: RootState, ownProps: OwnProps) => ({
     input: state.page.inputs[ownProps.component.id],
-    outcomes: state.outcomes.outcomes.filter(outcome => outcome.pageObjectBindingId === ownProps.component.id)
+    isLoading: state.page.loadingComponents.includes(ownProps.component.id),
+    outcomes: state.outcomes.outcomes.filter(outcome => outcome.pageObjectBindingId === ownProps.component.id),
 });
 
 const mapDispatchToProps = ({

@@ -5,6 +5,7 @@ import loadNavigation, { LoadNavigationProps } from './loadNavigation';
 import loadObjectData, { LoadObjectDataProps } from './loadObjectData';
 import refreshComponent from './refreshComponent';
 import removeNotification from './removeNotification';
+import setComponentLoading, { SetComponentLoadingProps } from './setComponentLoading';
 import setComponentValue, { SetComponentValueProps } from './setComponentValue';
 import selectNavigationItem, { SelectNavigationItemProps } from './selectNavigationItem';
 import selectOutcome, { SelectOutcomeProps } from './selectOutcome';
@@ -20,6 +21,7 @@ export {
     removeNotification,
     selectNavigationItem,
     selectOutcome,
+    setComponentLoading,
     setComponentValue,
     setTenant,
 };
@@ -31,6 +33,7 @@ export type {
     LoadNavigationProps,
     LoadObjectDataProps,
     SelectOutcomeProps,
+    SetComponentLoadingProps,
     SetComponentValueProps,
     SelectNavigationItemProps,
 };
