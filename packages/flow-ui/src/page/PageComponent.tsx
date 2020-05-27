@@ -60,7 +60,7 @@ const PageComponent = ({ component, input, isLoading, outcomes, selectOutcome, s
         const message = <span>Unknown component type <strong>{ componentType }</strong></span>;
 
         content = React.createElement(theme.alertComponent, {
-            title: message,
+            message: message,
             type: 'warning'
         });
     }
