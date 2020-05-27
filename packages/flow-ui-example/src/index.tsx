@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Flow } from '@jonjomckay/flow-ui';
 import antdTheme from '@jonjomckay/flow-ui-antd';
+import bootstrap4Theme from '@jonjomckay/flow-ui-bootstrap4';
 
 
 Array.from(document.getElementsByClassName('flow')).forEach(element => {
@@ -20,7 +21,7 @@ Array.from(document.getElementsByClassName('flow')).forEach(element => {
     const version = element.getAttribute('data-flow-version');
 
     ReactDOM.render(
-        <Flow id={ id } tenant={ tenant } theme={ antdTheme } version={ version } />,
+        <Flow id={ id } tenant={ tenant } theme={ bootstrap4Theme } version={ version } />,
         element
     );
 });

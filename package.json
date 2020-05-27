@@ -11,6 +11,7 @@
     "packages": [
       "packages/flow-ui",
       "packages/flow-ui-antd",
+      "packages/flow-ui-bootstrap4",
       "packages/flow-ui-example"
     ],
     "nohoist": [
