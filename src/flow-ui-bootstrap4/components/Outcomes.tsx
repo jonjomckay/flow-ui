@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Outcome from './Outcome';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Col, Row, ButtonGroup } from 'react-bootstrap';
 import { OutcomesListProps, PageComponentProps } from '../../flow-ui';
 
 export function OutcomesList(props: OutcomesListProps): React.ReactElement<PageComponentProps> {
@@ -15,46 +15,50 @@ export function OutcomesList(props: OutcomesListProps): React.ReactElement<PageC
     });
 
     return (
-        <div className="outcomes">
-            <Col>
-                { outcomes }
-            </Col>
-        </div>
+        <>
+            { outcomes }
+        </>
     );
 }
 
 export default function Outcomes(props: PageComponentProps): React.ReactElement<PageComponentProps> {
-    let justify: 'end' | 'start';
+    let justify: string;
     switch (props.component.attributes && props.component.attributes['justify']) {
         case 'right':
-            justify = 'end';
+            justify = 'col-auto ml-auto';
             break;
         default:
-            justify = 'start';
+            justify = 'col-auto';
             break;
     }
 
     switch (props.component.attributes && props.component.attributes['group']) {
         case 'horizontal':
             return (
-                <Row justify={ justify }>
-                    <Button.Group>
-                        <OutcomesList { ...props } />
-                    </Button.Group>
+                <Row>
+                    <Col className={ justify }>
+                        <ButtonGroup>
+                            <OutcomesList { ...props } />
+                        </ButtonGroup>
+                    </Col>
                 </Row>
             );
         case 'vertical':
             return (
-                <Row justify={ justify }>
-                    <Space direction="vertical" size={ 0 }>
-                        { OutcomesList(props) }
-                    </Space>
+                <Row>
+                    <Col className={ justify }>
+                        <ButtonGroup vertical>
+                            <OutcomesList { ...props } />
+                        </ButtonGroup>
+                    </Col>
                 </Row>
             )
         default:
             return (
-                <Row justify={ justify }>
-                    <OutcomesList { ...props } />
+                <Row>
+                    <Col className={ justify }>
+                        <OutcomesList { ...props } />
+                    </Col>
                 </Row>
             )
     }
