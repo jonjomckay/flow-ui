@@ -1,6 +1,6 @@
 import React from 'react';
 import { IOutcome, PageComponentProps } from '../../flow-ui';
-import { Button } from 'react-bootstrap';
+import { Button, ButtonProps } from 'react-bootstrap';
 
 interface Props {
     isLoading: boolean
@@ -12,28 +12,42 @@ interface Props {
 export default function Outcome(props: Props): React.ReactElement<PageComponentProps> {
     const { isLoading, onClick, outcome } = props;
 
-    const danger = ['cancel', 'delete', 'reject', 'remove'].includes(outcome.pageActionType?.toLowerCase());
-
-    let type;
+    let variant: ButtonProps['variant'];
     switch (outcome.pageActionType?.toLowerCase()) {
+        case 'apply':
+        case 'insert':
+        case 'new':
+        case 'save':
+        case 'submit':
+            variant = 'primary';
+            break;
         case 'add':
-        case 'cancel':
-        case 'delete':
         case 'import':
-        case 'reject':
-        case 'remove':
         case 'update':
         case 'upsert':
+            variant = 'success';
+            break;
+        case 'edit':
+        case 'escalate':
+        case 'query':
+            variant = 'info';
+            break;
+        case 'cancel':
+        case 'delete':
+        case 'reject':
+        case 'remove':
+            variant = 'danger';
+            break;
         case 'back':
-            type = 'default';
+            variant = 'secondary';
             break;
         default:
-            type = 'primary';
+            variant = 'primary';
             break;
     }
 
     return (
-        <Button danger={ danger } disabled={ isLoading } onClick={ onClick } type={ type }>
+        <Button disabled={ isLoading } onClick={ onClick } variant={ variant }>
             { outcome.label }
         </Button>
     );
