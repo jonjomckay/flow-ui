@@ -27,13 +27,13 @@ const Page = (props: PageProps) => {
     ]);
 
     return (
-        <>
+        <React.Suspense fallback={''}>
             <ProgressBar percent={ props.isLoading ? 25 : 100 } />
 
             <Navigation theme={ props.theme } />
 
             { rootContainer }
-        </>
+        </React.Suspense>
     );
 };
 

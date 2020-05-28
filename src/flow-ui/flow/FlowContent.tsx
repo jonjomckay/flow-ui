@@ -28,11 +28,11 @@ class FlowContent extends React.Component<Props> {
         const notifications = React.createElement(this.props.theme.notificationsComponent);
 
         return (
-            <>
+            <React.Suspense fallback={''}>
                 { notifications }
 
                 <Page theme={ this.props.theme } />
-            </>
+            </React.Suspense>
         );
     }
 }
