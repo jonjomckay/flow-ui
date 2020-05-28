@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
-import { rootReducer } from './store';
-import App from './App';
-import { ITheme } from './index';
+import { rootReducer } from '../store';
+import FlowContent from './FlowContent';
+import { ITheme } from '../index';
 
 interface Props {
     id: string
@@ -27,7 +27,7 @@ export default class Flow extends React.Component<Props> {
         return (
             <React.StrictMode>
                 <Provider store={ this.store }>
-                    <App { ...this.props } />
+                    <FlowContent { ...this.props } />
                 </Provider>
             </React.StrictMode>
         )

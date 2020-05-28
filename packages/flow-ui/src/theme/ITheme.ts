@@ -1,11 +1,13 @@
 import { ComponentClass, FunctionComponent } from 'react';
-import NavigationProps from './navigation/NavigationProps';
-import PageContainerProps from './page/PageContainerProps';
-import PageComponentProps from './page/PageComponentProps';
-import AlertProps from './common/AlertProps';
-import NotificationsProps from './notification/NotificationsProps';
-import OutcomesListProps from './outcomes/OutcomesListProps';
-import LoaderProps from './loader/LoaderProps';
+import {
+    AlertProps,
+    LoaderProps,
+    NavigationProps,
+    NotificationsProps,
+    OutcomesListProps,
+    PageComponentProps,
+    PageContainerProps
+} from '../index';
 
 type Component<P> = FunctionComponent<P> | ComponentClass<P> | string;
 

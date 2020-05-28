@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { initializeFlow, InitializeFlowProps } from './actions';
-import './App.less';
-import Page from './page/Page';
-import { ITheme } from './index';
+import { initializeFlow, InitializeFlowProps } from '../actions';
+import { ITheme } from '../index';
+import Page from '../page/Page';
 
 interface Props {
     id: string;
@@ -14,7 +13,7 @@ interface Props {
     initializeFlow(value: InitializeFlowProps): void;
 }
 
-class App extends React.Component<Props> {
+class FlowContent extends React.Component<Props> {
     componentDidMount() {
         this.props.initializeFlow({
             flowId: {
@@ -42,4 +41,4 @@ const mapDispatchToProps = ({
     initializeFlow
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(FlowContent);

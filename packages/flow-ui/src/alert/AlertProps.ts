@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default interface AlertProps {
     message?: React.ReactNode
     title: React.ReactNode
