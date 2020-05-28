@@ -40,10 +40,11 @@ const UnconnectedPageContainer = ({ components, container, theme }: Props) => {
     // We can't map the container type to a container in the theme
     console.warn('The container type ' + containerType + ' is not supported');
 
-    const message = <span>Unknown container type <strong>{ containerType }</strong></span>;
+    const message = <span>The container type <strong>{ containerType }</strong> is not supported</span>;
 
     return React.createElement(theme.alertComponent, {
         message: message,
+        title: 'Unknown container',
         type: 'warning'
     });
 };
