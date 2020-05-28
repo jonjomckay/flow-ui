@@ -1,0 +1,54 @@
+@import "~antd/lib/style/index";
+
+.container {
+  width: 100%;
+  margin: auto;
+}
+
+// Make plain headings use the Ant Design typography headings (i.e. headings in presentations, without classes)
+.title(@size, @lineHeight) {
+  .typography-title(
+          @size,
+          @typography-title-font-weight,
+          @lineHeight,
+          @heading-color,
+          @typography-title-margin-bottom
+  );
+}
+
+h1 {
+  .title(@heading-1-size, 1.23);
+}
+
+h2 {
+  .title(@heading-2-size, 1.35);
+}
+
+h3 {
+  .title(@heading-3-size, 1.35);
+}
+
+h4 {
+  .title(@heading-4-size, 1.4);
+}
+
+// Alerts
+.ant-alert.ant-alert {
+  margin-top: 16px;
+}
+
+// Buttons
+.ant-btn {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+
+// Remove right margin from buttons in a group (did Ant break this?)
+.ant-btn-group .ant-btn {
+  margin-right: 0;
+}
+
+/* TODO: This doesn't feel right, but it gets rid of the padding at tne end of containers that end with a paragraph */
+.ant-space.ant-space-vertical {
+  display: block;
+}
