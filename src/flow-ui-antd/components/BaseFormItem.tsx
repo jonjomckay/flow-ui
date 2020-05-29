@@ -18,6 +18,12 @@ export default function BaseFormItem({ children, component }: Props): React.Reac
         }
     };
 
+    const formLayout = {
+        labelCol: {
+            span: 4
+        }
+    };
+
     const rules = [
         {
             required: component.data.isRequired,
@@ -30,8 +36,12 @@ export default function BaseFormItem({ children, component }: Props): React.Reac
         ? undefined
         : 'error';
 
+    const layout: any = component.attributes?.layout
+        ? component.attributes.layout
+        : 'vertical';
+
     return (
-        <Form { ...formProps } layout="vertical">
+        <Form { ...formLayout } { ...formProps } layout={ layout }>
             <Form.Item
                 extra={ component.helpInfo }
                 hasFeedback={ !!validationStatus }
