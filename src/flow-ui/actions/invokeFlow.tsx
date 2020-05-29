@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import axios from 'axios';
 import { addNotification, loadNavigation, loadObjectData } from './index';
+import React from 'react';
 
 export interface InvokeFlowProps {
     currentMapElementId: string;
@@ -30,8 +31,29 @@ const invokeFlow: any = createAsyncThunk<any, InvokeFlowProps, { state: RootStat
             thunk.dispatch(loadNavigation(invokeResponse.data));
         }
 
+        // Display a notification for any root faults
+        const mapElementInvokeResponse = invokeResponseData.mapElementInvokeResponses[0];
+        if (mapElementInvokeResponse.rootFaults) {
+            Object.entries<string>(mapElementInvokeResponse.rootFaults).forEach(([, value]) => {
+                // TODO: Is this always JSON?
+                const fault = JSON.parse(value);
+
+                const message = (
+                    <p>
+                        The service endpoint <strong>{ fault.uri }</strong> returned an error with the status code <strong>{ fault.statusCode }</strong> and the message <strong>{ fault.message }</strong>.
+                    </p>
+                )
+
+                thunk.dispatch(addNotification({
+                    message: message,
+                    title: 'Oops',
+                    type: 'error'
+                }))
+            });
+        }
+
         // Trigger any object data requests, if there are any components with them
-        const pageResponse = invokeResponseData.mapElementInvokeResponses[0].pageResponse;
+        const pageResponse = mapElementInvokeResponse.pageResponse;
 
         if (pageResponse.pageComponentDataResponses) {
             pageResponse.pageComponentDataResponses
