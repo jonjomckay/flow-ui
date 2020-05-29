@@ -5,6 +5,8 @@ import BaseFormItem from './BaseFormItem';
 
 export default function InputString({ component, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
     const inputProps = {
+        addonAfter: component.attributes?.suffix,
+        addonBefore: component.attributes?.prefix,
         disabled: component.data.isEnabled === false,
         id: component.id,
         placeholder: component.hintValue,
