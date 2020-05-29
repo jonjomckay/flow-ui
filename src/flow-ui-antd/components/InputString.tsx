@@ -13,7 +13,9 @@ export default function InputString({ component, onChange }: PageComponentProps)
         required: component.data.isRequired,
         maxLength: component.maxSize,
         readOnly: component.data.isEditable === false,
-        width: component.width
+        style: {
+            width: `${component.size}em`
+        }
     };
 
     return (
