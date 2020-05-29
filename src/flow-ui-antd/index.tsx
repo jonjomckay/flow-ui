@@ -6,6 +6,7 @@ import './index.less';
 const Antd: ITheme = {
     alertComponent: React.lazy(() => import(/* webpackChunkName: 'antd.alert' */ './alert/Alert')),
     components: {
+        'CHECKBOX': React.lazy(() => import(/* webpackChunkName: 'antd.component.checkbox' */ './components/Checkbox')),
         'CONTENT': React.lazy(() => import(/* webpackChunkName: 'antd.component.content' */ './components/Content')),
         'IMAGE': React.lazy(() => import(/* webpackChunkName: 'antd.component.image' */ './components/Image')),
         'INPUT': React.lazy(() => import(/* webpackChunkName: 'antd.component.input' */ './components/Input')),
