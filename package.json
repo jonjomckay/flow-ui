@@ -3,8 +3,8 @@
     "private": true,
     "license": "MIT",
     "scripts": {
-        "start": "lerna run start --stream",
-        "build": "lerna run build --stream",
+        "start": "lerna run --parallel start --stream",
+        "build": "lerna run --parallel build --stream",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
         "lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe",
@@ -25,9 +25,6 @@
         "axios": "^0.19.2",
         "classnames": "^2.2.6",
         "jodit": "git+https://github.com/xdan/jodit.git#26556c0517f6453c2a6822afc33f8aa8a08a84a1",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-redux": "^7.2.0",
         "react-scripts": "3.4.0"
     },
     "devDependencies": {

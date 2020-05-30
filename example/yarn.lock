@@ -1359,10 +1359,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@jonjomckay/flow-ui-theme-ant-design@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui-theme-ant-design/-/flow-ui-theme-ant-design-0.1.5.tgz#093b188f4bc7be4854ac05a9b507d4d8c77ba0f5"
-  integrity sha512-wBzujmQ0b7BBwkd6yb8O+Dr/kFa7SvCVuCEr1FzBjM4C0hBtBW3J98ZttxCSjl2LSaqbF6YgjOJdQn9C/K15qA==
+"@jonjomckay/flow-ui-theme-ant-design@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui-theme-ant-design/-/flow-ui-theme-ant-design-0.1.6.tgz#0ba1de411929cd6c58f01d8e3297b017e78c25bb"
+  integrity sha512-lwSfJ8VuazAOzVMnb6cXRwFnnoJfTQXqvvXtPx87o8yF90FqA6Aer/tVleGP2i9OkN1BSeCR4CYyqcHSJfgRMw==
 
 "@jonjomckay/flow-ui@^0.1.5":
   version "0.1.5"
