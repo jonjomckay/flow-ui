@@ -23,5 +23,6 @@
     },
     "eslintConfig": {
         "extends": "react-app"
-    }
+    },
+    "gitHead": "3ade180557d2313a1d13e0dfac9477f1eb668d82"
 }
