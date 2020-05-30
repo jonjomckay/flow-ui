@@ -8,7 +8,7 @@ interface Props {
     id: string;
     tenant: string;
     theme: ITheme;
-    version: string | null;
+    version?: string | null;
 
     initializeFlow(value: InitializeFlowProps): void;
 }

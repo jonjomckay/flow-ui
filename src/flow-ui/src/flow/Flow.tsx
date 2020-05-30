@@ -9,7 +9,7 @@ interface Props {
     id: string
     tenant: string
     theme: ITheme;
-    version: string | null
+    version?: string | null
 }
 
 export default class Flow extends React.Component<Props> {

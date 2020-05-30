@@ -6,7 +6,7 @@ import setTenant from './setTenant';
 export interface InitializeFlowProps {
     flowId: {
         id: string
-        versionId: string | null
+        versionId?: string | null
     }
     tenantId: string
 }
