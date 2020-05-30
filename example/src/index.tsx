@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Flow } from '@jonjomckay/flow-ui';
 import AntDesign from '@jonjomckay/flow-ui-theme-ant-design';
 
+import 'antd/dist/antd.css';
+
 Array.from(document.getElementsByClassName('flow')).forEach(element => {
     const id = element.getAttribute('data-flow-id');
     if (!id) {
