@@ -5,8 +5,7 @@
     "scripts": {
         "start": "lerna run --parallel start --stream",
         "build": "lerna run --parallel build --stream",
-        "test": "react-app-rewired test",
-        "eject": "react-app-rewired eject",
+        "test": "lerna run test --stream",
         "lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe",
         "preversion": "yarn build"
     },
