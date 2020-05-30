@@ -2,7 +2,7 @@
     "name": "@jonjomckay/flow-ui-theme-ant-design",
     "version": "0.1.2",
     "license": "MIT",
-    "main": "dist/index.cjs.js",
+    "main": "dist/index.js",
     "main:src": "src/index.ts",
     "module": "dist/index.es.js",
     "types": "dist/index.d.ts",
@@ -12,6 +12,9 @@
     "scripts": {
         "build": "rollup -c",
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "@jonjomckay/flow-ui": "^0.1.1"
     },
     "peerDependencies": {
         "@jonjomckay/flow-ui": "^0.1.1",

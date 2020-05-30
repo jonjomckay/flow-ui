@@ -2,14 +2,12 @@
 # yarn lockfile v1
 
 
-"@jonjomckay/flow-ui-theme-ant-design@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui-theme-ant-design/-/flow-ui-theme-ant-design-0.1.1.tgz#7cb541416930d4e49cda532bce137dba5c97d686"
-  integrity sha512-5vp4aDNEIg/mGXcXsk5sRhMeCw3DIP5Zi74X3+6WSQQFY7LojZvqz9r/0Ih8eV2ouiN098hpWeaqpbrxIoRGBA==
-  dependencies:
-    "@jonjomckay/flow-ui" "^0.1.1"
+"@jonjomckay/flow-ui-theme-ant-design@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui-theme-ant-design/-/flow-ui-theme-ant-design-0.1.2.tgz#558f2eb0480fad9dc2002651214426f5a11ab543"
+  integrity sha512-aTU8NkEGNf+jBUh/VbOmWCRvXL3AmSXRu57IaiXoGujzHykCNGKN5oY/7z3ug7xz0Jvl8e78dGhPkOQERBQ5rQ==
 
-"@jonjomckay/flow-ui@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui/-/flow-ui-0.1.1.tgz#e921ccf40ef83c829e3cac922fe3d1c1c9604bbb"
-  integrity sha512-GZ6hX9e6LGhWe1bdmwx+LkR3fOOJDzuELFsrLyIZhDLyxk/9EPSToj7pA5Qqtl8V4CpBdjKPM2mfSo0s8oGEbQ==
+"@jonjomckay/flow-ui@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui/-/flow-ui-0.1.2.tgz#e5532b46a971689257206f945f33f148f69cca17"
+  integrity sha512-vXjaku5OTpIRvZyBAt46g6JR7O4bE0Dbw35jA+rXGRABV6P6G+bxbGLCfphx0n6OtQzyBuoZmt4NVpwi85YbgQ==

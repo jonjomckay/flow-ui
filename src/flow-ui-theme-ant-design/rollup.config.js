@@ -1,3 +1,4 @@
+import pkg from './package.json';
 import styles from "rollup-plugin-styles";
 import commonjs from '@rollup/plugin-commonjs';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
@@ -8,14 +9,12 @@ export default {
     input: 'src/index.ts',
     output: [
         {
-            dir: 'dist',
-            entryFileNames: '[name].[format].js',
+            file: pkg.main,
             format: 'cjs',
             sourcemap: true
         },
         {
-            dir: 'dist',
-            entryFileNames: '[name].[format].js',
+            file: pkg.module,
             format: 'es',
             sourcemap: true
         }
