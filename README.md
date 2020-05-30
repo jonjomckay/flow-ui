@@ -1,4 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Jonjo's Boomi Flow UI
+=====================
+
+This is a custom UI framework for Boomi Flow applications, using modern technologies, with support for
+easy theming, and native support for embedding inside other React applications as a component.
+
+[![NPM](https://img.shields.io/npm/v/@jonjomckay/flow-ui.svg)](https://www.npmjs.com/package/@jonjomckay/flow-ui) [![Build Status](https://travis-ci.com/jonjomckay/flow-ui.svg?branch=master)](https://travis-ci.com/jonjomckay/flow-ui)
+
+## Themes
+
+TODO
+
+### Ant Design
+
+#### Installation
+
+To use the theme, you'll need to install the theme itself, along with Ant Design.
+
+```bash
+yarn add @jonjomckay/flow-ui-theme-ant-design antd
+```
+
+#### Usage
+
+Rendering a flow using the library is pretty simple, using the `Flow` component and your chosen theme.
+
+```jsx
+// Import the Flow component and the Ant Design theme
+import { Flow } from '@jonjomckay/flow-ui';
+import AntDesign from '@jonjomckay/flow-ui-theme-ant-design';
+
+// Render the component, passing in at least a theme, tenant ID and flow ID
+const Example = () => (
+    <Flow theme={ AntDesign } tenant="a-tenant-id" id="a-flow-id" />
+);
+```
 
 ## Packages
 
