@@ -1,5 +1,5 @@
 // This needs to go first, otherwise TypeScript tries to export it as a type, which it's not
-export * from './flow/Flow';
+export { default as Flow } from './flow/Flow';
 
 export type { default as ITheme } from './theme/ITheme';
 export type { default as AlertProps } from './alert/AlertProps';
