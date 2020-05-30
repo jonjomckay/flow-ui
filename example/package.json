@@ -1,14 +1,14 @@
 {
     "name": "@jonjomckay/flow-ui-example",
-    "version": "0.0.0",
+    "version": "0.2.0",
     "license": "MIT",
     "scripts": {
         "start": "react-app-rewired start",
         "test": "react-app-rewired test"
     },
     "dependencies": {
-        "@jonjomckay/flow-ui": "^0.1.5",
-        "@jonjomckay/flow-ui-theme-ant-design": "^0.1.6",
+        "@jonjomckay/flow-ui": "^0.2.0",
+        "@jonjomckay/flow-ui-theme-ant-design": "^0.2.0",
         "antd": "^4.2.5",
         "jodit": "^3.3.24",
         "react": "^16.13.1",
