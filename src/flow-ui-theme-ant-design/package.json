@@ -1,6 +1,6 @@
 {
     "name": "@jonjomckay/flow-ui-theme-ant-design",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "license": "MIT",
     "main": "dist/index.js",
     "main:src": "src/index.ts",
@@ -14,7 +14,7 @@
         "start": "rollup -cw"
     },
     "devDependencies": {
-        "@jonjomckay/flow-ui": "^0.2.0"
+        "@jonjomckay/flow-ui": "^0.3.0"
     },
     "peerDependencies": {
         "@jonjomckay/flow-ui": "^0.2.0",
