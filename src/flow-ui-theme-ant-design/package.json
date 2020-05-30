@@ -1,6 +1,6 @@
 {
     "name": "@jonjomckay/flow-ui-theme-ant-design",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "license": "MIT",
     "main": "dist/index.js",
     "main:src": "src/index.ts",
@@ -14,7 +14,7 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
-        "@jonjomckay/flow-ui": "^0.1.4"
+        "@jonjomckay/flow-ui": "^0.1.5"
     },
     "peerDependencies": {
         "@jonjomckay/flow-ui": "^0.1.1",
