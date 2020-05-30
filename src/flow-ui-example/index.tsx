@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Flow } from '../flow-ui';
-import antdTheme from '../flow-ui-antd';
+import antdTheme from '../flow-ui-theme-ant-design';
 
 Array.from(document.getElementsByClassName('flow')).forEach(element => {
     const id = element.getAttribute('data-flow-id');

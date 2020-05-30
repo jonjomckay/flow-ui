@@ -3,7 +3,7 @@ import { ITheme } from '../flow-ui';
 
 import './index.less';
 
-const Antd: ITheme = {
+const AntDesign: ITheme = {
     alertComponent: React.lazy(() => import(/* webpackChunkName: 'antd.alert' */ './alert/Alert')),
     components: {
         'CHECKBOX': React.lazy(() => import(/* webpackChunkName: 'antd.component.checkbox' */ './components/Checkbox')),
@@ -32,4 +32,4 @@ const Antd: ITheme = {
     rootContainer: React.lazy(() => import(/* webpackChunkName: 'antd.container.root' */ './containers/RootContainer'))
 }
 
-export default Antd;
+export default AntDesign;
