@@ -1,6 +1,7 @@
 {
     "name": "@jonjomckay/flow-ui-example",
     "version": "0.2.0",
+    "private": true,
     "license": "MIT",
     "scripts": {
         "start": "react-app-rewired start",
