@@ -5,3 +5,5 @@
 
 * Add facades for all the `ITheme` components to help debugging/building new themes
 * Get rid of Redux stuff from `Navigation` implementations
+
+* Make sure all "custom" attributes work across all components
