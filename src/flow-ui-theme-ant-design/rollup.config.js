@@ -6,6 +6,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import ts from "@wessberg/rollup-plugin-ts";
 
 export default {
+    cache: true,
     input: 'src/index.ts',
     output: [
         {
