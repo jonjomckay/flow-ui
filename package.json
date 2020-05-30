@@ -9,6 +9,10 @@
         "lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe",
         "preversion": "yarn build"
     },
+    "workspaces": [
+        "example",
+        "src/*"
+    ],
     "dependencies": {
         "@reduxjs/toolkit": "^1.3.6",
         "@testing-library/jest-dom": "^5.8.0",
