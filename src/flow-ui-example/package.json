@@ -10,5 +10,6 @@
     "dependencies": {
         "@jonjomckay/flow-ui": "^0.1.0",
         "@jonjomckay/flow-ui-theme-ant-design": "^0.1.0"
-    }
+    },
+    "gitHead": "94eac403932196f23852af091b2d33793423b254"
 }

@@ -6,6 +6,9 @@
     "main:src": "src/index.ts",
     "module": "dist/index.es.js",
     "types": "dist/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "build": "rollup -c",
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +21,6 @@
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-redux": "^7.2.0"
-    }
+    },
+    "gitHead": "94eac403932196f23852af091b2d33793423b254"
 }
