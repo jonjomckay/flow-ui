@@ -12,7 +12,9 @@ easy theming, and native support for embedding inside other React applications a
 * 🎨 Theming
 * 🗄️ State management using [Redux](https://redux.js.org)
 * 🚀 Built for performance first
-* ⚖️ Minimal bundle size
+* ⚖️ Minimal bundle size, with few dependencies
+    * [`@jonjomckay/flow-ui`](https://bundlephobia.com/result?p=@jonjomckay/flow-ui@0.2.0) weighs 16.1 kB (v0.2.0)
+    * [`@jonjomckay/flow-ui-theme-ant-design`](https://bundlephobia.com/result?p=@jonjomckay/flow-ui-theme-ant-design@0.2.0) weighs 4.1 kB (v0.2.0)
 
 ## Quick Start
 
