@@ -1,9 +1,9 @@
 {
-    "name": "@jonjomckay/flow-ui",
-    "version": "0.1.0",
+    "name": "root",
+    "private": true,
     "license": "MIT",
     "scripts": {
-        "start": "react-app-rewired start",
+        "start": "lerna run start --stream",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
@@ -46,6 +46,7 @@
         "eslint-plugin-react": "^7.17.0",
         "eslint-plugin-react-hooks": "^2.3.0",
         "jest-prop-type-error": "^1.1.0",
+        "lerna": "^3.18.1",
         "less": "^3.11.1",
         "less-loader": "^5.0.0",
         "prettier": "^1.19.1",
