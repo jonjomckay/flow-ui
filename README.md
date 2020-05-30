@@ -58,6 +58,11 @@ import AntDesign from '@jonjomckay/flow-ui-theme-ant-design';
 <Flow theme={ AntDesign } />
 ```
 
+### Custom
+
+It's possible to implement your own themes, using the `ITheme` interface exported by `@jonjomckay/flow-ui`. Your theme
+will need to implement all fields on this interface, with each field being a React component handling the given props.
+
 ## Packages
 
 ### `flow-ui`
