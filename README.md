@@ -6,6 +6,14 @@ easy theming, and native support for embedding inside other React applications a
 
 [![NPM](https://img.shields.io/npm/v/@jonjomckay/flow-ui.svg)](https://www.npmjs.com/package/@jonjomckay/flow-ui) [![Build Status](https://travis-ci.com/jonjomckay/flow-ui.svg?branch=master)](https://travis-ci.com/jonjomckay/flow-ui)
 
+## Features
+
+* 👍 Support for _most_ built-in Flow page components
+* 🎨 Theming
+* 🗄️ State management using [Redux](https://redux.js.org)
+* 🚀 Built for performance first
+* ⚖️ Minimal bundle size
+
 ## Quick Start
 
 1. Pick a [theme](#themes) and install it (Ant Design, in this example)
