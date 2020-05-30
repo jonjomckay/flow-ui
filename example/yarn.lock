@@ -1359,15 +1359,15 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@jonjomckay/flow-ui-theme-ant-design@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui-theme-ant-design/-/flow-ui-theme-ant-design-0.1.4.tgz#2f295603550f8348319db0258a4d1ae9fb4cd155"
-  integrity sha512-wwsTsJxG7tMCaGd2M2IWZ64msXJUMoaRxw1GUwTMVI2g5Hk/B3Ey00Lh5xz5W5SJOc1+M7UCikGUrfnThsHjGA==
+"@jonjomckay/flow-ui-theme-ant-design@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui-theme-ant-design/-/flow-ui-theme-ant-design-0.1.5.tgz#093b188f4bc7be4854ac05a9b507d4d8c77ba0f5"
+  integrity sha512-wBzujmQ0b7BBwkd6yb8O+Dr/kFa7SvCVuCEr1FzBjM4C0hBtBW3J98ZttxCSjl2LSaqbF6YgjOJdQn9C/K15qA==
 
-"@jonjomckay/flow-ui@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui/-/flow-ui-0.1.4.tgz#cb4d455fe9e9f317fad502579891fc71f9b6426c"
-  integrity sha512-tx6FZoERDKGew9utGbct7yN5rwUoSjWJwEq5MBiaPu9HpMEsTUVP7zhtWKVftDMmOETZ4jP9UeXLdvVcHuFhjw==
+"@jonjomckay/flow-ui@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@jonjomckay/flow-ui/-/flow-ui-0.1.5.tgz#b9bcef920293578e7bb3f77b6fc3ff1057987c52"
+  integrity sha512-des2VfMv42dSqPBOvIBUH2+VSXqWVx2Zfn3S/iBSvQZnjb56YAvepbklf6UjUIhP1BwNaiYg5tZoX8MTU/qBpw==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
