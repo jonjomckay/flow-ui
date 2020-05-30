@@ -4,9 +4,15 @@
     "license": "MIT",
     "main": "dist/index.js",
     "main:src": "src/index.ts",
+    "module": "dist/index.es.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "rm -r dist && tsc",
+        "build": "rollup -c",
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "peerDependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-redux": "^7.2.0"
     }
 }

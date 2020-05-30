@@ -1,8 +1,10 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { RootState } from '../store';
-import axios from 'axios';
-import { addNotification, loadNavigation, loadObjectData } from './index';
 import React from 'react';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { RootState } from '../store';
+import addNotification from './addNotification';
+import loadNavigation from './loadNavigation';
+import loadObjectData from './loadObjectData';
 
 export interface InvokeFlowProps {
     currentMapElementId: string;

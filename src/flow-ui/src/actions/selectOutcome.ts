@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { invokeFlow } from '../actions';
+import invokeFlow from './invokeFlow';
 
 export interface SelectOutcomeProps {
     selectedOutcomeId: string

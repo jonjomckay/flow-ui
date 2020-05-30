@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "declarationDir": "./dist",
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "jsx": "react",
@@ -11,13 +10,16 @@
             "es2017",
             "dom"
         ],
-        "module": "commonjs",
-        "outDir": "./dist",
+        "module": "esnext",
+        "moduleResolution": "node",
         "skipLibCheck": true,
         "sourceMap": true,
         "strict": true,
         "target": "es5"
     },
+    "exclude": [
+        "node_modules"
+    ],
     "include": [
         "src"
     ]

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { setComponentLoading, setComponentValue } from './index';
+import setComponentLoading from './setComponentLoading';
+import setComponentValue from './setComponentValue';
 
 export interface LoadObjectDataProps {
     objectDataRequest: any // TODO

@@ -1,6 +1,6 @@
 import { INotification } from '../types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { removeNotification } from './index';
+import removeNotification from './removeNotification';
 import React from 'react';
 
 export interface AddNotificationProps {

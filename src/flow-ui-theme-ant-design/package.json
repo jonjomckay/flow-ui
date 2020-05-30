@@ -2,14 +2,21 @@
     "name": "@jonjomckay/flow-ui-theme-ant-design",
     "version": "0.0.0",
     "license": "MIT",
-    "main": "dist/index.js",
-    "main:src": "src/index.tsx",
-    "types": "src/index.tsx",
+    "main": "dist/index.cjs.js",
+    "main:src": "src/index.ts",
+    "module": "dist/index.es.js",
+    "types": "dist/index.d.ts",
     "scripts": {
-        "build": "rm -r dist && tsc",
+        "build": "rollup -c",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
         "@jonjomckay/flow-ui": "*"
+    },
+    "peerDependencies": {
+        "antd": "^4.2.5",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-redux": "^7.2.0"
     }
 }

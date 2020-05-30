@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { selectNavigationItem } from '../actions';
+import selectNavigationItem from '../actions/selectNavigationItem';
 import { RootState } from '../store';
 import ITheme from '../theme/ITheme';
 import NavigationProps from './NavigationProps';
