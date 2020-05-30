@@ -22,7 +22,7 @@ easy theming, and native support for embedding inside other React applications a
 1. Pick a [theme](#themes) and install it (Ant Design, in this example)
 
     ```bash
-     yarn add @jonjomckay/flow-ui-theme-ant-design antd
+     yarn add @jonjomckay/flow-ui @jonjomckay/flow-ui-theme-ant-design antd
     ```
 
 2. Import the theme and the `Flow` component, and render them
@@ -48,7 +48,7 @@ This is a theme that uses the [Ant Design](https://ant.design) UI library, based
 use it, you'll need to install the theme itself along with Ant Design.
 
 ```bash
-yarn add @jonjomckay/flow-ui-theme-ant-design antd
+yarn add @jonjomckay/flow-ui @jonjomckay/flow-ui-theme-ant-design antd
 ```
 
 Using it is just a case of importing the theme and supplying it to your `Flow` component:

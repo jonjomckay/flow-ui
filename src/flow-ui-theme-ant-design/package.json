@@ -13,10 +13,11 @@
         "build": "rollup -c",
         "start": "rollup -cw"
     },
-    "dependencies": {
+    "devDependencies": {
         "@jonjomckay/flow-ui": "^0.2.0"
     },
     "peerDependencies": {
+        "@jonjomckay/flow-ui": "^0.2.0",
         "antd": "^4.2.5",
         "jodit": "^3.3.24",
         "react": "^16.13.1",
