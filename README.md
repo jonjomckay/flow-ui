@@ -10,6 +10,7 @@ easy theming, and native support for embedding inside other React applications a
 
 * 👍 Support for _most_ built-in Flow page components
 * 🎨 Theming
+* 😍 [Example documentation](https://jonjomckay.github.io/flow-ui)
 * 🗄️ State management using [Redux](https://redux.js.org)
 * 🚀 Built for performance first
 * ⚖️ Minimal bundle size, with few dependencies
