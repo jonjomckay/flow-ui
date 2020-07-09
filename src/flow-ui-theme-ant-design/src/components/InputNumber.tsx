@@ -40,7 +40,7 @@ export default function InputNumber({ component, onChange }: PageComponentProps)
         maxLength: component.maxSize,
         parser: parser,
         readOnly: component.data.isEditable === false,
-        step: Number.parseFloat(component.attributes?.step),
+        step: Number.parseFloat(component.attributes?.step || '1'),
         width: component.width
     };
 
