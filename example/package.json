@@ -1,6 +1,6 @@
 {
     "name": "flow-ui-example",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "private": true,
     "license": "MIT",
     "scripts": {
@@ -10,8 +10,8 @@
         "test": "craco test"
     },
     "dependencies": {
-        "@jonjomckay/flow-ui": "^0.3.0",
-        "@jonjomckay/flow-ui-theme-ant-design": "^0.3.0",
+        "@jonjomckay/flow-ui": "^0.4.0",
+        "@jonjomckay/flow-ui-theme-ant-design": "^0.4.0",
         "@reduxjs/toolkit": "^1.4.0",
         "antd": "^4.2.5",
         "jodit": "^3.3.24",
