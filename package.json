@@ -3,8 +3,8 @@
     "private": true,
     "license": "MIT",
     "scripts": {
-        "start": "lerna run --parallel start --stream",
-        "build": "lerna run --parallel build --stream",
+        "start": "yarn build && lerna run --parallel start --stream",
+        "build": "NODE_ENV=production lerna run build --stream",
         "test": "lerna run test --stream",
         "lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe",
         "preversion": "yarn build"

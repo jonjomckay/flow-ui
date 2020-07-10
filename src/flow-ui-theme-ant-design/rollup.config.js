@@ -5,11 +5,13 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import ts from "@wessberg/rollup-plugin-ts";
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export default {
     cache: true,
     input: 'src/index.ts',
     output: [
-        {
+        isProduction && {
             file: pkg.main,
             format: 'cjs',
             sourcemap: true
