@@ -4,7 +4,7 @@
     "license": "MIT",
     "scripts": {
         "start": "yarn build && lerna run --parallel start --stream",
-        "build": "NODE_ENV=production lerna run build --stream",
+        "build": "NODE_ENV=production lerna run build --stream --scope @jonjomckay/flow-ui*",
         "test": "lerna run test --stream",
         "lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe",
         "preversion": "yarn build"
