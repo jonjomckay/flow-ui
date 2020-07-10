@@ -19,13 +19,19 @@ easy theming, and native support for embedding inside other React applications a
 
 ## Quick Start
 
+1. Ensure you have the required dependencies installed:
+
+   ```bash
+   yarn add @reduxjs/toolkit react react-dom react-redux
+   ```
+
 1. Pick a [theme](#themes) and install it (Ant Design, in this example)
 
     ```bash
-     yarn add @jonjomckay/flow-ui @jonjomckay/flow-ui-theme-ant-design antd
+    yarn add @jonjomckay/flow-ui @jonjomckay/flow-ui-theme-ant-design antd
     ```
 
-2. Import the theme and the `Flow` component, and render them
+1. Import the theme and the `Flow` component, and render them
 
     ```jsx
     // Import the Flow component and the Ant Design theme
