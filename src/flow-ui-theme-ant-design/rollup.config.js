@@ -24,7 +24,7 @@ export default {
         }
     ],
     plugins: [
-        analyze({
+        isProduction && analyze({
             summaryOnly: true
         }),
         peerDepsExternal(),
