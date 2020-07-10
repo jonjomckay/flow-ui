@@ -1,5 +1,6 @@
 import pkg from './package.json';
 import styles from "rollup-plugin-styles";
+import analyze from 'rollup-plugin-analyzer';
 import commonjs from '@rollup/plugin-commonjs';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
@@ -23,6 +24,9 @@ export default {
         }
     ],
     plugins: [
+        analyze({
+            summaryOnly: true
+        }),
         peerDepsExternal(),
         resolve({
             browser: true,

@@ -33,8 +33,6 @@ export default function Outcome(props: Props): React.ReactElement<PageComponentP
             break;
     }
 
-    console.log(isLoading)
-
     return (
         <Button danger={ danger } disabled={ isLoading } loading={ isLoading } onClick={ onClick } type={ type }>
             { outcome.label }
