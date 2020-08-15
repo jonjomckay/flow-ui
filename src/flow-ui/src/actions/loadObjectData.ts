@@ -2,14 +2,17 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import setComponentLoading from './setComponentLoading';
 import setComponentValue from './setComponentValue';
+import loadInvokerRequests from './loadInvokerRequests';
+import { RootState } from '../store';
 
 export interface LoadObjectDataProps {
     objectDataRequest: any // TODO
     pageComponentId: string
 }
 
-const loadObjectData = createAsyncThunk('LoadObjectData', async (payload: LoadObjectDataProps, thunk) => {
+const loadObjectData = createAsyncThunk<any, LoadObjectDataProps, { state: RootState }>('LoadObjectData', async (payload: LoadObjectDataProps, thunk) => {
     const { objectDataRequest, pageComponentId } = payload;
+    const { state } = thunk.getState();
 
     thunk.dispatch(setComponentLoading({
         isLoading: true,
@@ -19,7 +22,8 @@ const loadObjectData = createAsyncThunk('LoadObjectData', async (payload: LoadOb
     try {
         const response = await axios.post('https://flow.boomi.com/api/run/1/service/data', objectDataRequest, {
             headers: {
-                'ManyWhoTenant': '1e6ba809-b1f7-4118-91c1-a5a6e7092ced'
+                'Authorization': state.authenticationToken || '',
+                'ManyWhoTenant': state.tenantId
             }
         });
 
@@ -35,6 +39,10 @@ const loadObjectData = createAsyncThunk('LoadObjectData', async (payload: LoadOb
         thunk.dispatch(setComponentLoading({
             isLoading: false,
             pageComponentId: pageComponentId
+        }));
+
+        thunk.dispatch(loadInvokerRequests({
+
         }));
     }
 });

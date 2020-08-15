@@ -22,6 +22,7 @@ const loadNavigation: any = createAsyncThunk<any, LoadNavigationProps, { state: 
         // Send the actual navigation request to Flow
         const navigationResponse: AxiosResponse = await axios.post('https://flow.boomi.com/api/run/1/navigation/' + payload.stateId, request, {
             headers: {
+                'Authorization': state.state.authenticationToken || '',
                 'ManyWhoTenant': state.state.tenantId
             }
         });

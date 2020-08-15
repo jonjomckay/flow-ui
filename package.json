@@ -23,7 +23,7 @@
         "@types/react": "^16.9.35",
         "@types/react-dom": "^16.9.8",
         "@types/react-redux": "^7.1.9",
-        "axios": "^0.19.2",
+        "axios": "^0.20.0-0",
         "classnames": "^2.2.6",
         "jodit": "git+https://github.com/xdan/jodit.git#26556c0517f6453c2a6822afc33f8aa8a08a84a1",
         "react-scripts": "3.4.0"

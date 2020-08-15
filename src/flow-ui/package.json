@@ -13,6 +13,9 @@
         "build": "rollup -c",
         "start": "rollup -cw"
     },
+    "dependencies": {
+        "date-fns": "^2.14.0"
+    },
     "devDependencies": {
         "@reduxjs/toolkit": "^1.4.0"
     },

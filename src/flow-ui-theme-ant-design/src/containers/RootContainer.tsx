@@ -9,7 +9,7 @@ interface Props {
 export default function RootContainer(props: Props): React.ReactElement<PageContainerProps> {
     return (
         <Layout>
-            <Layout.Content className="container" style={ { padding: '1.5rem 50px', width: '1280px' } }>
+            <Layout.Content className="container" style={ { padding: '1.5rem 50px' } }>
                 { props.children }
             </Layout.Content>
         </Layout>

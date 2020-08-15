@@ -21,7 +21,7 @@ Array.from(document.getElementsByClassName('flow')).forEach(element => {
     const version = element.getAttribute('data-flow-version');
 
     ReactDOM.render(
-        <Flow id={ id } tenant={ tenant } theme={ AntDesign } version={ version } />,
+        <Flow id={ id } mode="DEBUG" tenant={ tenant } theme={ AntDesign } version={ version } />,
         element
     );
 });

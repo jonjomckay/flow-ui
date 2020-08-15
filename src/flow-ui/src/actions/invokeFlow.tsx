@@ -5,11 +5,14 @@ import { RootState } from '../store';
 import addNotification from './addNotification';
 import loadNavigation from './loadNavigation';
 import loadObjectData from './loadObjectData';
+import loadInvokerRequests from './loadInvokerRequests';
 
 export interface InvokeFlowProps {
+    authenticationToken?: string;
     currentMapElementId: string;
     invokeType: 'FORWARD' | 'SYNC';
     mapElementInvokeRequest: any;
+    mode?: string;
     stateId: string;
     stateToken: string;
 }
@@ -18,10 +21,19 @@ export interface InvokeFlowProps {
 const invokeFlow: any = createAsyncThunk<any, InvokeFlowProps, { state: RootState }>('InvokeFlow', async (payload, thunk) => {
     const state: RootState = thunk.getState();
 
+    // TODO: Deduplicate
+    const params = new URLSearchParams(window.location.search);
+
+    // TODO: Clean up
+    payload.mode = params.has('user-token')
+        ? 'DEBUG'
+        : '';
+
     try {
         // Send the actual invocation request to Flow
         const invokeResponse = await axios.post('https://flow.boomi.com/api/run/1/state/' + payload.stateId, payload, {
             headers: {
+                'Authorization': state.state.authenticationToken || payload.authenticationToken || '',
                 'ManyWhoTenant': state.state.tenantId
             }
         });
@@ -85,6 +97,10 @@ const invokeFlow: any = createAsyncThunk<any, InvokeFlowProps, { state: RootStat
         }
 
         throw e;
+    } finally {
+        thunk.dispatch(loadInvokerRequests({
+
+        }));
     }
 });
 

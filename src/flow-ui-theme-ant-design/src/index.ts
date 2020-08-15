@@ -10,6 +10,7 @@ import Presentation from './components/Presentation';
 import Radio from './components/Radio';
 import SelectComponent from './components/SelectComponent';
 import Table from './components/Table';
+import Tag from './components/Tag';
 import Textarea from './components/Textarea';
 import Toggle from './components/Toggle';
 
@@ -40,6 +41,7 @@ const AntDesign: ITheme = {
         'RADIO': Radio,
         'SELECT': SelectComponent,
         'TABLE': Table,
+        'TAG': Tag,
         'TEXTAREA': Textarea,
         'TOGGLE': Toggle,
     },

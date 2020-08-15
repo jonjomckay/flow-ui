@@ -1,12 +1,12 @@
 export default interface IPageComponentColumn {
-    componentType: string
-    contentFormat: string
-    contentType: string
+    componentType?: string
+    contentFormat?: string
+    contentType?: string
     developerName: string
-    isDisplayValue: boolean
-    isEditable: boolean
+    isDisplayValue?: boolean
+    isEditable?: boolean
     label: string
-    order: number
+    order?: number
     typeElementPropertyId: string
-    typeElementPropertyToDisplayId: string
+    typeElementPropertyToDisplayId?: string
 }

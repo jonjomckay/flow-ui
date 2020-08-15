@@ -7,6 +7,7 @@ import { IPageContainer } from '../types';
 import ProgressBar from '../common/ProgressBar';
 import ITheme from '../theme/ITheme';
 import Navigation from '../navigation/Navigation';
+import './Page.less';
 
 interface PageProps {
     containers: IPageContainer[];
@@ -28,11 +29,13 @@ const Page = (props: PageProps) => {
 
     return (
         <React.Suspense fallback={''}>
-            <ProgressBar percent={ props.isLoading ? 25 : 100 } />
+            <div className="flow-page">
+                <ProgressBar percent={ props.isLoading ? 25 : 100 } />
 
-            <Navigation theme={ props.theme } />
+                <Navigation theme={ props.theme } />
 
-            { rootContainer }
+                { rootContainer }
+            </div>
         </React.Suspense>
     );
 };
