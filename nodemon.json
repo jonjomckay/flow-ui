@@ -1,0 +1,6 @@
+{
+  "watch": ["src"],
+  "ext": "js jsx ts tsx",
+  "ignore": ["src/**/*.spec.ts", "**/dist/*"],
+  "exec": "rush build -o"
+}
