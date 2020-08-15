@@ -45,7 +45,7 @@ const config = [
             }),
             esbuild({
                 watch: !!process.env.ROLLUP_WATCH,
-                minify: process.env.NODE_ENV === 'production',
+                // minify: process.env.NODE_ENV === 'production',
                 target: 'es6' // This is duplicated here, as rollup-plugin-esbuild doesn't use the merged tsconfig.json
             }),
         ]

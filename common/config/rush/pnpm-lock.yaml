@@ -23,15 +23,16 @@ dependencies:
   react: 16.13.1
   react-dom: 16.13.1_react@16.13.1
   react-redux: 7.2.1_49f644e2f7de4182503f8b93abece808
-  react-scripts: 3.4.0
+  react-scripts: 3.4.0_typescript@3.9.7
   redux: 4.0.5
   rollup: 2.26.0
   rollup-plugin-analyzer: 3.3.0
-  rollup-plugin-dts: 1.4.10_rollup@2.26.0
+  rollup-plugin-dts: 1.4.10_rollup@2.26.0+typescript@3.9.7
   rollup-plugin-esbuild: 2.4.2_esbuild@0.6.24+rollup@2.26.0
   rollup-plugin-peer-deps-external: 2.2.3_rollup@2.26.0
   rollup-plugin-styles: 3.10.0_rollup@2.26.0
   source-map-explorer: 2.4.2
+  typescript: 3.9.7
   webpackbar: 4.0.0
 lockfileVersion: 5.1
 packages:
@@ -2007,7 +2008,7 @@ packages:
     dependencies:
       cross-spawn: 7.0.3
       lodash: 4.17.20
-      react-scripts: 3.4.0
+      react-scripts: 3.4.0_typescript@3.9.7
       webpack-merge: 4.2.2
     dev: false
     engines:
@@ -2602,41 +2603,6 @@ packages:
         optional: true
     resolution:
       integrity: sha512-4zY3Z88rEE99+CNvTbXSyovv2z9PNOVffTWD2W8QF5s2prBQtwN2zadqERcrHpcR7O/+KMI3fcTAmUUhK/iQcQ==
-  /@typescript-eslint/eslint-plugin/2.34.0_984cbb313f9ea271f36cadd8f9814e06:
-    dependencies:
-      '@typescript-eslint/experimental-utils': 2.34.0_eslint@6.8.0
-      '@typescript-eslint/parser': 2.34.0_eslint@6.8.0
-      eslint: 6.8.0
-      functional-red-black-tree: 1.0.1
-      regexpp: 3.1.0
-      tsutils: 3.17.1
-    dev: false
-    engines:
-      node: ^8.10.0 || ^10.13.0 || >=11.10.1
-    peerDependencies:
-      '@typescript-eslint/parser': ^2.0.0
-      eslint: ^5.0.0 || ^6.0.0
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    resolution:
-      integrity: sha512-4zY3Z88rEE99+CNvTbXSyovv2z9PNOVffTWD2W8QF5s2prBQtwN2zadqERcrHpcR7O/+KMI3fcTAmUUhK/iQcQ==
-  /@typescript-eslint/experimental-utils/2.34.0_eslint@6.8.0:
-    dependencies:
-      '@types/json-schema': 7.0.5
-      '@typescript-eslint/typescript-estree': 2.34.0
-      eslint: 6.8.0
-      eslint-scope: 5.1.0
-      eslint-utils: 2.1.0
-    dev: false
-    engines:
-      node: ^8.10.0 || ^10.13.0 || >=11.10.1
-    peerDependencies:
-      eslint: '*'
-      typescript: '*'
-    resolution:
-      integrity: sha512-eS6FTkq+wuMJ+sgtuNTtcqavWXqsflWcfBnlYhg/nS4aZ1leewkXGbvBhaapn1q6qf4M71bsR1tez5JTRMuqwA==
   /@typescript-eslint/experimental-utils/2.34.0_eslint@6.8.0+typescript@3.9.7:
     dependencies:
       '@types/json-schema': 7.0.5
@@ -2644,6 +2610,7 @@ packages:
       eslint: 6.8.0
       eslint-scope: 5.1.0
       eslint-utils: 2.1.0
+      typescript: 3.9.7
     dev: false
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -2652,24 +2619,6 @@ packages:
       typescript: '*'
     resolution:
       integrity: sha512-eS6FTkq+wuMJ+sgtuNTtcqavWXqsflWcfBnlYhg/nS4aZ1leewkXGbvBhaapn1q6qf4M71bsR1tez5JTRMuqwA==
-  /@typescript-eslint/parser/2.34.0_eslint@6.8.0:
-    dependencies:
-      '@types/eslint-visitor-keys': 1.0.0
-      '@typescript-eslint/experimental-utils': 2.34.0_eslint@6.8.0
-      '@typescript-eslint/typescript-estree': 2.34.0
-      eslint: 6.8.0
-      eslint-visitor-keys: 1.3.0
-    dev: false
-    engines:
-      node: ^8.10.0 || ^10.13.0 || >=11.10.1
-    peerDependencies:
-      eslint: ^5.0.0 || ^6.0.0
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    resolution:
-      integrity: sha512-03ilO0ucSD0EPTw2X4PntSIRFtDPWjrVq7C3/Z3VQHRC7+13YB55rcJI3Jt+YgeHbjUdJPcPa7b23rXCBokuyA==
   /@typescript-eslint/parser/2.34.0_eslint@6.8.0+typescript@3.9.7:
     dependencies:
       '@types/eslint-visitor-keys': 1.0.0
@@ -2689,25 +2638,6 @@ packages:
         optional: true
     resolution:
       integrity: sha512-03ilO0ucSD0EPTw2X4PntSIRFtDPWjrVq7C3/Z3VQHRC7+13YB55rcJI3Jt+YgeHbjUdJPcPa7b23rXCBokuyA==
-  /@typescript-eslint/typescript-estree/2.34.0:
-    dependencies:
-      debug: 4.1.1
-      eslint-visitor-keys: 1.3.0
-      glob: 7.1.6
-      is-glob: 4.0.1
-      lodash: 4.17.20
-      semver: 7.3.2
-      tsutils: 3.17.1
-    dev: false
-    engines:
-      node: ^8.10.0 || ^10.13.0 || >=11.10.1
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    resolution:
-      integrity: sha512-OMAr+nJWKdlVM9LOqCqh3pQQPwxHAN7Du8DR6dmwCrAmxtiXQnhHJ6tBNtf+cggqfo51SG/FCwnKhXCIM7hnVg==
   /@typescript-eslint/typescript-estree/2.34.0_typescript@3.9.7:
     dependencies:
       debug: 4.1.1
@@ -4535,7 +4465,7 @@ packages:
       babel-plugin-import: 1.13.0
       craco-less: 1.17.0_d877a29fcb3468f0f8efe4b403036f91
       less-vars-to-js: 1.3.0
-      react-scripts: 3.4.0
+      react-scripts: 3.4.0_typescript@3.9.7
     dev: false
     peerDependencies:
       '@craco/craco': ^5.5.0
@@ -4563,7 +4493,7 @@ packages:
       '@craco/craco': 5.6.4_react-scripts@3.4.0
       less: 3.12.2
       less-loader: 6.2.0
-      react-scripts: 3.4.0
+      react-scripts: 3.4.0_typescript@3.9.7
     dev: false
     peerDependencies:
       '@craco/craco': ^5.5.0
@@ -5433,8 +5363,8 @@ packages:
       integrity: sha512-qFcX0XJkdg+PB3xjZZG/wKSuT1PnQWx57+TVSjIMmILd2yC/6ByYElPwJnslDsuWuSAp4AwJGumarAAmJch5Kw==
   /eslint-config-react-app/5.2.1_85aa151a7bd6d75117758a618eaff5c6:
     dependencies:
-      '@typescript-eslint/eslint-plugin': 2.34.0_984cbb313f9ea271f36cadd8f9814e06
-      '@typescript-eslint/parser': 2.34.0_eslint@6.8.0
+      '@typescript-eslint/eslint-plugin': 2.34.0_5004700905763c91177aaa7d1d0d56ac
+      '@typescript-eslint/parser': 2.34.0_eslint@6.8.0+typescript@3.9.7
       babel-eslint: 10.0.3_eslint@6.8.0
       confusing-browser-globals: 1.0.9
       eslint: 6.8.0
@@ -9492,16 +9422,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
-  /pnp-webpack-plugin/1.6.0:
-    dependencies:
-      ts-pnp: 1.1.5
-    dev: false
-    engines:
-      node: '>=6'
-    peerDependencies:
-      typescript: '*'
-    resolution:
-      integrity: sha512-ZcMGn/xF/fCOq+9kWMP9vVVxjIkMCja72oy3lziR7UHy0hHFZ57iVpQ71OtveVbmzeCmphBg8pxNdk/hlK99aQ==
   /pnp-webpack-plugin/1.6.0_typescript@3.9.7:
     dependencies:
       ts-pnp: 1.1.5_typescript@3.9.7
@@ -11019,73 +10939,6 @@ packages:
         optional: true
     resolution:
       integrity: sha512-T+VfD/bvgGTUA74iW9d2i5THrDQWbweXP0AVNI8tNd1Rk5ch1rnMiJkDD67ejw7YBKM4+REvcvqRuWJb7BLuEg==
-  /react-scripts/3.4.0:
-    dependencies:
-      '@babel/core': 7.8.4
-      '@svgr/webpack': 4.3.3
-      '@typescript-eslint/eslint-plugin': 2.34.0_984cbb313f9ea271f36cadd8f9814e06
-      '@typescript-eslint/parser': 2.34.0_eslint@6.8.0
-      babel-eslint: 10.0.3_eslint@6.8.0
-      babel-jest: 24.9.0_@babel+core@7.8.4
-      babel-loader: 8.0.6_@babel+core@7.8.4+webpack@4.41.5
-      babel-plugin-named-asset-import: 0.3.6_@babel+core@7.8.4
-      babel-preset-react-app: 9.1.2
-      camelcase: 5.3.1
-      case-sensitive-paths-webpack-plugin: 2.3.0
-      css-loader: 3.4.2_webpack@4.41.5
-      dotenv: 8.2.0
-      dotenv-expand: 5.1.0
-      eslint: 6.8.0
-      eslint-config-react-app: 5.2.1_85aa151a7bd6d75117758a618eaff5c6
-      eslint-loader: 3.0.3_eslint@6.8.0+webpack@4.41.5
-      eslint-plugin-flowtype: 4.6.0_eslint@6.8.0
-      eslint-plugin-import: 2.20.0_eslint@6.8.0
-      eslint-plugin-jsx-a11y: 6.2.3_eslint@6.8.0
-      eslint-plugin-react: 7.18.0_eslint@6.8.0
-      eslint-plugin-react-hooks: 1.7.0_eslint@6.8.0
-      file-loader: 4.3.0_webpack@4.41.5
-      fs-extra: 8.1.0
-      html-webpack-plugin: 4.0.0-beta.11_webpack@4.41.5
-      identity-obj-proxy: 3.0.0
-      jest: 24.9.0
-      jest-environment-jsdom-fourteen: 1.0.1
-      jest-resolve: 24.9.0_jest-resolve@24.9.0
-      jest-watch-typeahead: 0.4.2
-      mini-css-extract-plugin: 0.9.0_webpack@4.41.5
-      optimize-css-assets-webpack-plugin: 5.0.3_webpack@4.41.5
-      pnp-webpack-plugin: 1.6.0
-      postcss-flexbugs-fixes: 4.1.0
-      postcss-loader: 3.0.0
-      postcss-normalize: 8.0.1
-      postcss-preset-env: 6.7.0
-      postcss-safe-parser: 4.0.1
-      react-app-polyfill: 1.0.6
-      react-dev-utils: 10.2.1
-      resolve: 1.15.0
-      resolve-url-loader: 3.1.1
-      sass-loader: 8.0.2_webpack@4.41.5
-      semver: 6.3.0
-      style-loader: 0.23.1
-      terser-webpack-plugin: 2.3.4_webpack@4.41.5
-      ts-pnp: 1.1.5
-      url-loader: 2.3.0_file-loader@4.3.0+webpack@4.41.5
-      webpack: 4.41.5_webpack@4.41.5
-      webpack-dev-server: 3.10.2_webpack@4.41.5
-      webpack-manifest-plugin: 2.2.0_webpack@4.41.5
-      workbox-webpack-plugin: 4.3.1_webpack@4.41.5
-    dev: false
-    engines:
-      node: '>=8.10'
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.1.2
-    peerDependencies:
-      typescript: ^3.2.1
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    resolution:
-      integrity: sha512-pBqaAroFoHnFAkuX+uSK9Th1uEh2GYdGY2IG1I9/7HmuEf+ls3lLCk1p2GFYRSrLMz6ieQR/SyN6TLIGK3hKRg==
   /react-scripts/3.4.0_typescript@3.9.7:
     dependencies:
       '@babel/core': 7.8.4
@@ -11589,21 +11442,10 @@ packages:
       node: '>=8.0.0'
     resolution:
       integrity: sha512-zUPGitW4usmZcVa0nKecRvw3odtXgnxdCben9Hx1kxVoR3demek8RU9tmRG/R35hnRPQTb7wEsYEe3GUcjxIMA==
-  /rollup-plugin-dts/1.4.10_rollup@2.26.0:
+  /rollup-plugin-dts/1.4.10_rollup@2.26.0+typescript@3.9.7:
     dependencies:
       rollup: 2.26.0
-    dev: false
-    optionalDependencies:
-      '@babel/code-frame': 7.10.4
-    peerDependencies:
-      rollup: ^2.23.0
-      typescript: ^3.9.7
-    resolution:
-      integrity: sha512-bL6MBXc8lK7D5b/tYbHaglxs4ZxMQTQilGA6Xm9KQBEj4h9ZwIDlAsvDooGjJ/cOw23r3POTRtSCEyTHxtzHJg==
-  /rollup-plugin-dts/1.4.10_rollup@2.26.0+typescript@3.9.3:
-    dependencies:
-      rollup: 2.26.0
-      typescript: 3.9.3
+      typescript: 3.9.7
     dev: false
     optionalDependencies:
       '@babel/code-frame': 7.10.4
@@ -12768,17 +12610,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=
-  /ts-pnp/1.1.5:
-    dev: false
-    engines:
-      node: '>=6'
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    resolution:
-      integrity: sha512-ti7OGMOUOzo66wLF3liskw6YQIaSsBgc4GOAlWRnIEj8htCxJUxskanMUoJOD6MDCRAXo36goXJZch+nOS0VMA==
   /ts-pnp/1.1.5_typescript@3.9.7:
     dependencies:
       typescript: 3.9.7
@@ -12800,16 +12631,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
-  /tsutils/3.17.1:
-    dependencies:
-      tslib: 1.13.0
-    dev: false
-    engines:
-      node: '>= 6'
-    peerDependencies:
-      typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
-    resolution:
-      integrity: sha512-kzeQ5B8H3w60nFY2g8cJIuH7JDpsALXySGtwGJ0p2LSjLgay3NdIpqq5SoOBe46bKDW2iq25irHCr8wjomUS2g==
   /tsutils/3.17.1_typescript@3.9.7:
     dependencies:
       tslib: 1.13.0
@@ -13735,19 +13556,21 @@ packages:
       less: 3.12.2
       rollup: 2.26.0
       rollup-plugin-analyzer: 3.3.0
-      rollup-plugin-dts: 1.4.10_rollup@2.26.0+typescript@3.9.3
+      rollup-plugin-dts: 1.4.10_rollup@2.26.0+typescript@3.9.7
       rollup-plugin-esbuild: 2.4.2_esbuild@0.6.24+rollup@2.26.0
       rollup-plugin-peer-deps-external: 2.2.3_rollup@2.26.0
       rollup-plugin-styles: 3.10.0_rollup@2.26.0
-      typescript: 3.9.3
+      typescript: 3.9.7
     dev: false
     name: '@rush-temp/flow-ui-scripts'
     resolution:
-      integrity: sha512-MM8lSDiJRp2ZhH38jjoKpzX0eibvcMhX6X7kX1AX8Uwg+jNuN+dteC6nyKqpj5mQBAQ/P1mCLc90JDxuxp1KKQ==
+      integrity: sha512-YiYBrsRA/80rB6kIlGze/iFS3mdIa6XCPhzfcOpmW/SCWINg+353Bt+vjnz+vNoIMhVc2zr4fT7vmKffeC2GLQ==
       tarball: 'file:projects/flow-ui-scripts.tgz'
     version: 0.0.0
   'file:projects/flow-ui-theme-ant-design.tgz_redux@4.0.5':
     dependencies:
+      '@types/react': 16.9.46
+      '@types/react-dom': 16.9.8
       antd: 4.5.4_react-dom@16.13.1+react@16.13.1
       jodit: 3.4.23
       less: 3.12.2
@@ -13760,7 +13583,7 @@ packages:
     peerDependencies:
       redux: '*'
     resolution:
-      integrity: sha512-ZVGStCiZYHGE0ixfcSH1jeoR/+eXwilIe9funtqvgfXBoFLQ7rLLWA4r/n1z/q0hQ0OGkvpoDglczt1+ka6xxw==
+      integrity: sha512-CUfot7XX/i/QaT4/ZveLwDjMMQGag1WccmkO2LVK9yDr9frnixfLNlEl/4VMiy8f8YRIj0fxzHyI64ni2zsBtw==
       tarball: 'file:projects/flow-ui-theme-ant-design.tgz'
     version: 0.0.0
   'file:projects/flow-ui.tgz':
@@ -13818,4 +13641,5 @@ specifiers:
   rollup-plugin-peer-deps-external: ^2.2.2
   rollup-plugin-styles: ^3.6.1
   source-map-explorer: ^2.4.2
+  typescript: ^3.9.7
   webpackbar: ^4.0.0
