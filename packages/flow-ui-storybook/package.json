@@ -1,6 +1,6 @@
 {
   "name": "@jonjomckay/flow-ui-storybook",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -8,8 +8,8 @@
     "storybook-build": "build-storybook -c .storybook -o ../../docs"
   },
   "dependencies": {
-    "@jonjomckay/flow-ui": "^0.5.2",
-    "@jonjomckay/flow-ui-theme-ant-design": "^0.5.2",
+    "@jonjomckay/flow-ui": "^0.5.3",
+    "@jonjomckay/flow-ui-theme-ant-design": "^0.5.3",
     "antd": "^4.2.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
