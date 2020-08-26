@@ -82,6 +82,22 @@ which is to be used by React applications in order to render flows.
 
 This package contains an example application, using the `Flow` component to render multiple flows.
 
+## Development
+
+To bootstrap the monorepo locally, you'll need to run:
+
+```
+$ yarn install
+$ yarn bootstrap
+```
+
+To start watching all the packages, start an example application on `http://localhost:3000`, and rebuild automatically
+on any changes, run:
+
+```
+$ yarn start
+``` 
+
 ## License
 
 This library and all packages are released under the [MIT License](https://opensource.org/licenses/MIT).

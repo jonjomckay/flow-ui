@@ -12,9 +12,9 @@
     "url": "https://github.com/jonjomckay/flow-ui.git"
   },
   "scripts": {
-    "start": "yarn build && lerna run --parallel start --stream",
-    "build": "NODE_ENV=production lerna run build --stream --scope @jonjomckay/flow-ui*",
-    "preversion": "yarn build"
+    "bootstrap": "oao bootstrap",
+    "start": "oao run-script --parallel start",
+    "build": "NODE_ENV=production oao run-script --tree build"
   },
   "devDependencies": {
     "oao": "^2.0.0",
