@@ -1,6 +1,6 @@
 {
   "name": "@jonjomckay/flow-ui-theme-ant-design",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "license": "MIT",
   "main": "dist/index.js",
   "main:src": "src/index.ts",
@@ -14,8 +14,8 @@
     "start": "rollup -cw"
   },
   "devDependencies": {
-    "@jonjomckay/flow-ui": "^0.4.0",
-    "@jonjomckay/flow-ui-scripts": "^1.0.0",
+    "@jonjomckay/flow-ui": "^0.5.0",
+    "@jonjomckay/flow-ui-scripts": "^0.5.0",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
@@ -24,7 +24,7 @@
     "less": "^3.12.2"
   },
   "peerDependencies": {
-    "@jonjomckay/flow-ui": "^0.3.0",
+    "@jonjomckay/flow-ui": "^0.5.0",
     "antd": "^4.4.1",
     "jodit": "^3.3.24",
     "react": "^16.13.1",
