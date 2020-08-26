@@ -6,7 +6,10 @@
   "main:src": "src/index.ts",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less"
+  ],
   "publishConfig": {
     "access": "public"
   },
