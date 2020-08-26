@@ -1,6 +1,6 @@
 {
   "name": "@jonjomckay/flow-ui",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "license": "MIT",
   "main": "dist/index.js",
   "main:src": "src/index.ts",
@@ -18,7 +18,7 @@
     "classnames": "^2.2.6"
   },
   "devDependencies": {
-    "@jonjomckay/flow-ui-scripts": "^0.5.0",
+    "@jonjomckay/flow-ui-scripts": "^0.5.1",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/classnames": "^2.2.10",
     "@types/node": "^14.0.5",
