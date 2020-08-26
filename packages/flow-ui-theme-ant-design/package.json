@@ -31,5 +31,13 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0"
   },
-  "gitHead": "3ade180557d2313a1d13e0dfac9477f1eb668d82"
+  "gitHead": "3ade180557d2313a1d13e0dfac9477f1eb668d82",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonjomckay/flow-ui.git"
+  },
+  "author": {
+    "name": "Jonjo McKay",
+    "email": "jonjo@jonjomckay.com"
+  }
 }
