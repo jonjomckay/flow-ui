@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import './ProgressBar.less';
+import './ProgressBar.css';
 
 interface Props {
     percent: number;

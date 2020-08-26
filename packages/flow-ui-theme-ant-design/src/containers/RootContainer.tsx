@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Layout } from 'antd';
 import { PageContainerProps } from '@jonjomckay/flow-ui';
+import './RootContainer.less';
 
 interface Props {
     children: React.ReactElement<PageContainerProps>

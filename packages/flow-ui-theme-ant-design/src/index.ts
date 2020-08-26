@@ -25,8 +25,6 @@ import Notifications from './notification/Notifications';
 import OutcomesList from './components/OutcomesList';
 import RootContainer from './containers/RootContainer';
 
-import './index.less';
-
 const AntDesign: ITheme = {
     alertComponent: Alert,
     components: {
