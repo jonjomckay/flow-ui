@@ -14,19 +14,6 @@ const config = [
         cache: true,
         input: 'src/index.ts',
         output: [
-            {
-                file: pkg.types,
-                format: 'es'
-            }
-        ],
-        plugins: [
-            dts()
-        ],
-    },
-    {
-        cache: true,
-        input: 'src/index.ts',
-        output: [
             isProduction && {
                 file: pkg.main,
                 format: 'cjs',
@@ -64,5 +51,21 @@ const config = [
         ]
     }
 ];
+
+if (isProduction) {
+    config.push({
+        cache: true,
+        input: 'src/index.ts',
+        output: [
+            {
+                file: pkg.types,
+                format: 'es'
+            }
+        ],
+        plugins: [
+            dts()
+        ],
+    })
+}
 
 export default config;
