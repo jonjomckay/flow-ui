@@ -58,8 +58,21 @@ export interface RadioProps {
     onChange(options: RadioOption[]): void;
 }
 
+export type TableProps = CommonComponentProps & {
+    columns: IPageComponentColumn[];
+    data?: IObjectData[];
+    onChange(data?: IObjectData[]): void;
+}
+
 export interface TextareaProps {
     component: IPageComponent;
     onChange(value: string | null): void;
 }
 
+export interface ToggleProps {
+    checked: boolean;
+    component: IPageComponent;
+    isLoading: boolean;
+    label: string;
+    onChange(checked: boolean): void;
+}

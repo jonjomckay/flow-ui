@@ -6,5 +6,7 @@ export enum ComponentType {
     Outcomes = 'OUTCOMES',
     Presentation = 'PRESENTATION',
     Radio = 'RADIO',
-    Textarea = 'TEXTAREA'
+    Table = 'TABLE',
+    Textarea = 'TEXTAREA',
+    Toggle = 'TOGGLE'
 }

@@ -36,9 +36,9 @@ const AntDesign: ITheme = {
         'PRESENTATION': Presentation,
         'RADIO': Radio,
         // 'SELECT': SelectComponent,
-        // 'TABLE': Table,
+        'TABLE': Table,
         'TEXTAREA': Textarea,
-        // 'TOGGLE': Toggle,
+        'TOGGLE': Toggle,
     },
     containers: {
         'GROUP': GroupContainer,

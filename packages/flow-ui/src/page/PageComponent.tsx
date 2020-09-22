@@ -169,12 +169,38 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                     })
                 }
             });
+        case ComponentType.Table:
+            return React.createElement(theme.components.TABLE, {
+                columns: props.component.columns,
+                data: props.objectData,
+                component: props.component,
+                isLoading: props.isLoading,
+                onChange: data => {
+                    console.log(data);
+
+                    props.onChange({
+                        objectData: data
+                    })
+                }
+            });
         case ComponentType.Textarea:
             return React.createElement(theme.components.TEXTAREA, {
                 component: props.component,
                 onChange: (value: string) => {
                     props.onChange({
                         contentValue: value
+                    });
+                }
+            });
+        case ComponentType.Toggle:
+            return React.createElement(theme.components.TOGGLE, {
+                checked: String(props.component.data.contentValue.toLowerCase()) === 'true',
+                component: props.component,
+                isLoading: props.isLoading,
+                label: props.component.label,
+                onChange: (checked: boolean) => {
+                    props.onChange({
+                        contentValue: checked.toString()
                     });
                 }
             })

@@ -1,23 +1,15 @@
 import * as React from 'react';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { ToggleProps } from '@jonjomckay/flow-ui';
 import { Switch } from 'antd';
 import BaseFormItem from './BaseFormItem';
 
-export default function Toggle(props: PageComponentProps): React.ReactElement<PageComponentProps> {
-    const toggled = String(props.component.data.contentValue.toLowerCase()) === 'true';
-
-    const onChange = (checked: boolean) => {
-        props.onChange({
-            contentValue: checked.toString()
-        });
-    }
-
+export default function Toggle(props: ToggleProps): React.ReactElement<ToggleProps> {
     const switchProps = {
-        defaultChecked: toggled,
+        defaultChecked: props.checked,
         disabled: !props.component.data.isEnabled,
         loading: props.isLoading,
-        onChange: onChange,
-        title: props.component.label
+        onChange: props.onChange,
+        title: props.label
     }
 
     return (

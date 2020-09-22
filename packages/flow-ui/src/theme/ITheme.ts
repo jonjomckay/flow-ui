@@ -9,7 +9,7 @@ import {
     NotificationsProps,
     OutcomesProps,
     PageContainerProps,
-    PresentationProps, RadioProps, TextareaProps
+    PresentationProps, RadioProps, TableProps, TextareaProps, ToggleProps
 } from '../index';
 
 type Component<P> = FunctionComponent<P> | ComponentClass<P> | string;
@@ -23,7 +23,9 @@ type Components = {
     'OUTCOMES': Component<OutcomesProps>
     'PRESENTATION': Component<PresentationProps>
     'RADIO': Component<RadioProps>
+    'TABLE': Component<TableProps>
     'TEXTAREA': Component<TextareaProps>
+    'TOGGLE': Component<ToggleProps>
 };
 
 export default interface ITheme {
