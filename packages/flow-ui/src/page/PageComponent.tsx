@@ -7,7 +7,7 @@ import PageComponentError from './PageComponentError';
 import ITheme from '../theme/ITheme';
 import { RootState } from '../store';
 import { ComponentType } from './PageConstants';
-import { RadioOption } from '@jonjomckay/flow-ui';
+import { OutcomeGroup, OutcomeJustify, RadioOption } from '@jonjomckay/flow-ui';
 
 export interface PageComponentOnChangeProps {
     objectData?: IObjectData[];
@@ -116,6 +116,24 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                 isOrdered: (props.component.attributes && props.component.attributes['ordered'] && props.component.attributes['ordered'].toLowerCase() === 'true') || false,
                 label: props.component.label,
                 list: list
+            });
+        case ComponentType.Outcomes:
+            let group: OutcomeGroup = null;
+            if (props.component.attributes && props.component.attributes['group']) {
+                group = props.component.attributes['group'] as OutcomeGroup;
+            }
+
+            let justify: OutcomeJustify = null;
+            if (props.component.attributes && props.component.attributes['justify']) {
+                justify = props.component.attributes['justify'] as OutcomeJustify;
+            }
+
+            return React.createElement(theme.components.OUTCOMES, {
+                group: group,
+                isLoading: props.isLoading,
+                justify: justify,
+                outcomes: props.outcomes,
+                selectOutcome: props.selectOutcome
             });
         case ComponentType.Presentation:
             return React.createElement(theme.components.PRESENTATION, {

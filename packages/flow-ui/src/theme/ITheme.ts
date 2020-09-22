@@ -33,6 +33,5 @@ export default interface ITheme {
     loaderComponent: Component<LoaderProps>,
     navigationComponent: Component<NavigationProps>
     notificationsComponent: Component<NotificationsProps>
-    // outcomesComponent: Component<OutcomesListProps>
     rootContainer: Component<any>
 }

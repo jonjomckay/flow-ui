@@ -49,7 +49,6 @@ const AntDesign: ITheme = {
     loaderComponent: Loader,
     navigationComponent: Navigation,
     notificationsComponent: Notifications,
-    // outcomesComponent: OutcomesList,
     rootContainer: RootContainer
 }
 

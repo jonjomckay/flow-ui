@@ -1,4 +1,4 @@
-import { IObjectData, IOutcome, IPageComponent, selectOutcome } from '@jonjomckay/flow-ui';
+import { IObjectData, IOutcome, IPageComponent, IPageComponentColumn, selectOutcome } from '@jonjomckay/flow-ui';
 
 export interface CheckboxProps {
     component: IPageComponent;
@@ -30,12 +30,14 @@ export interface ListProps {
     list: { key: string, value: string | undefined }[];
 }
 
-export interface OutcomesProps {
-    group: 'horizontal' | 'vertical' | null;
-    isLoading: boolean;
-    justify: 'left' | 'right' | null;
-    outcomes: IOutcome[];
+export type OutcomeGroup = 'horizontal' | 'vertical' | null;
+export type OutcomeJustify = 'left' | 'right' | null;
 
+export interface OutcomesProps {
+    group: OutcomeGroup;
+    isLoading: boolean;
+    justify: OutcomeJustify;
+    outcomes: IOutcome[];
     selectOutcome: typeof selectOutcome;
 }
 

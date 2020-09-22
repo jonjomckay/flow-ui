@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Row, Space } from 'antd';
 import './Outcomes.less';
 import { OutcomesProps } from '@jonjomckay/flow-ui';
-import OutcomesList from './OutcomesList';
+import Outcome from './Outcome';
 
 export default function Outcomes(props: OutcomesProps): React.ReactElement<OutcomesProps> {
     let justify: 'end' | 'start';
@@ -15,12 +15,24 @@ export default function Outcomes(props: OutcomesProps): React.ReactElement<Outco
             break;
     }
 
+    const outcomes = props.outcomes.map(outcome => {
+        return (
+            <Outcome outcome={ outcome }
+                     key={ outcome.id }
+                     isLoading={ props.isLoading }
+                     onClick={ () => props.selectOutcome({ selectedOutcomeId: outcome.id }) }
+            />
+        )
+    });
+
     switch (props.group) {
         case 'horizontal':
             return (
                 <Row justify={ justify }>
                     <Button.Group>
-                        <OutcomesList { ...props } />
+                        <Row className="outcomes">
+                            { outcomes }
+                        </Row>
                     </Button.Group>
                 </Row>
             );
@@ -28,14 +40,18 @@ export default function Outcomes(props: OutcomesProps): React.ReactElement<Outco
             return (
                 <Row justify={ justify }>
                     <Space direction="vertical" size={ 0 }>
-                        { OutcomesList(props) }
+                        <Row className="outcomes">
+                            { outcomes }
+                        </Row>
                     </Space>
                 </Row>
             )
         default:
             return (
                 <Row justify={ justify }>
-                    <OutcomesList { ...props } />
+                    <Row className="outcomes">
+                        { outcomes }
+                    </Row>
                 </Row>
             )
     }
