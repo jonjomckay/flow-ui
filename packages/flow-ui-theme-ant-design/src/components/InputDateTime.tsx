@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { DatePicker, TimePicker } from 'antd';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { InputProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 import { useState } from 'react';
 
-export default function InputDateTime({ component, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
+export default function InputDateTime({ component, onChange }: InputProps): React.ReactElement<InputProps> {
     const [date, setDate] = useState();
     const [time, setTime] = useState();
 

@@ -4,9 +4,9 @@ import { selectOutcome, SelectOutcomeProps } from '../actions';
 import { IOutcome } from '../types';
 import { RootState } from '../store';
 import ITheme from '../theme/ITheme';
-import OutcomesListProps from './OutcomesListProps';
+import { OutcomesProps } from '../index';
 
-interface Props {
+type Props = OutcomesProps & {
     isLoading: boolean;
     outcomes: IOutcome[];
     theme: ITheme;
@@ -14,12 +14,11 @@ interface Props {
     selectOutcome(value: SelectOutcomeProps): void;
 }
 
-function Outcomes(props: Props): React.ReactElement<OutcomesListProps> {
+function Outcomes(props: Props): React.ReactElement<OutcomesProps> {
     // Create outcomes from all the outcome responses that aren't bound to a page object
-    return React.createElement(props.theme.outcomesComponent, {
-        isLoading: props.isLoading,
-        outcomes: props.outcomes.filter(outcome => outcome.pageObjectBindingId === null),
-        selectOutcome: props.selectOutcome
+    return React.createElement(props.theme.components.OUTCOMES, {
+        ...props,
+        outcomes: props.outcomes.filter(outcome => outcome.pageObjectBindingId === null)
     });
 }
 

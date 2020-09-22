@@ -10,6 +10,8 @@ export type { default as OutcomesListProps } from './outcomes/OutcomesListProps'
 export type { default as PageComponentProps } from './page/PageComponentProps';
 export type { default as PageContainerProps } from './page/PageContainerProps';
 
+
 export * from './actions';
+export * from './components';
 export type { RootState } from './store';
 export * from './types';

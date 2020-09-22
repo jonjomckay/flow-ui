@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Button, Row, Space } from 'antd';
 import './Outcomes.less';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { OutcomesProps } from '@jonjomckay/flow-ui';
 import OutcomesList from './OutcomesList';
 
-export default function Outcomes(props: PageComponentProps): React.ReactElement<PageComponentProps> {
+export default function Outcomes(props: OutcomesProps): React.ReactElement<OutcomesProps> {
     let justify: 'end' | 'start';
-    switch (props.component.attributes && props.component.attributes['justify']) {
+    switch (props.justify) {
         case 'right':
             justify = 'end';
             break;
@@ -15,7 +15,7 @@ export default function Outcomes(props: PageComponentProps): React.ReactElement<
             break;
     }
 
-    switch (props.component.attributes && props.component.attributes['group']) {
+    switch (props.group) {
         case 'horizontal':
             return (
                 <Row justify={ justify }>

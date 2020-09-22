@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { OutcomesListProps, PageComponentProps } from '@jonjomckay/flow-ui';
+import { OutcomesProps } from '@jonjomckay/flow-ui';
 import Outcome from './Outcome';
 import { Row } from 'antd';
 
-export default function OutcomesList(props: OutcomesListProps): React.ReactElement<PageComponentProps> {
+export default function OutcomesList(props: OutcomesProps): React.ReactElement<OutcomesProps> {
     const outcomes = props.outcomes.map(outcome => {
         return (
             <Outcome outcome={ outcome }

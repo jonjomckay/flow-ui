@@ -1,29 +1,21 @@
 import * as React from 'react';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { RadioProps } from '@jonjomckay/flow-ui';
 import { Radio as AntdRadio } from 'antd';
 import BaseFormItem from './BaseFormItem';
 import { RadioChangeEvent } from 'antd/es/radio';
 
-export default function Radio(props: PageComponentProps): React.ReactElement<PageComponentProps> | null {
-    const labelColumn = props.component.columns.find(c => c.order === 0);
-    if (!labelColumn) {
-        console.warn('No label column was provided for the Radio component ' + props.component.id);
-        return null;
-    }
-
+export default function Radio(props: RadioProps): React.ReactElement<RadioProps> | null {
     const onChange = (e: RadioChangeEvent) => {
-        props.onChange({
-            objectData: props.objectData?.map(objectData => {
-                if (objectData.internalId === e.target.value) {
-                    return {
-                        ...objectData,
-                        isSelected: e.target.checked
-                    }
+        props.onChange(props.options?.map(option => {
+            if (option.id === e.target.value) {
+                return {
+                    ...option,
+                    isSelected: e.target.checked
                 }
+            }
 
-                return objectData;
-            })
-        });
+            return option;
+        }))
     }
 
     const radioGroupProps = {
@@ -33,15 +25,13 @@ export default function Radio(props: PageComponentProps): React.ReactElement<Pag
         title: props.component.label
     }
 
-    const radioGroup = props.objectData?.map(objectData => {
-        const labelProperty = objectData.properties.find(p => p.typeElementPropertyId === labelColumn.typeElementPropertyToDisplayId);
-
+    const radioGroup = props.options?.map(option => {
         return (
-            <AntdRadio defaultChecked={ objectData.isSelected } key={ objectData.internalId } value={ objectData.internalId }>
-                { labelProperty?.contentValue }
+            <AntdRadio defaultChecked={ option.isSelected } key={ option.id } value={ option.id }>
+                { option.label }
             </AntdRadio>
         )
-    })
+    });
 
     return (
         <BaseFormItem component={ props.component }>

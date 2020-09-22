@@ -1,27 +1,18 @@
 import * as React from 'react';
 import { Typography } from 'antd';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
-export default function List(props: PageComponentProps): React.ReactElement<PageComponentProps> | null {
-    const titleColumn = props.component.columns.find(c => c.order === 0);
-    if (!titleColumn) {
-        console.warn('No title column was provided for the List component ' + props.component.id);
-        return null;
-    }
+import { ListProps } from '@jonjomckay/flow-ui';
 
-    const data = props.objectData?.map(objectData => {
-        const titleProperty = objectData.properties.find(p => p.typeElementPropertyId === titleColumn.typeElementPropertyToDisplayId);
-
+export default function List(props: ListProps): React.ReactElement<ListProps> | null {
+    const data = props.list.map(item => {
         return (
-            <li key={ objectData.internalId }>
-                { titleProperty?.contentValue }
+            <li key={ item.key }>
+                { item.value }
             </li>
         )
     });
 
     let list;
-
-    const isOrdered = props.component.attributes && props.component.attributes['ordered'];
-    if (isOrdered) {
+    if (props.isOrdered) {
         list = (
             <ol>
                 { data }
@@ -38,7 +29,7 @@ export default function List(props: PageComponentProps): React.ReactElement<Page
     return (
         <div className="list">
             <Typography.Title level={ 4 }>
-                { props.component.label }
+                { props.label }
             </Typography.Title>
 
             { list }

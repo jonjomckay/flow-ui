@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Input } from 'antd';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { TextareaProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 
-export default function Textarea({ component, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
+export default function Textarea({ component, onChange }: TextareaProps): React.ReactElement<TextareaProps> {
     const inputProps = {
         cols: component.width,
         disabled: component.data.isEnabled === false,
@@ -17,7 +17,7 @@ export default function Textarea({ component, onChange }: PageComponentProps): R
     return (
         <BaseFormItem component={ component }>
             <Input.TextArea { ...inputProps }
-                            onChange={ value => onChange({ contentValue: value.currentTarget.value }) } />
+                            onChange={ value => onChange(value.currentTarget.value) } />
         </BaseFormItem>
     );
 }
