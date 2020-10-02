@@ -11,6 +11,9 @@
     "type": "git",
     "url": "https://github.com/jonjomckay/flow-ui.git"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "bootstrap": "oao bootstrap",
     "start": "oao run-script --parallel start",
