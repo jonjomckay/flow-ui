@@ -134,8 +134,6 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                 ...props,
                 group: group,
                 justify: justify,
-                outcomes: props.outcomes,
-                selectOutcome: props.selectOutcome
             });
         case ComponentType.Presentation:
             return React.createElement(theme.components.PRESENTATION, {
@@ -177,8 +175,6 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                 columns: props.component.columns,
                 data: props.objectData,
                 onChange: data => {
-                    console.log(data);
-
                     props.onChange({
                         objectData: data
                     })
