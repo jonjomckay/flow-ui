@@ -1,4 +1,5 @@
 export enum ComponentType {
+    Checkbox = 'CHECKBOX',
     Content = 'CONTENT',
     Image = 'IMAGE',
     Input = 'INPUT',

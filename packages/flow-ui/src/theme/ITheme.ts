@@ -11,21 +11,22 @@ import {
     PageContainerProps,
     PresentationProps, RadioProps, TableProps, TextareaProps, ToggleProps
 } from '../index';
+import { ComponentType } from '../page/PageConstants';
 
 type Component<P> = FunctionComponent<P> | ComponentClass<P> | string;
 
 type Components = {
-    'CHECKBOX': Component<CheckboxProps>
-    'CONTENT': Component<ContentProps>
-    'IMAGE': Component<ImageProps>
-    'INPUT': Component<InputProps>
-    'LIST': Component<ListProps>
-    'OUTCOMES': Component<OutcomesProps>
-    'PRESENTATION': Component<PresentationProps>
-    'RADIO': Component<RadioProps>
-    'TABLE': Component<TableProps>
-    'TEXTAREA': Component<TextareaProps>
-    'TOGGLE': Component<ToggleProps>
+    [ComponentType.Checkbox]: Component<CheckboxProps>
+    [ComponentType.Content]: Component<ContentProps>
+    [ComponentType.Image]: Component<ImageProps>
+    [ComponentType.Input]: Component<InputProps>
+    [ComponentType.List]: Component<ListProps>
+    [ComponentType.Outcomes]: Component<OutcomesProps>
+    [ComponentType.Presentation]: Component<PresentationProps>
+    [ComponentType.Radio]: Component<RadioProps>
+    [ComponentType.Table]: Component<TableProps>
+    [ComponentType.Textarea]: Component<TextareaProps>
+    [ComponentType.Toggle]: Component<ToggleProps>
 };
 
 export default interface ITheme {
