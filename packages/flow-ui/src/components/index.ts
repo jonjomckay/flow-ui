@@ -44,7 +44,7 @@ export type PresentationProps = CommonComponentProps & {
     content: string;
 }
 
-export type RadioOption = CommonComponentProps & {
+export type RadioOption = {
     id: string;
     isSelected: boolean;
     label: string;
