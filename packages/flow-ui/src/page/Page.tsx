@@ -21,7 +21,7 @@ const Page = (props: PageProps) => {
         .map(container => <PageContainer container={ container } key={ container.id } theme={ props.theme } />);
 
     // Create the root container from the given theme
-    const rootContainer = React.createElement(props.theme.rootContainer, {}, [
+    const rootContainer = React.createElement(props.theme.rootContainer, null, [
         containers,
         <Outcomes group={ null } justify={ null } key="outcomes" theme={ props.theme } />
     ]);

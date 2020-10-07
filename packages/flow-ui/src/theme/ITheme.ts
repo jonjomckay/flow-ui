@@ -1,15 +1,22 @@
 import { ComponentClass, FunctionComponent } from 'react';
 import {
-    AlertProps, CheckboxProps,
+    AlertProps,
+    CheckboxProps,
     ContentProps,
-    ImageProps, InputProps,
+    ImageProps,
+    InputProps,
     ListProps,
     LoaderProps,
     NavigationProps,
     NotificationsProps,
     OutcomesProps,
     PageContainerProps,
-    PresentationProps, RadioProps, TableProps, TextareaProps, ToggleProps
+    PresentationProps,
+    RadioProps,
+    RootContainerProps,
+    TableProps,
+    TextareaProps,
+    ToggleProps
 } from '../index';
 import { ComponentType } from '../page/PageConstants';
 
@@ -36,5 +43,5 @@ export default interface ITheme {
     loaderComponent: Component<LoaderProps>,
     navigationComponent: Component<NavigationProps>
     notificationsComponent: Component<NotificationsProps>
-    rootContainer: Component<any>
+    rootContainer: Component<RootContainerProps>
 }

@@ -8,6 +8,7 @@ export type { default as NavigationProps } from './navigation/NavigationProps';
 export type { default as NotificationsProps } from './notification/NotificationsProps';
 export type { default as PageComponentProps } from './page/PageComponentProps';
 export type { default as PageContainerProps } from './page/PageContainerProps';
+export type { default as RootContainerProps } from './page/RootContainerProps';
 
 
 export * from './actions';
