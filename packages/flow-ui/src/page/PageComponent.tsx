@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { selectOutcome, setComponentValue } from '../actions';
-import { IObjectData, IOutcome, IPageComponent, IPageComponentColumn, IPageInput } from '../types';
+import { IObjectData, IOutcome, IPageComponent, IPageInput } from '../types';
 import PageComponentProps from './PageComponentProps';
 import PageComponentError from './PageComponentError';
 import ITheme from '../theme/ITheme';
@@ -64,33 +64,42 @@ const PageComponent = ({ component, input, isLoading, outcomes, selectOutcome, s
 };
 
 function createComponent(theme: ITheme, props: PageComponentProps, type: string | ComponentType) {
+    // Create some common props that all components probably end up using
+    const commonProps = {
+        ...props,
+        height: props.component.height,
+        label: props.component.label,
+        width: props.component.width
+    };
+
+    const onChangeContentValue = (value: string) => {
+        props.onChange({
+            contentValue: value
+        });
+    };
+
+    const onChangeObjectData = (objectData: IObjectData[] | undefined) => {
+        props.onChange({
+            objectData: objectData
+        });
+    }
+
     switch (type) {
         case ComponentType.Content:
             return React.createElement(theme.components.CONTENT, {
-                ...props,
-                onChange: (value: string) => {
-                    props.onChange({
-                        contentValue: value
-                    });
-                },
+                ...commonProps,
+                onChange: onChangeContentValue,
                 value: props.component.data.contentValue
             });
         case ComponentType.Image:
             return React.createElement(theme.components.IMAGE, {
-                ...props,
-                height: props.component.height,
-                label: props.component.label,
-                uri: props.component.data.imageUri,
-                width: props.component.width
+                ...commonProps,
+                uri: props.component.data.imageUri
             });
         case ComponentType.Input:
             return React.createElement(theme.components.INPUT, {
-                ...props,
-                onChange: (value: string) => {
-                    props.onChange({
-                        contentValue: value
-                    });
-                }
+                ...commonProps,
+                onChange: onChangeContentValue
             });
         case ComponentType.List:
             const titleColumn = props.component.columns.find(c => c.order === 0);
@@ -114,9 +123,8 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             });
 
             return React.createElement(theme.components.LIST, {
-                ...props,
+                ...commonProps,
                 isOrdered: (props.component.attributes && props.component.attributes['ordered'] && props.component.attributes['ordered'].toLowerCase() === 'true') || false,
-                label: props.component.label,
                 list: list
             });
         case ComponentType.Outcomes:
@@ -131,13 +139,13 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             }
 
             return React.createElement(theme.components.OUTCOMES, {
-                ...props,
+                ...commonProps,
                 group: group,
                 justify: justify,
             });
         case ComponentType.Presentation:
             return React.createElement(theme.components.PRESENTATION, {
-                ...props,
+                ...commonProps,
                 content: props.component?.data?.content
             });
         case ComponentType.Radio:
@@ -149,7 +157,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             }
 
             return React.createElement(theme.components.RADIO, {
-                ...props,
+                ...commonProps,
                 options: (props.objectData || []).map(objectData => {
                     const labelProperty = objectData.properties.find(p => p.typeElementPropertyId === labelColumn.typeElementPropertyToDisplayId);
 
@@ -160,14 +168,20 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                     }
                 }),
                 onChange: (options: RadioOption[]) => {
-                    return props.objectData?.map(objectData => {
+                    const data = props.objectData?.map(objectData => {
                         const option = options.find(o => o.id === objectData.internalId);
 
-                        return {
-                            ...objectData,
-                            isSelected: option?.isSelected
+                        if (option) {
+                            return {
+                                ...objectData,
+                                isSelected: option.isSelected
+                            }
                         }
-                    })
+
+                        return objectData;
+                    });
+
+                    onChangeObjectData(data);
                 }
             });
         }
@@ -180,7 +194,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             }
 
             return React.createElement(theme.components.SELECT, {
-                ...props,
+                ...commonProps,
                 options: (props.objectData || []).map(objectData => {
                     const labelProperty = objectData.properties.find(p => p.typeElementPropertyId === labelColumn?.typeElementPropertyId);
 
@@ -195,8 +209,6 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                         const option = options.find(o => o.id === objectData.internalId);
 
                         if (option) {
-                            console.log(option);
-
                             return {
                                 ...objectData,
                                 isSelected: option.isSelected
@@ -206,41 +218,28 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                         return objectData;
                     });
 
-                    props.onChange({
-                        objectData: data
-                    })
+                    onChangeObjectData(data);
                 }
             });
         }
         case ComponentType.Table:
             return React.createElement(theme.components.TABLE, {
-                ...props,
+                ...commonProps,
                 columns: props.component.columns,
                 data: props.objectData,
-                onChange: data => {
-                    props.onChange({
-                        objectData: data
-                    })
-                }
+                onChange: onChangeObjectData
             });
         case ComponentType.Textarea:
             return React.createElement(theme.components.TEXTAREA, {
-                ...props,
-                onChange: (value: string) => {
-                    props.onChange({
-                        contentValue: value
-                    });
-                }
+                ...commonProps,
+                onChange: onChangeContentValue
             });
         case ComponentType.Toggle:
             return React.createElement(theme.components.TOGGLE, {
-                ...props,
+                ...commonProps,
                 checked: String(props.component.data.contentValue.toLowerCase()) === 'true',
-                label: props.component.label,
                 onChange: (checked: boolean) => {
-                    props.onChange({
-                        contentValue: checked.toString()
-                    });
+                    onChangeContentValue(checked.toString())
                 }
             })
         default:
