@@ -67,7 +67,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
     switch (type) {
         case ComponentType.Content:
             return React.createElement(theme.components.CONTENT, {
-                component: props.component,
+                ...props,
                 onChange: (value: string) => {
                     props.onChange({
                         contentValue: value
@@ -77,6 +77,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             });
         case ComponentType.Image:
             return React.createElement(theme.components.IMAGE, {
+                ...props,
                 height: props.component.height,
                 label: props.component.label,
                 uri: props.component.data.imageUri,
@@ -84,7 +85,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             });
         case ComponentType.Input:
             return React.createElement(theme.components.INPUT, {
-                component: props.component,
+                ...props,
                 onChange: (value: string) => {
                     props.onChange({
                         contentValue: value
@@ -113,6 +114,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             });
 
             return React.createElement(theme.components.LIST, {
+                ...props,
                 isOrdered: (props.component.attributes && props.component.attributes['ordered'] && props.component.attributes['ordered'].toLowerCase() === 'true') || false,
                 label: props.component.label,
                 list: list
@@ -129,14 +131,15 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             }
 
             return React.createElement(theme.components.OUTCOMES, {
+                ...props,
                 group: group,
-                isLoading: props.isLoading,
                 justify: justify,
                 outcomes: props.outcomes,
                 selectOutcome: props.selectOutcome
             });
         case ComponentType.Presentation:
             return React.createElement(theme.components.PRESENTATION, {
+                ...props,
                 content: props.component?.data?.content
             });
         case ComponentType.Radio:
@@ -147,8 +150,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             }
 
             return React.createElement(theme.components.RADIO, {
-                component: props.component,
-                isLoading: props.isLoading,
+                ...props,
                 options: (props.objectData || []).map(objectData => {
                     const labelProperty = objectData.properties.find(p => p.typeElementPropertyId === labelColumn.typeElementPropertyToDisplayId);
 
@@ -171,10 +173,9 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             });
         case ComponentType.Table:
             return React.createElement(theme.components.TABLE, {
+                ...props,
                 columns: props.component.columns,
                 data: props.objectData,
-                component: props.component,
-                isLoading: props.isLoading,
                 onChange: data => {
                     console.log(data);
 
@@ -185,7 +186,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             });
         case ComponentType.Textarea:
             return React.createElement(theme.components.TEXTAREA, {
-                component: props.component,
+                ...props,
                 onChange: (value: string) => {
                     props.onChange({
                         contentValue: value
@@ -194,9 +195,8 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
             });
         case ComponentType.Toggle:
             return React.createElement(theme.components.TOGGLE, {
+                ...props,
                 checked: String(props.component.data.contentValue.toLowerCase()) === 'true',
-                component: props.component,
-                isLoading: props.isLoading,
                 label: props.component.label,
                 onChange: (checked: boolean) => {
                     props.onChange({
