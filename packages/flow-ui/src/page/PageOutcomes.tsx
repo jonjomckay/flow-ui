@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { selectOutcome } from '../actions';
 import { RootState } from '../store';
 import ITheme from '../theme/ITheme';
-import { OutcomesProps } from '../index';
+import { PageOutcomesProps } from '../index';
 
-type Props = OutcomesProps & {
+type Props = PageOutcomesProps & {
     theme: ITheme;
 }
 
-function Outcomes(props: Props): React.ReactElement<OutcomesProps> {
+function PageOutcomes(props: Props): React.ReactElement<PageOutcomesProps> {
     // Create outcomes from all the outcome responses that aren't bound to a page object
-    return React.createElement(props.theme.components.OUTCOMES, {
+    return React.createElement(props.theme.outcomesComponent, {
         ...props,
         outcomes: props.outcomes.filter(outcome => outcome.pageObjectBindingId === null),
         selectOutcome: props.selectOutcome
@@ -27,4 +27,4 @@ const mapDispatchToProps = ({
     selectOutcome
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Outcomes);
+export default connect(mapStateToProps, mapDispatchToProps)(PageOutcomes);

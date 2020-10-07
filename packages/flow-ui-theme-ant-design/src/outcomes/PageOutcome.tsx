@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { IOutcome, PageComponentProps } from '@jonjomckay/flow-ui';
+import { IOutcome } from '@jonjomckay/flow-ui';
 import { ButtonType } from 'antd/es/button';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
     onClick(): void
 }
 
-export default function Outcome(props: Props): React.ReactElement<PageComponentProps> {
+export default function PageOutcome(props: Props): React.ReactElement {
     const { isLoading, onClick, outcome } = props;
 
     const danger = ['cancel', 'delete', 'reject', 'remove'].includes(outcome.pageActionType?.toLowerCase());

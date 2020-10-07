@@ -10,6 +10,7 @@ import {
     NavigationProps,
     NotificationsProps,
     OutcomesProps,
+    PageOutcomesProps,
     PageContainerProps,
     PresentationProps,
     RadioProps,
@@ -42,6 +43,7 @@ export default interface ITheme {
     containers: { [type: string]: Component<PageContainerProps> }
     loaderComponent: Component<LoaderProps>,
     navigationComponent: Component<NavigationProps>
-    notificationsComponent: Component<NotificationsProps>
+    notificationsComponent: Component<NotificationsProps>;
+    outcomesComponent: Component<PageOutcomesProps>;
     rootContainer: Component<RootContainerProps>
 }

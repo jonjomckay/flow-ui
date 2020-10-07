@@ -13,5 +13,6 @@ export type { default as RootContainerProps } from './page/RootContainerProps';
 
 export * from './actions';
 export * from './components';
+export * from './page/PageOutcomesProps';
 export type { RootState } from './store';
 export * from './types';

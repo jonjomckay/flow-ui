@@ -1,4 +1,10 @@
-import { IObjectData, IOutcome, IPageComponent, IPageComponentColumn, selectOutcome } from '@jonjomckay/flow-ui';
+import {
+    IObjectData,
+    IPageComponent,
+    IPageComponentColumn,
+    OutcomesGroup,
+    OutcomesJustify, PageOutcomesProps
+} from '@jonjomckay/flow-ui';
 
 export interface CommonComponentProps {
     component: IPageComponent;
@@ -33,11 +39,9 @@ export type ListProps = CommonComponentProps & {
 
 export type OutcomesGroup = 'horizontal' | 'vertical' | null;
 export type OutcomesJustify = 'left' | 'right' | null;
-export type OutcomesProps = CommonComponentProps & {
+export type OutcomesProps = CommonComponentProps & PageOutcomesProps & {
     group: OutcomesGroup;
     justify: OutcomesJustify;
-    outcomes: IOutcome[];
-    selectOutcome: typeof selectOutcome;
 }
 
 export type PresentationProps = CommonComponentProps & {
