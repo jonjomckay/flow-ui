@@ -36,7 +36,7 @@ const AntDesign: ITheme = {
         'OUTCOMES': Outcomes,
         'PRESENTATION': Presentation,
         'RADIO': Radio,
-        // 'SELECT': SelectComponent,
+        'SELECT': SelectComponent,
         'TABLE': Table,
         'TEXTAREA': Textarea,
         'TOGGLE': Toggle,

@@ -2,8 +2,7 @@ import {
     IObjectData,
     IPageComponent,
     IPageComponentColumn,
-    OutcomesGroup,
-    OutcomesJustify, PageOutcomesProps
+    PageOutcomesProps
 } from '@jonjomckay/flow-ui';
 
 export interface CommonComponentProps {
@@ -57,6 +56,17 @@ export type RadioOption = {
 export type RadioProps = CommonComponentProps & {
     options: RadioOption[];
     onChange(options: RadioOption[]): void;
+}
+
+export type SelectOption = {
+    id: string;
+    isSelected: boolean;
+    label: string;
+}
+
+export type SelectProps = CommonComponentProps & {
+    options: SelectOption[];
+    onChange(options: SelectOption[]): void;
 }
 
 export type TableProps = CommonComponentProps & {

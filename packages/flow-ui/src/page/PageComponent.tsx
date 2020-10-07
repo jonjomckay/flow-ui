@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { selectOutcome, setComponentValue } from '../actions';
-import { IObjectData, IOutcome, IPageComponent, IPageInput } from '../types';
+import { IObjectData, IOutcome, IPageComponent, IPageComponentColumn, IPageInput } from '../types';
 import PageComponentProps from './PageComponentProps';
 import PageComponentError from './PageComponentError';
 import ITheme from '../theme/ITheme';
 import { RootState } from '../store';
 import { ComponentType } from './PageConstants';
-import { OutcomesGroup, OutcomesJustify, RadioOption } from '@jonjomckay/flow-ui';
+import { OutcomesGroup, OutcomesJustify, RadioOption, SelectOption } from '@jonjomckay/flow-ui';
 
 export interface PageComponentOnChangeProps {
     objectData?: IObjectData[];
@@ -141,6 +141,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                 content: props.component?.data?.content
             });
         case ComponentType.Radio:
+        {
             const labelColumn = props.component.columns.find(c => c.order === 0);
             if (!labelColumn) {
                 console.warn('No label column was provided for the Radio component ' + props.component.id);
@@ -169,6 +170,48 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                     })
                 }
             });
+        }
+        case ComponentType.Select:
+        {
+            const labelColumn = props.component.columns.find(c => c.isDisplayValue);
+            if (!labelColumn) {
+                console.warn('No label column was provided for the Select component ' + props.component.id);
+                return null;
+            }
+
+            return React.createElement(theme.components.SELECT, {
+                ...props,
+                options: (props.objectData || []).map(objectData => {
+                    const labelProperty = objectData.properties.find(p => p.typeElementPropertyId === labelColumn?.typeElementPropertyId);
+
+                    return {
+                        id: objectData.internalId,
+                        isSelected: objectData.isSelected,
+                        label: labelProperty?.contentValue || ''
+                    }
+                }),
+                onChange: (options: SelectOption[]) => {
+                    const data = props.objectData?.map(objectData => {
+                        const option = options.find(o => o.id === objectData.internalId);
+
+                        if (option) {
+                            console.log(option);
+
+                            return {
+                                ...objectData,
+                                isSelected: option.isSelected
+                            }
+                        }
+
+                        return objectData;
+                    });
+
+                    props.onChange({
+                        objectData: data
+                    })
+                }
+            });
+        }
         case ComponentType.Table:
             return React.createElement(theme.components.TABLE, {
                 ...props,

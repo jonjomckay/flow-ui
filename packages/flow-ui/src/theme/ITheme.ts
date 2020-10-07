@@ -15,6 +15,7 @@ import {
     PresentationProps,
     RadioProps,
     RootContainerProps,
+    SelectProps,
     TableProps,
     TextareaProps,
     ToggleProps
@@ -32,6 +33,7 @@ type Components = {
     [ComponentType.Outcomes]: Component<OutcomesProps>
     [ComponentType.Presentation]: Component<PresentationProps>
     [ComponentType.Radio]: Component<RadioProps>
+    [ComponentType.Select]: Component<SelectProps>
     [ComponentType.Table]: Component<TableProps>
     [ComponentType.Textarea]: Component<TextareaProps>
     [ComponentType.Toggle]: Component<ToggleProps>
