@@ -1,30 +1,31 @@
 import { IObjectData, IOutcome, IPageComponent, IPageComponentColumn, selectOutcome } from '@jonjomckay/flow-ui';
 
-export interface CheckboxProps {
+export interface CommonComponentProps {
     component: IPageComponent;
     isLoading: boolean;
+}
+
+export type CheckboxProps = CommonComponentProps & {
     onChange(value: string | null): void;
 }
 
-export interface ContentProps {
-    component: IPageComponent;
+export type ContentProps = CommonComponentProps & {
     value: string;
     onChange(value: string | null): void;
 }
 
-export interface ImageProps {
+export type ImageProps = CommonComponentProps & {
     height: number;
     label: string
     width: number;
     uri: string;
 }
 
-export interface InputProps {
-    component: IPageComponent;
+export type InputProps = CommonComponentProps & {
     onChange(value: string | null): void;
 }
 
-export interface ListProps {
+export type ListProps = CommonComponentProps & {
     isOrdered: boolean;
     label: string;
     list: { key: string, value: string | undefined }[];
@@ -33,27 +34,24 @@ export interface ListProps {
 export type OutcomeGroup = 'horizontal' | 'vertical' | null;
 export type OutcomeJustify = 'left' | 'right' | null;
 
-export interface OutcomesProps {
+export type OutcomesProps = CommonComponentProps & {
     group: OutcomeGroup;
-    isLoading: boolean;
     justify: OutcomeJustify;
     outcomes: IOutcome[];
     selectOutcome: typeof selectOutcome;
 }
 
-export interface PresentationProps {
+export type PresentationProps = CommonComponentProps & {
     content: string;
 }
 
-export interface RadioOption {
+export type RadioOption = CommonComponentProps & {
     id: string;
     isSelected: boolean;
     label: string;
 }
 
-export interface RadioProps {
-    component: IPageComponent;
-    isLoading: boolean;
+export type RadioProps = CommonComponentProps & {
     options: RadioOption[];
     onChange(options: RadioOption[]): void;
 }
@@ -64,15 +62,12 @@ export type TableProps = CommonComponentProps & {
     onChange(data?: IObjectData[]): void;
 }
 
-export interface TextareaProps {
-    component: IPageComponent;
+export type TextareaProps = CommonComponentProps & {
     onChange(value: string | null): void;
 }
 
-export interface ToggleProps {
+export type ToggleProps = CommonComponentProps & {
     checked: boolean;
-    component: IPageComponent;
-    isLoading: boolean;
     label: string;
     onChange(checked: boolean): void;
 }
