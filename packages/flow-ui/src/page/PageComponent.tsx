@@ -7,7 +7,7 @@ import PageComponentError from './PageComponentError';
 import ITheme from '../theme/ITheme';
 import { RootState } from '../store';
 import { ComponentType } from './PageConstants';
-import { OutcomeGroup, OutcomeJustify, RadioOption } from '@jonjomckay/flow-ui';
+import { OutcomesGroup, OutcomesJustify, RadioOption } from '@jonjomckay/flow-ui';
 
 export interface PageComponentOnChangeProps {
     objectData?: IObjectData[];
@@ -118,14 +118,14 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                 list: list
             });
         case ComponentType.Outcomes:
-            let group: OutcomeGroup = null;
+            let group: OutcomesGroup = null;
             if (props.component.attributes && props.component.attributes['group']) {
-                group = props.component.attributes['group'] as OutcomeGroup;
+                group = props.component.attributes['group'] as OutcomesGroup;
             }
 
-            let justify: OutcomeJustify = null;
+            let justify: OutcomesJustify = null;
             if (props.component.attributes && props.component.attributes['justify']) {
-                justify = props.component.attributes['justify'] as OutcomeJustify;
+                justify = props.component.attributes['justify'] as OutcomesJustify;
             }
 
             return React.createElement(theme.components.OUTCOMES, {

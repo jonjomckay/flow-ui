@@ -31,12 +31,11 @@ export type ListProps = CommonComponentProps & {
     list: { key: string, value: string | undefined }[];
 }
 
-export type OutcomeGroup = 'horizontal' | 'vertical' | null;
-export type OutcomeJustify = 'left' | 'right' | null;
-
+export type OutcomesGroup = 'horizontal' | 'vertical' | null;
+export type OutcomesJustify = 'left' | 'right' | null;
 export type OutcomesProps = CommonComponentProps & {
-    group: OutcomeGroup;
-    justify: OutcomeJustify;
+    group: OutcomesGroup;
+    justify: OutcomesJustify;
     outcomes: IOutcome[];
     selectOutcome: typeof selectOutcome;
 }
