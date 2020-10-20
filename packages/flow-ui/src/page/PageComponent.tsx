@@ -148,8 +148,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                 ...commonProps,
                 content: props.component?.data?.content
             });
-        case ComponentType.Radio:
-        {
+        case ComponentType.Radio: {
             const labelColumn = props.component.columns.find(c => c.order === 0);
             if (!labelColumn) {
                 console.warn('No label column was provided for the Radio component ' + props.component.id);
@@ -185,8 +184,7 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                 }
             });
         }
-        case ComponentType.Select:
-        {
+        case ComponentType.Select: {
             const labelColumn = props.component.columns.find(c => c.isDisplayValue);
             if (!labelColumn) {
                 console.warn('No label column was provided for the Select component ' + props.component.id);
