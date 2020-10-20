@@ -11,19 +11,17 @@ export default function SelectComponent({ component, isLoading, onChange, option
 
         // If this is a multiselect select box, we're given an array of selected values
         if (value instanceof Array) {
-            data = options?.map(option => {
+            data = options.map(option => {
                 return {
                     ...option,
                     isSelected: value.includes(option.id)
                 }
-            })
+            });
         } else {
-            data = options?.map(option => {
-                return {
-                    ...option,
-                    isSelected: option.id === value
-                };
-            })
+            data = [{
+                ...options.find(o => o.id === value),
+                isSelected: true
+            }];
         }
 
         onChange(data);

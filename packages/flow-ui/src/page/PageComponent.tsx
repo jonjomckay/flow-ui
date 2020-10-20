@@ -205,18 +205,20 @@ function createComponent(theme: ITheme, props: PageComponentProps, type: string 
                     }
                 }),
                 onChange: (options: SelectOption[]) => {
-                    const data = props.objectData?.map(objectData => {
-                        const option = options.find(o => o.id === objectData.internalId);
 
-                        if (option) {
+
+                    const data = options.map(option => {
+                        const object = props.objectData?.find(o => o.internalId === option.id);
+
+                        if (object) {
                             return {
-                                ...objectData,
+                                ...object,
                                 isSelected: option.isSelected
                             }
                         }
 
-                        return objectData;
-                    });
+                        return object;
+                    })
 
                     onChangeObjectData(data);
                 }
