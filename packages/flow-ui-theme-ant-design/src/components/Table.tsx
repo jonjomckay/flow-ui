@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Table as AntdTable, Typography } from 'antd';
-import { IObjectData, PageComponentProps } from '@jonjomckay/flow-ui';
+import { IObjectData, PageComponentProps, TableProps } from '@jonjomckay/flow-ui';
 import { RowSelectionType } from 'antd/es/table/interface';
 
-export default function Table(props: PageComponentProps): React.ReactElement<PageComponentProps> {
+export default function Table(props: TableProps): React.ReactElement<TableProps> {
     const columns = props.component.columns.map(column => {
         return {
             title: column.label,
@@ -32,20 +32,27 @@ export default function Table(props: PageComponentProps): React.ReactElement<Pag
 
     const rowSelection = {
         onSelect: (record: IObjectData, selected: boolean) => {
-            props.onChange({
-                objectData: props.objectData?.map(o => {
-                    if (o.internalId === record.internalId) {
-                        return {
-                            ...o,
-                            isSelected: selected
-                        }
+            props.onChange(props.data?.map(o => {
+                if (o.internalId === record.internalId) {
+                    return {
+                        ...o,
+                        isSelected: selected
                     }
+                }
 
+                // If this table is multiselect, we don't need to invert the selection of the other items
+                if (props.component.isMultiSelect) {
                     return o;
-                })
-            })
+                }
+
+                // This table isn't a multiselect one, so we need to invert the selection status of every other item
+                return {
+                    ...o,
+                    isSelected: !selected
+                };
+            }))
         },
-        selectedRowKeys: props.objectData?.filter(o => o.isSelected).map(o => o.internalId),
+        selectedRowKeys: props.data?.filter(o => o.isSelected).map(o => o.internalId),
         type: rowSelectionType
     };
 
@@ -56,7 +63,7 @@ export default function Table(props: PageComponentProps): React.ReactElement<Pag
             </Typography.Title>
 
             <AntdTable columns={ columns }
-                       dataSource={ props.objectData }
+                       dataSource={ props.data }
                        rowKey="internalId"
                        rowSelection={ { ...rowSelection } }
             />

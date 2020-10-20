@@ -22,7 +22,7 @@ import Alert from './alert/Alert';
 import Loader from './loader/Loader';
 import Navigation from './navigation/Navigation';
 import Notifications from './notification/Notifications';
-import OutcomesList from './components/OutcomesList';
+import PageOutcomes from './outcomes/PageOutcomes';
 import RootContainer from './containers/RootContainer';
 
 const AntDesign: ITheme = {
@@ -50,7 +50,7 @@ const AntDesign: ITheme = {
     loaderComponent: Loader,
     navigationComponent: Navigation,
     notificationsComponent: Notifications,
-    outcomesComponent: OutcomesList,
+    outcomesComponent: PageOutcomes,
     rootContainer: RootContainer
 }
 

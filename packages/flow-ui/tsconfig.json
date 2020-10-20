@@ -1,6 +1,3 @@
 {
-    "extends": "../flow-ui-scripts/tsconfig.json",
-    "include": [
-        "src"
-    ]
+    "extends": "../../tsconfig.json"
 }

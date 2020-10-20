@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Input } from 'antd';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { InputProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 
-export default function InputString({ component, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
+export default function InputString({ component, onChange }: InputProps): React.ReactElement<InputProps> {
     let type;
     switch (component.contentType) {
         case 'ContentPassword':
@@ -31,7 +31,7 @@ export default function InputString({ component, onChange }: PageComponentProps)
 
     return (
         <BaseFormItem component={ component }>
-            <Input { ...inputProps } onChange={ (e) => onChange({ contentValue: e.currentTarget.value }) } />
+            <Input { ...inputProps } onChange={ (e) => onChange(e.currentTarget.value) } />
         </BaseFormItem>
     );
 }

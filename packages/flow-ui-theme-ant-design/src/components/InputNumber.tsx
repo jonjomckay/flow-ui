@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { InputNumber as AntdInputNumber } from 'antd';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { InputProps } from '@jonjomckay/flow-ui';
 import BaseFormItem from './BaseFormItem';
 
-export default function InputNumber({ component, onChange }: PageComponentProps): React.ReactElement<PageComponentProps> {
+export default function InputNumber({ component, onChange }: InputProps): React.ReactElement<InputProps> {
     // If we're given a prefix or suffix, add them to the display value
     const formatter = (value: string | number | undefined): string => {
         if (component.attributes?.prefix) {
@@ -46,7 +46,7 @@ export default function InputNumber({ component, onChange }: PageComponentProps)
 
     return (
         <BaseFormItem component={ component }>
-            <AntdInputNumber { ...inputProps } onChange={ value => onChange({ contentValue: value?.toString() }) } />
+            <AntdInputNumber { ...inputProps } onChange={ value => onChange(value?.toString() || null) } />
         </BaseFormItem>
     );
 }

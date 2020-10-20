@@ -14,7 +14,7 @@ export default function BaseFormItem({ children, component }: Props): React.Reac
 
     const formProps = {
         initialValues: {
-            [component.id]: component.data.contentValue
+            [component.id]: component.data.contentValue || undefined
         }
     };
 

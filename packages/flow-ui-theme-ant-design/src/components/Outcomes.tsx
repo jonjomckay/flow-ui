@@ -1,12 +1,11 @@
-import * as React from 'react';
+import React from 'react';
+import { OutcomesProps } from '@jonjomckay/flow-ui';
 import { Button, Row, Space } from 'antd';
-import './Outcomes.less';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
-import OutcomesList from './OutcomesList';
+import PageOutcomes from '../outcomes/PageOutcomes';
 
-export default function Outcomes(props: PageComponentProps): React.ReactElement<PageComponentProps> {
+export default function Outcomes(props: OutcomesProps) {
     let justify: 'end' | 'start';
-    switch (props.component.attributes && props.component.attributes['justify']) {
+    switch (props.justify) {
         case 'right':
             justify = 'end';
             break;
@@ -15,12 +14,18 @@ export default function Outcomes(props: PageComponentProps): React.ReactElement<
             break;
     }
 
-    switch (props.component.attributes && props.component.attributes['group']) {
+    const outcomes = <PageOutcomes isLoading={ props.isLoading }
+                                   outcomes={ props.outcomes }
+                                   selectOutcome={ props.selectOutcome } />
+
+    switch (props.group) {
         case 'horizontal':
             return (
                 <Row justify={ justify }>
                     <Button.Group>
-                        <OutcomesList { ...props } />
+                        <Row className="outcomes">
+                            { outcomes }
+                        </Row>
                     </Button.Group>
                 </Row>
             );
@@ -28,14 +33,18 @@ export default function Outcomes(props: PageComponentProps): React.ReactElement<
             return (
                 <Row justify={ justify }>
                     <Space direction="vertical" size={ 0 }>
-                        { OutcomesList(props) }
+                        <Row className="outcomes">
+                            { outcomes }
+                        </Row>
                     </Space>
                 </Row>
             )
         default:
             return (
                 <Row justify={ justify }>
-                    <OutcomesList { ...props } />
+                    <Row className="outcomes">
+                        { outcomes }
+                    </Row>
                 </Row>
             )
     }

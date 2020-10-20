@@ -9,8 +9,6 @@
     "test": "craco test"
   },
   "dependencies": {
-    "@jonjomckay/flow-ui": "^0.5.3",
-    "@jonjomckay/flow-ui-theme-ant-design": "^0.5.3",
     "@reduxjs/toolkit": "^1.4.0",
     "antd": "^4.2.5",
     "jodit": "^3.3.24",

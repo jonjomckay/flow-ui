@@ -1,23 +1,18 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { selectOutcome, SelectOutcomeProps } from '../actions';
-import { IOutcome } from '../types';
+import { selectOutcome } from '../actions';
 import { RootState } from '../store';
 import ITheme from '../theme/ITheme';
-import OutcomesListProps from './OutcomesListProps';
+import { PageOutcomesProps } from '../index';
 
-interface Props {
-    isLoading: boolean;
-    outcomes: IOutcome[];
+type Props = PageOutcomesProps & {
     theme: ITheme;
-
-    selectOutcome(value: SelectOutcomeProps): void;
 }
 
-function Outcomes(props: Props): React.ReactElement<OutcomesListProps> {
+function PageOutcomes(props: Props): React.ReactElement<PageOutcomesProps> {
     // Create outcomes from all the outcome responses that aren't bound to a page object
     return React.createElement(props.theme.outcomesComponent, {
-        isLoading: props.isLoading,
+        ...props,
         outcomes: props.outcomes.filter(outcome => outcome.pageObjectBindingId === null),
         selectOutcome: props.selectOutcome
     });
@@ -32,4 +27,4 @@ const mapDispatchToProps = ({
     selectOutcome
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Outcomes);
+export default connect(mapStateToProps, mapDispatchToProps)(PageOutcomes);

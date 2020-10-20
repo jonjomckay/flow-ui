@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { PageComponentProps } from '@jonjomckay/flow-ui';
+import { CheckboxProps, PageComponentProps } from '@jonjomckay/flow-ui';
 import { Checkbox as AntdCheckbox } from 'antd';
 import BaseFormItem from './BaseFormItem';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
 
-export default function Checkbox(props: PageComponentProps): React.ReactElement<PageComponentProps> {
+export default function Checkbox(props: CheckboxProps): React.ReactElement<CheckboxProps> {
     const checked = String(props.component.data.contentValue.toLowerCase()) === 'true';
 
     const onChange = (checked: CheckboxChangeEvent) => {
-        props.onChange({
-            contentValue: checked.target.checked.toString()
-        });
+        props.onChange(checked.target.checked.toString());
     }
 
     const checkboxProps = {
